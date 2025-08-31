@@ -15,23 +15,23 @@ const Hero = () => {
 
             {/* Main heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-foreground mb-6 animate-slide-up">
-              The AI phone agent built
+              Never miss another order.
               <br />
-              <span className="text-muted-foreground">for restaurants</span>
+              <span className="bg-gradient-primary bg-clip-text text-transparent">AI answers every call.</span>
             </h1>
 
             {/* Subtext */}
             <p className="text-lg sm:text-xl text-muted-foreground max-w-xl lg:max-w-none mb-12 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-              Automate your phone orders with AI that understands your menu, handles complex requests, and never misses a call. Increase revenue while reducing staff workload.
+              Transform your restaurant with an AI phone agent that takes perfect orders, upsells naturally, and works 24/7. Stop losing revenue to busy signals and overwhelmed staff.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-              <button className="px-8 py-4 bg-foreground text-background rounded-lg font-semibold hover:bg-foreground/90 transition-all duration-200 hover:scale-105">
-                Try it now
+              <button className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large">
+                Start free trial
               </button>
-              <button className="px-8 py-4 border border-border text-foreground rounded-lg font-semibold hover:bg-secondary transition-all duration-200">
-                Schedule demo
+              <button className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft">
+                Watch demo
               </button>
             </div>
 

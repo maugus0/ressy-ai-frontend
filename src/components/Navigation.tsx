@@ -11,13 +11,16 @@ const Navigation = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#" className="text-sm font-medium text-foreground hover:text-muted-foreground transition-colors duration-200">
-            Home
+          <a href="#features" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200">
+            Features
           </a>
-          <a href="#" className="text-sm font-medium text-foreground hover:text-muted-foreground transition-colors duration-200">
-            About
+          <a href="#how-it-works" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200">
+            How it works
           </a>
-          <a href="#" className="text-sm font-medium text-foreground hover:text-muted-foreground transition-colors duration-200">
+          <a href="#pricing" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200">
+            Pricing
+          </a>
+          <a href="#contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200">
             Contact
           </a>
         </div>
@@ -25,9 +28,9 @@ const Navigation = () => {
         <Button 
           variant="default" 
           size="sm"
-          className="hidden md:inline-flex bg-foreground text-background hover:bg-foreground/90 transition-all duration-200 hover:scale-105"
+          className="hidden md:inline-flex bg-gradient-primary text-primary-foreground hover:scale-105 transition-all duration-300 shadow-soft hover:shadow-medium"
         >
-          Schedule a demo
+          Start free trial
         </Button>
 
         {/* Mobile menu button */}

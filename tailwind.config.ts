@@ -22,6 +22,15 @@ export default {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				sherpa: ['GD Sherpa', 'system-ui', 'sans-serif'],
 			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-subtle': 'var(--gradient-subtle)',
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'medium': 'var(--shadow-medium)',
+				'large': 'var(--shadow-large)',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

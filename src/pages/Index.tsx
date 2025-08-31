@@ -1,5 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import Features from "@/components/Features";
+import HowItWorks from "@/components/HowItWorks";
+import SocialProof from "@/components/SocialProof";
 
 const Index = () => {
   return (
@@ -7,6 +10,9 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
+        <Features />
+        <HowItWorks />
+        <SocialProof />
       </main>
     </div>
   );
