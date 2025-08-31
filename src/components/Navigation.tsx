@@ -5,8 +5,8 @@ const Navigation = () => {
     <nav className="w-full px-4 sm:px-6 lg:px-8 py-6 animate-fade-in">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <h1 className="text-2xl font-black tracking-tight text-foreground">
-            RESSY AI
+          <h1 className="text-2xl font-sherpa font-black tracking-tight text-foreground">
+            ressyai
           </h1>
         </div>
         
@@ -27,7 +27,7 @@ const Navigation = () => {
           size="sm"
           className="hidden md:inline-flex bg-foreground text-background hover:bg-foreground/90 transition-all duration-200 hover:scale-105"
         >
-          Get Early Access
+          Schedule a demo
         </Button>
 
         {/* Mobile menu button */}
