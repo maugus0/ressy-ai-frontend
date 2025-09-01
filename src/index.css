@@ -66,42 +66,56 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Dark mode - keeping minimal and clean */
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Dark mode with OpenPhone Sona-inspired gradients and effects */
+    --background: 220 13% 9%;
+    --foreground: 220 12% 95%;
 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 13% 11%;
+    --card-foreground: 220 12% 95%;
 
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 13% 11%;
+    --popover-foreground: 220 12% 95%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
+    --primary: 280 100% 65%;
+    --primary-foreground: 220 12% 95%;
 
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 220 12% 95%;
 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 8% 65%;
 
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 220 13% 15%;
+    --accent-foreground: 220 12% 95%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 280 100% 65%;
+
+    /* Enhanced Design System with Sona-inspired gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280, 100%, 65%), hsl(320, 100%, 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(260, 100%, 60%), hsl(280, 100%, 65%));
+    --gradient-accent: linear-gradient(90deg, hsl(280, 100%, 65%), hsl(320, 100%, 70%), hsl(260, 100%, 75%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220, 13%, 9%), hsl(220, 13%, 12%));
+    --gradient-glow: radial-gradient(circle at center, hsl(280, 100%, 65%, 0.3), transparent 70%);
+    
+    /* Shadows with purple/magenta glow */
+    --shadow-soft: 0 4px 20px -4px hsl(280, 100%, 65%, 0.1);
+    --shadow-medium: 0 8px 30px -8px hsl(280, 100%, 65%, 0.2);
+    --shadow-large: 0 20px 60px -20px hsl(280, 100%, 65%, 0.3);
+    --shadow-glow: 0 0 40px hsl(280, 100%, 65%, 0.4);
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 280 100% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 280 100% 65%;
   }
 }
 
