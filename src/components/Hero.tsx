@@ -14,38 +14,24 @@ const Hero = () => {
             </div>
 
             {/* Main heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-foreground mb-6 animate-slide-up">
-              Your AI Receptionist for
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight text-foreground mb-6 animate-slide-up leading-tight">
+              Never miss another order.
               <br />
-              <span className="bg-gradient-primary bg-clip-text text-transparent">Business Calls</span>
+              <span className="bg-gradient-primary bg-clip-text text-transparent">AI answers every call.</span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl lg:max-w-none mb-8 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-              Ressy AI answers calls, books appointments, and supports your customers 24/7. Never miss another opportunity.
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl lg:max-w-lg mb-12 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
+              Transform your restaurant with an AI phone agent that takes perfect orders, upsells naturally, and works 24/7. Stop losing revenue to busy signals and overwhelmed staff.
             </p>
 
-            {/* Email signup */}
-            <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md">
-                <input
-                  type="email"
-                  placeholder="Enter your email for early access"
-                  className="flex-1 px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
-                />
-                <button className="px-6 py-3 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large whitespace-nowrap">
-                  Join Waitlist
-                </button>
-              </div>
-            </div>
-
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-              <button className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft">
-                Watch Demo
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up mb-16" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+              <button className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large">
+                Start free trial
               </button>
-              <button className="px-6 py-4 text-primary hover:text-primary/80 transition-all duration-300 font-semibold">
-                Learn More →
+              <button className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft">
+                Watch demo
               </button>
             </div>
 
