@@ -39,32 +39,7 @@ const FinalCTA = () => {
         </p>
 
         {/* Email signup form */}
-        <div className="max-w-md mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-          <form onSubmit={handleSubmit} className="flex space-x-3">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              className="flex-1 px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
-              required
-            />
-            <button
-              type="submit"
-              disabled={isSubmitted}
-              className="px-6 py-3 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitted ? (
-                <span>✓ Sent!</span>
-              ) : (
-                <>
-                  <span>Get Started</span>
-                  <ArrowRight className="w-4 h-4" />
-                </>
-              )}
-            </button>
-          </form>
-        </div>
+        
 
         {/* Main CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>

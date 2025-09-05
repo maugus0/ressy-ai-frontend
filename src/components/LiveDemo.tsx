@@ -1,169 +1,169 @@
+"use client";
 import { Phone, Play } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Spline from "@splinetool/react-spline";
 
 const LiveDemo = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isDialing, setIsDialing] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const transcriptRef = useRef<HTMLDivElement>(null);
 
   const demoSteps = [
-    "Incoming call detected...",
-    "AI: Hello! Thank you for calling. How can I help you today?",
-    "Caller: I'd like to make a reservation for 4 people tonight.",
-    "AI: I'd be happy to help! What time works best for you?",
+    "📞 Incoming call detected...",
+    "AI: Hello! Thanks for calling. How can I help you today?",
+    "Caller: I'd like to book a table for 4 people tonight.",
+    "AI: Sure! What time would you prefer?",
     "Caller: Around 7 PM would be perfect.",
-    "AI: Perfect! I have availability at 7 PM. Can I get your name and phone number?",
-    "Reservation confirmed! ✓"
+    "AI: Great! Reservation confirmed for 4 people at 7 PM. 🎉",
+    "AI: We'll send you a confirmation SMS shortly.",
   ];
 
-  const handleDemo = () => {
-    if (isPlaying) {
-      setIsPlaying(false);
-      setCurrentStep(0);
-      return;
-    }
-
-    setIsPlaying(true);
+  const startDemo = () => {
+    setIsDialing(true);
     setCurrentStep(0);
-    
-    demoSteps.forEach((_, index) => {
-      setTimeout(() => {
-        setCurrentStep(index);
-        if (index === demoSteps.length - 1) {
-          setTimeout(() => {
-            setIsPlaying(false);
-            setCurrentStep(0);
-          }, 2000);
-        }
-      }, index * 2000);
-    });
+
+    setTimeout(() => {
+      setIsDialing(false);
+      setIsPlaying(true);
+
+      demoSteps.forEach((_, index) => {
+        setTimeout(() => {
+          setCurrentStep(index);
+
+          if (transcriptRef.current) {
+            transcriptRef.current.scrollTo({
+              top: transcriptRef.current.scrollHeight,
+              behavior: "smooth",
+            });
+          }
+
+          if (index === demoSteps.length - 1) {
+            setTimeout(() => {
+              setIsPlaying(false);
+              setCurrentStep(0);
+            }, 4000);
+          }
+        }, index * 2500);
+      });
+    }, 2000);
+  };
+
+  const stopDemo = () => {
+    setIsDialing(false);
+    setIsPlaying(false);
+    setCurrentStep(0);
   };
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-24">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full px-4 sm:px-6 lg:px-8 py-28 overflow-hidden bg-black">
+      {/* Dotted grid background */}
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto relative">
+        {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 animate-scale-in">
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-100 text-purple-600 text-sm font-semibold mb-6 shadow">
             <Phone className="w-4 h-4 mr-2" />
-            Interactive Demo
+            Live Interactive Demo
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 animate-slide-up">
-            See AI in action
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+            Experience AI,
             <br />
-            <span className="bg-gradient-primary bg-clip-text text-transparent">Try a live demo call</span>
+            <span className="bg-gradient-to-r from-purple-500 via-indigo-500 to-pink-500 bg-clip-text text-transparent">
+              in a live conversation
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-            Experience how our AI handles real customer interactions. Click the phone to start a simulated call.
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Click below to start a simulated call and watch our AI assistant
+            handle the conversation in real-time.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-subtle rounded-3xl p-8 lg:p-12 shadow-medium">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Phone mockup */}
-              <div className="flex justify-center">
-                <div className="relative">
-                  <div className="w-64 h-[500px] bg-background rounded-[3rem] shadow-large border-8 border-muted relative overflow-hidden">
-                    {/* Phone screen */}
-                    <div className="absolute inset-4 bg-gradient-to-br from-primary/20 to-primary/5 rounded-[2rem] flex flex-col">
-                      {/* Status bar */}
-                      <div className="flex justify-between items-center p-4 text-xs text-muted-foreground">
-                        <span>9:41</span>
-                        <span>●●●</span>
-                      </div>
-                      
-                      {/* Call interface */}
-                      <div className="flex-1 flex flex-col items-center justify-center space-y-6">
-                        <div className="text-center">
-                          <div className="text-lg font-semibold text-foreground mb-1">
-                            {isPlaying ? "AI Assistant" : "Demo Call"}
-                          </div>
-                          <div className="text-sm text-muted-foreground">
-                            {isPlaying ? "Connected" : "Ready to start"}
-                          </div>
-                        </div>
-                        
-                        {/* Call button */}
-                        <button
-                          onClick={handleDemo}
-                          className={`w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 ${
-                            isPlaying 
-                              ? 'bg-red-500 hover:bg-red-600 animate-pulse' 
-                              : 'bg-green-500 hover:bg-green-600 hover:scale-110'
-                          }`}
-                        >
-                          {isPlaying ? (
-                            <div className="w-4 h-4 bg-white rounded-sm"></div>
-                          ) : (
-                            <Phone className="w-6 h-6 text-white" />
-                          )}
-                        </button>
-                        
-                        {/* Waveform animation */}
-                        {isPlaying && (
-                          <div className="flex items-center space-x-1">
-                            {[...Array(8)].map((_, i) => (
-                              <div
-                                key={i}
-                                className="w-1 bg-primary rounded-full animate-pulse"
-                                style={{
-                                  height: `${Math.random() * 20 + 10}px`,
-                                  animationDelay: `${i * 0.1}s`
-                                }}
-                              ></div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Glow effect when active */}
-                  {isPlaying && (
-                    <div className="absolute inset-0 rounded-[3rem] bg-primary/20 blur-xl animate-pulse"></div>
-                  )}
-                </div>
-              </div>
+        {/* Demo Content */}
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
+          {/* Left side - Spline animation */}
+          <div className="flex justify-center">
+            <div className="relative w-full h-[520px] rounded-xl overflow-hidden">
+              <Spline scene="https://prod.spline.design/x3okye81K2RXqZ60/scene.splinecode" />
+              {/* Overlay to hide watermark */}
+              <div className="absolute bottom-0 left-0 w-full h-10 bg-black pointer-events-none" />
+            </div>
+          </div>
 
-              {/* Demo conversation */}
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Live Conversation</h3>
-                <div className="space-y-3 h-80 overflow-hidden">
-                  {demoSteps.map((step, index) => (
-                    <div
-                      key={index}
-                      className={`p-3 rounded-lg transition-all duration-500 ${
-                        index <= currentStep && isPlaying
-                          ? 'opacity-100 translate-y-0'
-                          : index === currentStep + 1 && isPlaying
-                          ? 'opacity-50 translate-y-2'
-                          : 'opacity-0 translate-y-4'
-                      } ${
-                        step.startsWith('AI:') 
-                          ? 'bg-primary/10 text-primary ml-4' 
-                          : step.startsWith('Caller:')
-                          ? 'bg-secondary text-secondary-foreground mr-4'
-                          : 'bg-gradient-primary text-primary-foreground text-center'
-                      }`}
-                    >
-                      {step}
-                    </div>
-                  ))}
+          {/* Right side - Transcript */}
+          <div className="flex flex-col h-[520px]">
+            <h3 className="text-2xl font-bold text-white mb-6">
+              Live Transcript
+            </h3>
+            <div
+              ref={transcriptRef}
+              className="flex-1 space-y-3 overflow-y-auto pr-3 custom-scroll"
+            >
+              {demoSteps.map((step, index) => (
+                <div
+                  key={index}
+                  className={`p-3 rounded-2xl max-w-[85%] transition-all duration-500 ${
+                    index <= currentStep && isPlaying
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-4"
+                  } ${
+                    step.startsWith("AI:")
+                      ? "bg-purple-100 text-purple-800 self-start shadow"
+                      : step.startsWith("Caller:")
+                      ? "bg-gray-200 text-gray-800 self-end shadow"
+                      : "bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center font-semibold mx-auto"
+                  }`}
+                >
+                  {step}
                 </div>
-                
-                <div className="pt-6">
-                  <button
-                    onClick={handleDemo}
-                    className="w-full px-6 py-3 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large flex items-center justify-center space-x-2"
-                  >
-                    <Play className="w-5 h-5" />
-                    <span>{isPlaying ? 'Stop Demo' : 'Start Demo Call'}</span>
-                  </button>
-                </div>
-              </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="pt-6">
+              <button
+                onClick={isPlaying || isDialing ? stopDemo : startDemo}
+                className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 via-indigo-500 to-pink-500 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center space-x-2"
+              >
+                <Play className="w-5 h-5" />
+                <span>
+                  {isDialing
+                    ? "Dialing..."
+                    : isPlaying
+                    ? "Stop Demo"
+                    : "Start Demo Call"}
+                </span>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Extra Animations */}
+      <style>{`
+        @keyframes wave {
+          0%,100% { height: 6px; }
+          50% { height: 28px; }
+        }
+        .animate-wave {
+          animation: wave 1.2s ease-in-out infinite;
+        }
+        .custom-scroll::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+          background: rgba(147, 51, 234, 0.4);
+          border-radius: 10px;
+        }
+      `}</style>
     </section>
   );
 };

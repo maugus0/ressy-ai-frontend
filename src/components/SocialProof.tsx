@@ -26,12 +26,12 @@ const SocialProof = () => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-            Trusted by 1000+ restaurants
+            Trusted by 1000+ businesses
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6">
-            Restaurant owners love
+            Business owners love
             <br />
-            <span className="text-primary">ressyai</span>
+            <span className="text-primary">ressy.ai</span>
           </h2>
         </div>
 
