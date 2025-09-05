@@ -13,7 +13,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center cursor-pointer">
             <img
-              src="./logo.png" // 👉 replace with your logo file path
+              src="./ressy-logo.png" // 👉 replace with your logo file path
               alt="Ressy AI Logo"
               className="h-8 w-auto" // keeps aspect ratio, height = 32px
             />
