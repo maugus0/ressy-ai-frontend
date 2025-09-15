@@ -1,72 +1,56 @@
 "use client";
 
-import Spline from "@splinetool/react-spline";
-
 const Hero = () => {
   return (
     <section className="relative w-full px-4 sm:px-6 lg:px-8 py-16 lg:py-24 overflow-hidden">
-      {/* Animated Wave Background */}
+      {/* Background layers */}
       <div className="absolute inset-0 -z-10">
-        {/* Base gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50" />
-        
-        {/* Animated wave layers */}
-        <svg className="absolute bottom-0 left-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
+        {/* SVG Wave Background */}
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1440 590"
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute inset-0 w-full h-full"
+          preserveAspectRatio="none"
+        >
+          <style>{`
+            .path-0{
+              animation:pathAnim-0 8s linear infinite;
+            }
+            @keyframes pathAnim-0{
+              0%{d: path("M 0,600 L 0,300 C 84,283.684 168,267.368 264,262 C 360,256.632 468,262.211 553,238 C 638,213.789 700,159.789 810,115 C 920,70.211 1078,34.632 1191,17 C 1304,-0.632 1372,-0.316 1440,0 L 1440,600 L 0,600 Z");}
+              50%{d: path("M 0,600 L 0,300 C 93,319.665 186,339.330 276,308 C 365,276.670 449,194.344 554,162 C 658,129.656 782,147.292 871,151 C 959,154.708 1012,144.488 1101,117 C 1189,89.512 1314,44.756 1440,0 L 1440,600 L 0,600 Z");}
+              100%{d: path("M 0,600 L 0,300 C 84,283.684 168,267.368 264,262 C 360,256.632 468,262.211 553,238 C 638,213.789 700,159.789 810,115 C 920,70.211 1078,34.632 1191,17 C 1304,-0.632 1372,-0.316 1440,0 L 1440,600 L 0,600 Z");}
+            }
+
+            .path-1{
+              animation:pathAnim-1 8s linear infinite;
+            }
+            @keyframes pathAnim-1{
+              0%{d: path("M 0,600 L 0,500 C 106,531.732 212,563.464 299,526 C 385,488.536 451,381.876 548,362 C 644,342.124 772,409.033 864,390 C 955,370.967 1011,265.990 1101,220 C 1190,174.010 1315,187.005 1440,200 L 1440,600 L 0,600 Z");}
+              50%{d: path("M 0,600 L 0,500 C 97,476.335 195,452.670 294,433 C 392,413.330 492,397.656 575,366 C 657,334.344 722,286.708 828,292 C 933,297.292 1080,355.512 1189,349 C 1297,342.488 1368,271.244 1440,200 L 1440,600 L 0,600 Z");}
+              100%{d: path("M 0,600 L 0,500 C 106,531.732 212,563.464 299,526 C 385,488.536 451,381.876 548,362 C 644,342.124 772,409.033 864,390 C 955,370.967 1011,265.990 1101,220 C 1190,174.010 1315,187.005 1440,200 L 1440,600 L 0,600 Z");}
+            }
+          `}</style>
+
           <path
-            className="animate-wave-1"
-            d="M0,400 C300,300 600,500 1200,400 L1200,800 L0,800 Z"
-            fill="url(#wave-gradient-1)"
-            opacity="0.1"
-          />
+            d="M 0,600 L 0,300 C 84,283.684 168,267.368 264,262 C 360,256.632 468,262.211 553,238 C 638,213.789 700,159.789 810,115 C 920,70.211 1078,34.632 1191,17 C 1304,-0.632 1372,-0.316 1440,0 L 1440,600 L 0,600 Z"
+            fill="hsl(262 83% 68%)"
+            fillOpacity="0.6"
+            className="path-0"
+          ></path>
+
           <path
-            className="animate-wave-2"
-            d="M0,450 C400,350 800,550 1200,450 L1200,800 L0,800 Z"
-            fill="url(#wave-gradient-2)"
-            opacity="0.08"
-          />
-          <path
-            className="animate-wave-3"
-            d="M0,500 C350,400 650,600 1200,500 L1200,800 L0,800 Z"
-            fill="url(#wave-gradient-3)"
-            opacity="0.06"
-          />
-          
-          <defs>
-            <linearGradient id="wave-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#8B5CF6" />
-              <stop offset="100%" stopColor="#06B6D4" />
-            </linearGradient>
-            <linearGradient id="wave-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#06B6D4" />
-              <stop offset="100%" stopColor="#8B5CF6" />
-            </linearGradient>
-            <linearGradient id="wave-gradient-3" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F59E0B" />
-              <stop offset="100%" stopColor="#EF4444" />
-            </linearGradient>
-          </defs>
+            d="M 0,600 L 0,500 C 106,531.732 212,563.464 299,526 C 385,488.536 451,381.876 548,362 C 644,342.124 772,409.033 864,390 C 955,370.967 1011,265.990 1101,220 C 1190,174.010 1315,187.005 1440,200 L 1440,600 L 0,600 Z"
+            fill="hsl(262 83% 58%)"
+            fillOpacity="0.9"
+            className="path-1"
+          ></path>
         </svg>
 
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute animate-float-particle bg-gradient-to-r from-purple-400/20 to-cyan-400/20 rounded-full blur-sm"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                width: `${Math.random() * 10 + 5}px`,
-                height: `${Math.random() * 10 + 5}px`,
-                animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${Math.random() * 10 + 10}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Noise texture overlay */}
-        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+        {/* Optional noise overlay for texture */}
+        <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
       </div>
 
       {/* Content */}
@@ -74,7 +58,6 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left side - Text */}
           <div className="text-center lg:text-left relative z-10">
-            {/* Badge */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-800 text-xs sm:text-sm font-medium mb-6 animate-fade-in">
               <span className="relative flex w-2 h-2 mr-2">
                 <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
@@ -83,34 +66,20 @@ const Hero = () => {
               Join 1000+ restaurants
             </div>
 
-            {/* Heading */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 mb-6 leading-tight animate-slide-up">
-              Your AI Receptionist
+              Never miss another call.
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 animate-gradient">
-                for Business Calls
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-purple-700 animate-gradient">
+                AI answers every call.
               </span>
             </h1>
 
-            {/* Subtext */}
             <p className="text-base sm:text-lg text-gray-600 max-w-md mx-auto lg:mx-0 mb-10 leading-relaxed animate-slide-up delay-200">
-              Ressy AI answers calls, books appointments, and supports your customers 24/7. 
-              Never miss another opportunity with intelligent call handling.
+              Transform your restaurant with an AI phone agent that takes perfect
+              orders, upsells naturally, and works 24/7. Stop losing revenue to
+              busy signals and overwhelmed staff.
             </p>
 
-            {/* Email Signup */}
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0 mb-8 animate-fade-in delay-300">
-              <input
-                type="email"
-                placeholder="Enter your email for early access"
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                Join Waitlist
-              </button>
-            </div>
-
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-14 animate-fade-in delay-300">
               <button className="px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold shadow-md hover:scale-110 hover:shadow-xl transition-all duration-300">
                 Start free trial
@@ -120,7 +89,6 @@ const Hero = () => {
               </button>
             </div>
 
-            {/* Stats */}
             <div className="mt-10 grid grid-cols-3 gap-6 animate-fade-in delay-500">
               <div className="text-center lg:text-left group cursor-pointer">
                 <div className="text-xl font-bold text-gray-900 group-hover:scale-110 transition-transform">
@@ -149,81 +117,16 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right side - Spline Model */}
-          {/* Right side - Spline Model */}
+          {/* Right side - Image placeholder (Spline removed) */}
           <div className="flex justify-center lg:justify-end relative z-10">
-            <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl animate-float">
-              <div className="absolute inset-0 scale-[1.2] translate-y-8">
-                <Spline scene="https://prod.spline.design/50WfH-izB-FZaW0i/scene.splinecode" />
+            <div className="relative w-full h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl animate-float bg-white/40 backdrop-blur">
+              <div className="absolute inset-0 flex items-center justify-center text-purple-600 font-bold">
+                Image / 3D Placeholder
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes wave-1 {
-          0%, 100% { transform: translateX(0px) translateY(0px); }
-          25% { transform: translateX(20px) translateY(-10px); }
-          50% { transform: translateX(-15px) translateY(-5px); }
-          75% { transform: translateX(10px) translateY(-8px); }
-        }
-        
-        @keyframes wave-2 {
-          0%, 100% { transform: translateX(0px) translateY(0px); }
-          25% { transform: translateX(-20px) translateY(-8px); }
-          50% { transform: translateX(15px) translateY(-12px); }
-          75% { transform: translateX(-10px) translateY(-6px); }
-        }
-        
-        @keyframes wave-3 {
-          0%, 100% { transform: translateX(0px) translateY(0px); }
-          25% { transform: translateX(15px) translateY(-6px); }
-          50% { transform: translateX(-20px) translateY(-10px); }
-          75% { transform: translateX(12px) translateY(-4px); }
-        }
-        
-        @keyframes float-particle {
-          0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-          25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
-          50% { transform: translateY(-10px) translateX(-15px) rotate(180deg); }
-          75% { transform: translateY(-30px) translateX(5px) rotate(270deg); }
-        }
-
-        @keyframes slide-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animate-wave-1 { animation: wave-1 15s ease-in-out infinite; }
-        .animate-wave-2 { animation: wave-2 20s ease-in-out infinite reverse; }
-        .animate-wave-3 { animation: wave-3 25s ease-in-out infinite; }
-        .animate-float-particle { animation: float-particle 20s linear infinite; }
-        .animate-slide-up { animation: slide-up 0.8s ease forwards; }
-        .animate-fade-in { animation: fade-in 1s ease forwards; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-gradient { background-size: 200% 200%; animation: gradient 6s ease infinite; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-500 { animation-delay: 0.5s; }
-      `}</style>
     </section>
   );
 };
