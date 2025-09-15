@@ -112,5 +112,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-color: transparent; /* instead of bg-background */
+
   }
 }
