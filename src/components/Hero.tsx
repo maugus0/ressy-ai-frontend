@@ -17,11 +17,12 @@ const Hero = () => {
 
   return (
     <section className="w-full min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
-      {/* Animated Wave Background */}
+      {/* Animated Wave Background with Purple Theme */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30"></div>
+        {/* Main purple gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-indigo-900/15 to-violet-900/25"></div>
         
-        {/* Animated Wave SVG */}
+        {/* Animated Wave SVG with multiple layers */}
         <div className="absolute inset-0">
           <svg
             className="absolute bottom-0 w-full h-full"
@@ -30,39 +31,117 @@ const Hero = () => {
           >
             <defs>
               <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style={{stopColor: 'rgba(99, 102, 241, 0.1)', stopOpacity: 1}} />
-                <stop offset="50%" style={{stopColor: 'rgba(139, 92, 246, 0.05)', stopOpacity: 1}} />
-                <stop offset="100%" style={{stopColor: 'rgba(59, 130, 246, 0.08)', stopOpacity: 1}} />
+                <stop offset="0%" style={{stopColor: 'rgba(139, 92, 246, 0.15)', stopOpacity: 1}} />
+                <stop offset="50%" style={{stopColor: 'rgba(168, 85, 247, 0.1)', stopOpacity: 1}} />
+                <stop offset="100%" style={{stopColor: 'rgba(99, 102, 241, 0.12)', stopOpacity: 1}} />
               </linearGradient>
               <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style={{stopColor: 'rgba(139, 92, 246, 0.05)', stopOpacity: 1}} />
-                <stop offset="50%" style={{stopColor: 'rgba(59, 130, 246, 0.03)', stopOpacity: 1}} />
-                <stop offset="100%" style={{stopColor: 'rgba(99, 102, 241, 0.06)', stopOpacity: 1}} />
+                <stop offset="0%" style={{stopColor: 'rgba(168, 85, 247, 0.08)', stopOpacity: 1}} />
+                <stop offset="50%" style={{stopColor: 'rgba(99, 102, 241, 0.06)', stopOpacity: 1}} />
+                <stop offset="100%" style={{stopColor: 'rgba(139, 92, 246, 0.1)', stopOpacity: 1}} />
+              </linearGradient>
+              <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style={{stopColor: 'rgba(99, 102, 241, 0.05)', stopOpacity: 1}} />
+                <stop offset="50%" style={{stopColor: 'rgba(139, 92, 246, 0.03)', stopOpacity: 1}} />
+                <stop offset="100%" style={{stopColor: 'rgba(168, 85, 247, 0.07)', stopOpacity: 1}} />
               </linearGradient>
             </defs>
             
-            {/* Wave layers */}
+            {/* Multiple wave layers with different speeds */}
             <path
-              d="M0,400 C240,300 480,500 720,400 C960,300 1200,500 1440,400 L1440,800 L0,800 Z"
+              d="M0,350 C360,250 720,450 1080,350 C1260,300 1350,375 1440,350 L1440,800 L0,800 Z"
               fill="url(#waveGradient1)"
-              className="animate-wave-slow"
-            />
+              className="animate-wave-slow opacity-80"
+            >
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                values="-360 0;360 0;-360 0"
+                dur="20s"
+                repeatCount="indefinite"
+              />
+            </path>
             <path
-              d="M0,500 C240,400 480,600 720,500 C960,400 1200,600 1440,500 L1440,800 L0,800 Z"
+              d="M0,450 C480,350 960,550 1440,450 L1440,800 L0,800 Z"
               fill="url(#waveGradient2)"
-              className="animate-wave-slower"
-            />
+              className="animate-wave-slower opacity-60"
+            >
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                values="360 0;-360 0;360 0"
+                dur="25s"
+                repeatCount="indefinite"
+              />
+            </path>
+            <path
+              d="M0,520 C240,420 480,620 720,520 C960,420 1200,620 1440,520 L1440,800 L0,800 Z"
+              fill="url(#waveGradient3)"
+              className="animate-wave-slowest opacity-40"
+            >
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="translate"
+                values="-180 0;180 0;-180 0"
+                dur="30s"
+                repeatCount="indefinite"
+              />
+            </path>
           </svg>
         </div>
         
-        {/* Floating orbs */}
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-blue-400/10 via-purple-400/8 to-cyan-400/6 rounded-full blur-3xl animate-float-gentle"></div>
-        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-gradient-to-br from-purple-400/8 via-pink-400/6 to-indigo-400/4 rounded-full blur-2xl animate-float-gentle delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-gradient-to-br from-cyan-400/6 via-teal-400/4 to-blue-400/8 rounded-full blur-3xl animate-float-gentle delay-2000"></div>
+        {/* Enhanced floating orbs with purple theme */}
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-br from-purple-500/15 via-violet-500/10 to-indigo-500/8 rounded-full blur-3xl animate-float-gentle"></div>
+        <div className="absolute top-1/3 right-1/4 w-56 h-56 bg-gradient-to-br from-indigo-500/12 via-purple-500/8 to-pink-500/6 rounded-full blur-2xl animate-float-gentle delay-1000"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-gradient-to-br from-violet-500/10 via-purple-500/6 to-blue-500/8 rounded-full blur-3xl animate-float-gentle delay-2000"></div>
+        <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-gradient-to-br from-pink-500/8 via-violet-500/5 to-indigo-500/7 rounded-full blur-2xl animate-float-gentle delay-3000"></div>
+        
+        {/* Textured overlay patterns */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(139,92,246,0.1)_0%,transparent_50%)] opacity-60"></div>
+        <div className="absolute inset-0 bg-[conic-gradient(from_45deg,transparent,rgba(168,85,247,0.05),transparent)] opacity-40"></div>
+        
+        {/* Animated dot grid texture */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.3)_1px,transparent_1px)] bg-[size:50px_50px] opacity-20 animate-pulse"></div>
         
         {/* Subtle grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,.015)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,.015)_1px,transparent_1px)] bg-[size:60px_60px] opacity-30"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:80px_80px] opacity-50"></div>
       </div>
+      
+      {/* Custom animations */}
+      <style>{`
+        @keyframes wave-slow {
+          0%, 100% { transform: translateX(0) translateY(0); }
+          25% { transform: translateX(-25px) translateY(-10px); }
+          50% { transform: translateX(0) translateY(-20px); }
+          75% { transform: translateX(25px) translateY(-10px); }
+        }
+        @keyframes wave-slower {
+          0%, 100% { transform: translateX(0) translateY(0); }
+          33% { transform: translateX(30px) translateY(-15px); }
+          66% { transform: translateX(-20px) translateY(-25px); }
+        }
+        @keyframes wave-slowest {
+          0%, 100% { transform: translateX(0) translateY(0); }
+          50% { transform: translateX(-40px) translateY(-30px); }
+        }
+        @keyframes float-gentle {
+          0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+          25% { transform: translateY(-20px) translateX(10px) scale(1.02); }
+          50% { transform: translateY(-10px) translateX(-15px) scale(0.98); }
+          75% { transform: translateY(-30px) translateX(5px) scale(1.01); }
+        }
+        
+        .animate-wave-slow { animation: wave-slow 15s ease-in-out infinite; }
+        .animate-wave-slower { animation: wave-slower 20s ease-in-out infinite; }
+        .animate-wave-slowest { animation: wave-slowest 25s ease-in-out infinite; }
+        .animate-float-gentle { animation: float-gentle 12s ease-in-out infinite; }
+        .delay-1000 { animation-delay: 1s; }
+        .delay-2000 { animation-delay: 2s; }
+        .delay-3000 { animation-delay: 3s; }
+      `}</style>
 
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
