@@ -9,7 +9,7 @@ const SocialProof = () => {
     {
       quote: "We've seen a 40% increase in phone orders since implementing RessyAI. It never gets orders wrong.",
       author: "David Chen",
-      role: "Manager, Golden Dragon Restaurant", 
+      role: "Manager, Golden Dragon business", 
       rating: 5,
     },
     {
@@ -63,7 +63,7 @@ const SocialProof = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <div className="text-3xl font-black text-foreground mb-2">1000+</div>
-            <div className="text-muted-foreground">Active restaurants</div>
+            <div className="text-muted-foreground">Active businesss</div>
           </div>
           <div>
             <div className="text-3xl font-black text-foreground mb-2">2M+</div>

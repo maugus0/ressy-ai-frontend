@@ -33,10 +33,10 @@ const Navigation = () => {
               </button>
               <div className="absolute hidden group-hover:block bg-white border border-gray-200 rounded-lg mt-3 shadow-xl w-48">
                 <a
-                  href="#restaurants"
+                  href="#businesss"
                   className="block px-5 py-2 text-sm hover:bg-gray-50"
                 >
-                  Restaurants
+                  businesss
                 </a>
                 <a
                   href="#retail"
@@ -109,8 +109,8 @@ const Navigation = () => {
                 Use Cases
               </summary>
               <div className="pl-4 mt-2 flex flex-col space-y-2">
-                <a href="#restaurants" className="hover:text-gray-900">
-                  Restaurants
+                <a href="#businesss" className="hover:text-gray-900">
+                  businesss
                 </a>
                 <a href="#retail" className="hover:text-gray-900">
                   Retail

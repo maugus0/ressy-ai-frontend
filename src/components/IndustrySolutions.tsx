@@ -2,12 +2,12 @@ import { useState } from "react";
 import { ChefHat, Scissors, Home, Shield } from "lucide-react";
 
 const IndustrySolutions = () => {
-  const [activeTab, setActiveTab] = useState("restaurants");
+  const [activeTab, setActiveTab] = useState("businesss");
 
   const industries = {
-    restaurants: {
+    businesss: {
       icon: ChefHat,
-      label: "Restaurants",
+      label: "businesss",
       solutions: [
         { title: "Reservation Management", description: "Handle waitlists, parties, and special requests—all automated and logged." },
         { title: "Menu & Hours", description: "Share specials, dietary info, and holiday hours—always up to date." },
@@ -64,7 +64,7 @@ const IndustrySolutions = () => {
   };
 
   const tabs = [
-    { key: "restaurants", ...industries.restaurants },
+    { key: "businesss", ...industries.businesss },
     { key: "salons", ...industries.salons },
     { key: "realestate", ...industries.realestate },
     { key: "insurance", ...industries.insurance }

@@ -7,7 +7,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: "How does RessyAI handle complex orders?",
-      answer: "RessyAI uses advanced natural language processing to understand context, handle modifications, and ask clarifying questions when needed. It's trained on thousands of restaurant conversations to handle even the most complex orders with 99.9% accuracy."
+      answer: "RessyAI uses advanced natural language processing to understand context, handle modifications, and ask clarifying questions when needed. It's trained on thousands of business conversations to handle even the most complex orders with 99.9% accuracy."
     },
     {
       question: "Can I customize the AI's responses?",

@@ -26,7 +26,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-slate-300 leading-relaxed max-w-md">
-              Revolutionizing restaurant operations with AI-powered voice agents. 
+              Revolutionizing business operations with AI-powered voice agents. 
               Handle reservations, orders, and customer service 24/7 with human-like conversations.
             </p>
             <div className="flex space-x-4">
@@ -70,7 +70,7 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-white font-semibold text-lg">Solutions</h3>
             <ul className="space-y-3">
-              <li><a href="#restaurants" className="text-slate-300 hover:text-white transition-colors duration-300 hover:underline">Restaurants</a></li>
+              <li><a href="#businesss" className="text-slate-300 hover:text-white transition-colors duration-300 hover:underline">businesss</a></li>
               <li><a href="#cafes" className="text-slate-300 hover:text-white transition-colors duration-300 hover:underline">Cafes & Bars</a></li>
               <li><a href="#retail" className="text-slate-300 hover:text-white transition-colors duration-300 hover:underline">Retail</a></li>
               <li><a href="#hospitality" className="text-slate-300 hover:text-white transition-colors duration-300 hover:underline">Hospitality</a></li>
@@ -132,7 +132,7 @@ const Footer = () => {
         <div className="border-t border-slate-700/50 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
             <p className="text-slate-400 text-sm flex items-center">
-              Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for restaurants everywhere
+              Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for businesss everywhere
             </p>
             <div className="flex space-x-6 text-sm">
               <a href="#privacy" className="text-slate-400 hover:text-white transition-colors duration-300">
