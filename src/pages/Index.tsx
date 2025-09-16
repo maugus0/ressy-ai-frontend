@@ -11,6 +11,7 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import IndustrySolutions from "@/components/IndustrySolutions";
 import ROICalculator from "@/components/ROICalculator";
+import ComparisonTable from "@/components/ComparisonTable";
 
 const Index = () => {
   return (
@@ -86,6 +87,9 @@ const Index = () => {
           </div>
           <SocialProof />
         </section>
+
+        {/* 🆚 Comparison Section */}
+        <ComparisonTable />
 
         {/* 💰 Pricing Section */}
         <section className="relative">
