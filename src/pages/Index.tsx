@@ -10,6 +10,7 @@ import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import IndustrySolutions from "@/components/IndustrySolutions";
+import ROICalculator from "@/components/ROICalculator";
 
 const Index = () => {
   return (
@@ -95,6 +96,9 @@ const Index = () => {
           </div>
           <Pricing />
         </section>
+
+        {/* 🧮 ROI Calculator Section */}
+        <ROICalculator />
 
         {/* ❓ FAQ Section */}
         <section className="relative">
