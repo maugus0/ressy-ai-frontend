@@ -8,45 +8,25 @@ const VoiceAgents = () => {
     {
       id: 1,
       title: "Virtual Receptionist",
-      industry: "Solar industry",
+      industry: "Restaurant Industry",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       duration: "0:32",
     },
     {
       id: 2,
-      title: "Lead qualification",
-      industry: "Insurance",
+      title: "Appointment Scheduler",
+      industry: "Salons",
       avatar: "https://randomuser.me/api/portraits/women/65.jpg",
       duration: "0:28",
     },
     {
       id: 3,
-      title: "Appointment booking",
-      industry: "Roofing",
+      title: "Dental Office Assistant",
+      industry: "Dental",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       duration: "0:45",
     },
-    {
-      id: 4,
-      title: "Customer Support",
-      industry: "Real Estate",
-      avatar: "https://randomuser.me/api/portraits/women/36.jpg",
-      duration: "0:38",
-    },
-    {
-      id: 5,
-      title: "Call Forwarding",
-      industry: "Automotive",
-      avatar: "https://randomuser.me/api/portraits/men/47.jpg",
-      duration: "0:41",
-    },
-    {
-      id: 6,
-      title: "Call Routing",
-      industry: "Consulting",
-      avatar: "https://randomuser.me/api/portraits/women/29.jpg",
-      duration: "0:36",
-    },
+    
   ];
 
   const handlePlay = (id: number) => {

@@ -8,7 +8,7 @@ const ROICalculator = () => {
     callsPerWeek: 150,
     avgOrderValue: 35,
     missedCallPercent: 18,
-    aiRecoveryPercent: 70,
+    aiRecoveryPercent: 99,
     staffWage: 20,
   });
 
@@ -144,11 +144,12 @@ const ROICalculator = () => {
                 {/* AI Recovery */}
                 <div className="space-y-2 hover:scale-[1.02] transition-transform duration-300">
                   <Label className="text-slate-700 text-sm font-medium">
-                    Recovery % by AI
+                    Recovery % by AI (0% downtime)
                   </Label>
                   <Input
                     type="number"
                     value={inputs.aiRecoveryPercent}
+                    disabled={true}
                     onChange={(e) =>
                       updateInput(
                         "aiRecoveryPercent",

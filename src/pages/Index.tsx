@@ -24,9 +24,13 @@ const Index = () => {
       </div>
 
       {/* Navigation overlays background */}
-      <Navigation />
 
       <main className="pt-24">
+        {/* Navigation with background */}
+        <div className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+          <Navigation />
+        </div>
+
         <Hero />
 
         {/* 🌟 Features Section */}
@@ -67,7 +71,7 @@ const Index = () => {
           <VoiceAgents />
         </section>
 
-         
+
 
         {/* 🎥 Live Demo Section */}
         {/* <section className="relative">
@@ -80,23 +84,23 @@ const Index = () => {
         </section> */}
 
         {/* ⭐ Social Proof Section */}
-        
+
 
         {/* 🆚 Comparison Section */}
-        <ComparisonTable />
 
         {/* 💰 Pricing Section */}
         {/* <section className="relative">
           <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-orange-50/40"></div>
-            <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,rgba(245,158,11,0.02),transparent,rgba(245,158,11,0.02))]"></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-yellow-300/6 to-orange-300/3 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-orange-50/40"></div>
+          <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,rgba(245,158,11,0.02),transparent,rgba(245,158,11,0.02))]"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-yellow-300/6 to-orange-300/3 rounded-full blur-3xl animate-pulse"></div>
           </div>
           <Pricing />
-        </section> */}
+          </section> */}
 
         {/* 🧮 ROI Calculator Section */}
         <ROICalculator />
+          <ComparisonTable />
         <section className="relative">
           <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-tr from-rose-50/40 via-pink-50/20 to-purple-50/40"></div>
@@ -104,6 +108,14 @@ const Index = () => {
             <div className="absolute inset-0 bg-[linear-gradient(60deg,transparent_40%,rgba(236,72,153,0.02)_50%,transparent_60%)]"></div>
           </div>
           <SocialProof />
+        </section>
+         <section className="relative">
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-100/60 via-gray-50/40 to-white"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.08),transparent_70%)]"></div>
+            <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-purple-100/30 to-transparent"></div>
+          </div>
+          <FinalCTA />
         </section>
 
         {/* ❓ FAQ Section */}
@@ -117,14 +129,7 @@ const Index = () => {
         </section>
 
         {/* 🚀 Final CTA Section */}
-        <section className="relative">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-100/60 via-gray-50/40 to-white"></div>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.08),transparent_70%)]"></div>
-            <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-purple-100/30 to-transparent"></div>
-          </div>
-          <FinalCTA />
-        </section>
+       
       </main>
 
       <Footer />

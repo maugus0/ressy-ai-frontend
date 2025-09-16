@@ -39,12 +39,12 @@ const FinalCTA = () => {
         </p>
 
         {/* Email signup form */}
-        
+
 
         {/* Main CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
           <button className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large text-lg">
-            Start 14-Day Free Trial
+            Start 7-Day Free Trial
           </button>
           <button className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft text-lg">
             Schedule Demo Call
@@ -52,9 +52,11 @@ const FinalCTA = () => {
         </div>
 
         {/* Trust indicators */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center animate-fade-in" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+        {/* Trust indicators */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto text-center animate-fade-in"
+          style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
           <div>
-            <div className="text-2xl font-black text-foreground mb-1">14-Day</div>
+            <div className="text-2xl font-black text-foreground mb-1">7-Day</div>
             <div className="text-sm text-muted-foreground">Free Trial</div>
           </div>
           <div>
@@ -62,15 +64,10 @@ const FinalCTA = () => {
             <div className="text-sm text-muted-foreground">Credit Card</div>
           </div>
           <div>
-            <div className="text-2xl font-black text-foreground mb-1">30 Min</div>
-            <div className="text-sm text-muted-foreground">Setup Time</div>
-          </div>
-          <div>
             <div className="text-2xl font-black text-foreground mb-1">24/7</div>
             <div className="text-sm text-muted-foreground">Support</div>
           </div>
         </div>
-
         {/* Small print */}
         <p className="text-sm text-muted-foreground mt-8 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
           Join businesss increasing revenue by 30% with AI. Cancel anytime, no questions asked.

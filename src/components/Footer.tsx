@@ -1,6 +1,11 @@
-import { Heart, Mail, Phone, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Heart, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, X } from "lucide-react";
 
 const Footer = () => {
+  const XIcon = () => (
+  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 3h16c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1zm9.5 10.2l4.2-6.2H16l-3.2 4.8L10 7h-1.7l4.3 6.5-4.3 6.5H9l3.3-4.9 3.4 4.9h1.6l-4.3-6.3z" />
+  </svg>
+);
   return (
     <footer className="relative w-full overflow-hidden bg-gradient-to-br from-white via-purple-50 to-white">
       {/* Animated background elements */}
@@ -35,7 +40,7 @@ const Footer = () => {
                 className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-600 hover:text-purple-800 transition-all duration-300 hover:scale-110"
                 aria-label="Follow us on Twitter"
               >
-                <Twitter className="w-5 h-5" />
+                <XIcon  />
               </a>
               <a 
                 href="#" 
@@ -111,8 +116,8 @@ const Footer = () => {
               </div>
               <div>
                 <p className="text-slate-500 text-sm">Call us</p>
-                <a href="tel:+1-555-RESSY-AI" className="text-slate-800 hover:text-purple-600 transition-colors duration-300">
-                  +1 (555) RESSY-AI
+                <a href="tel:+1-2367771255" className="text-slate-800 hover:text-purple-600 transition-colors duration-300">
+                  +1(2367771255), 6049082605
                 </a>
               </div>
             </div>

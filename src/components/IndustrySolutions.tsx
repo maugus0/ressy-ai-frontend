@@ -7,11 +7,11 @@ const IndustrySolutions = () => {
   const industries = {
     businesss: {
       icon: ChefHat,
-      label: "businesss",
+      label: "Restaurants",
       solutions: [
-        { title: "Reservation Management", description: "Handle waitlists, parties, and special requests—all automated and logged." },
-        { title: "Menu & Hours", description: "Share specials, dietary info, and holiday hours—always up to date." },
-        { title: "Table Management", description: "Sync with your reservation system for real-time table availability." }
+        { title: "Reservation Triage", description: "Waitlist, parties, special requests—handled and logged." },
+        { title: "Menu & Hours", description: "Specials, dietary info, holiday hours—always right." },
+        { title: "Table Management", description: "Syncs with your reservation tool for live availability." }
       ],
       additionalTools: [
         { title: "Order Taking", features: ["Instant replies", "Menu recommendations", "Special requests"] },
@@ -21,11 +21,11 @@ const IndustrySolutions = () => {
     },
     salons: {
       icon: Scissors,
-      label: "Salons & Spas",
+      label: "Salons",
       solutions: [
-        { title: "Appointment Booking", description: "Schedule services, manage cancellations, and handle rebooking automatically." },
-        { title: "Service Information", description: "Provide pricing, duration, and stylist availability instantly." },
-        { title: "Client Management", description: "Track preferences, appointment history, and special requests." }
+        { title: "Service matching", description: "Recommend the right slot and pro." },
+        { title: "Deposits & policies", description: "Cut last‑minute cancels with clear policies." },
+        { title: "Retail upsell", description: "Suggest add‑ons and retail at booking." }
       ],
       additionalTools: [
         { title: "Reminder System", features: ["Appointment confirmations", "Follow-up calls", "Rescheduling options"] },
@@ -35,7 +35,7 @@ const IndustrySolutions = () => {
     },
     realestate: {
       icon: Home,
-      label: "Real Estate",
+      label: "Dental",
       solutions: [
         { title: "Property Inquiries", description: "Qualify leads, schedule showings, and provide property details instantly." },
         { title: "Listing Information", description: "Share photos, prices, neighborhood info, and availability status." },
@@ -47,27 +47,13 @@ const IndustrySolutions = () => {
         { title: "Virtual Tours", features: ["Booking assistance", "Technical support", "Follow-up scheduling"] }
       ]
     },
-    insurance: {
-      icon: Shield,
-      label: "Insurance",
-      solutions: [
-        { title: "Claims Processing", description: "Guide clients through claims, collect information, and provide status updates." },
-        { title: "Policy Information", description: "Answer coverage questions, explain benefits, and process renewals." },
-        { title: "Emergency Support", description: "24/7 availability for urgent claims and emergency assistance." }
-      ],
-      additionalTools: [
-        { title: "Quote Generation", features: ["Instant estimates", "Coverage comparisons", "Discount applications"] },
-        { title: "Document Collection", features: ["Photo uploads", "Form completion", "Signature requests"] },
-        { title: "Compliance Support", features: ["Regulatory updates", "Policy explanations", "Legal guidance"] }
-      ]
-    }
+    
   };
 
   const tabs = [
     { key: "businesss", ...industries.businesss },
     { key: "salons", ...industries.salons },
     { key: "realestate", ...industries.realestate },
-    { key: "insurance", ...industries.insurance }
   ];
 
   const currentIndustry = industries[activeTab as keyof typeof industries];
@@ -164,7 +150,7 @@ const IndustrySolutions = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-            Get started with your industry
+            Connect with the team
           </button>
         </div>
       </div>
