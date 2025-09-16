@@ -13,15 +13,12 @@ import IndustrySolutions from "@/components/IndustrySolutions";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden bg-transparent">
-      {/* 🖼️ Full-page background for Navigation + Hero */}
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-background via-muted/20 to-accent/10">
+      {/* Interactive animated background */}
       <div className="absolute inset-0 -z-20">
-        <img
-          src="/bg.jpg" // ✅ put bg.jpg in /public
-          alt="Full Background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/3 via-secondary/5 to-accent/3"></div>
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-violet-200/10 to-purple-200/5 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-gradient-to-br from-blue-200/10 to-cyan-200/5 rounded-full blur-3xl animate-float-slow delay-4000"></div>
       </div>
 
       {/* Navigation overlays background */}
@@ -124,28 +121,6 @@ const Index = () => {
 
       {/* Animations */}
       <style>{`
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px) translateX(0px); }
-          25% { transform: translateY(-20px) translateX(10px); }
-          50% { transform: translateY(-10px) translateX(-15px); }
-          75% { transform: translateY(-30px) translateX(5px); }
-        }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes spin-reverse {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0px) scale(1); }
-          50% { transform: translateY(-20px) scale(1.05); }
-        }
-        .animate-float-slow { animation: float-slow 20s ease-in-out infinite; }
-        .animate-spin-slow { animation: spin-slow 50s linear infinite; }
-        .animate-spin-reverse { animation: spin-reverse 40s linear infinite; }
-        .animate-bounce-slow { animation: bounce-slow 8s ease-in-out infinite; }
         .delay-1000 { animation-delay: 1s; }
         .delay-2000 { animation-delay: 2s; }
         .delay-4000 { animation-delay: 4s; }
