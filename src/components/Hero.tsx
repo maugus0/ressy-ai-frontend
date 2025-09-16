@@ -41,8 +41,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed animate-slide-up delay-200">
-              Pick up every call, book in real-time, and text back instantly. No
-              scripts to memorize. No hold music. Just more revenue.
+              Capture every call, schedule appointments, qualify leads and answer questions instantly—no hold music, no scripts to memorise.
             </p>
 
             {/* CTA Buttons */}

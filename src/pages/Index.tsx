@@ -30,23 +30,31 @@ const Index = () => {
         <Hero />
 
         {/* 🌟 Features Section */}
-        <section className="relative">
+        {/* <section className="relative">
           <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-cyan-50/50"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(139,92,246,0.1)_0%,transparent_50%)]"></div>
             <div className="absolute inset-0 bg-[conic-gradient(from_45deg,transparent,rgba(6,182,212,0.03),transparent)]"></div>
           </div>
           <Features />
-        </section>
+        </section> */}
 
         {/* ⚡ How It Works Section */}
-        <section className="relative">
+        {/* <section className="relative">
           <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-bl from-purple-50/40 via-pink-50/20 to-orange-50/40"></div>
             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(139,92,246,0.02)_25%,rgba(139,92,246,0.02)_50%,transparent_50%)] bg-[length:60px_60px]"></div>
             <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-pink-300/10 to-purple-300/5 rounded-full blur-3xl animate-pulse"></div>
           </div>
           <HowItWorks />
+        </section> */}
+        <section className="relative">
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
+          </div>
+          <IndustrySolutions />
         </section>
 
         {/* 🎙️ Voice Agents Section */}
@@ -59,14 +67,7 @@ const Index = () => {
           <VoiceAgents />
         </section>
 
-         <section className="relative">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
-            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
-          </div>
-          <IndustrySolutions />
-        </section>
+         
 
         {/* 🎥 Live Demo Section */}
         {/* <section className="relative">
@@ -79,6 +80,23 @@ const Index = () => {
         </section> */}
 
         {/* ⭐ Social Proof Section */}
+        
+
+        {/* 🆚 Comparison Section */}
+        <ComparisonTable />
+
+        {/* 💰 Pricing Section */}
+        {/* <section className="relative">
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-orange-50/40"></div>
+            <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,rgba(245,158,11,0.02),transparent,rgba(245,158,11,0.02))]"></div>
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-yellow-300/6 to-orange-300/3 rounded-full blur-3xl animate-pulse"></div>
+          </div>
+          <Pricing />
+        </section> */}
+
+        {/* 🧮 ROI Calculator Section */}
+        <ROICalculator />
         <section className="relative">
           <div className="absolute inset-0 -z-10">
             <div className="absolute inset-0 bg-gradient-to-tr from-rose-50/40 via-pink-50/20 to-purple-50/40"></div>
@@ -87,22 +105,6 @@ const Index = () => {
           </div>
           <SocialProof />
         </section>
-
-        {/* 🆚 Comparison Section */}
-        <ComparisonTable />
-
-        {/* 💰 Pricing Section */}
-        <section className="relative">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-50/30 via-yellow-50/20 to-orange-50/40"></div>
-            <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,rgba(245,158,11,0.02),transparent,rgba(245,158,11,0.02))]"></div>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-yellow-300/6 to-orange-300/3 rounded-full blur-3xl animate-pulse"></div>
-          </div>
-          <Pricing />
-        </section>
-
-        {/* 🧮 ROI Calculator Section */}
-        <ROICalculator />
 
         {/* ❓ FAQ Section */}
         <section className="relative">
