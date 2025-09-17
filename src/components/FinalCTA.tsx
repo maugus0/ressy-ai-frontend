@@ -35,7 +35,7 @@ const FinalCTA = () => {
         </h2>
 
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-          Join 1000+ businesss already using AI to handle their calls. Start your 14-day free trial today – no credit card required.
+          Join 1000+ businesses already using AI to handle their calls. Start your 7-day free trial today – no credit card required.
         </p>
 
         {/* Email signup form */}
@@ -70,7 +70,7 @@ const FinalCTA = () => {
         </div>
         {/* Small print */}
         <p className="text-sm text-muted-foreground mt-8 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
-          Join businesss increasing revenue by 30% with AI. Cancel anytime, no questions asked.
+          Join businesses increasing revenue by 30% with AI. Cancel anytime, no questions asked.
         </p>
       </div>
     </section>

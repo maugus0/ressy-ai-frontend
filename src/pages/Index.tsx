@@ -12,10 +12,11 @@ import Footer from "@/components/Footer";
 import IndustrySolutions from "@/components/IndustrySolutions";
 import ROICalculator from "@/components/ROICalculator";
 import ComparisonTable from "@/components/ComparisonTable";
+import DashboardSection from "@/components/DashboardSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-background via-muted/20 to-accent/10">
+    <div className="min-h-screen relative overflow-hidden  from-background via-muted/20 to-accent/10">
       {/* Interactive animated background */}
       <div className="absolute inset-0 -z-20">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/3 via-secondary/5 to-accent/3"></div>
@@ -25,11 +26,9 @@ const Index = () => {
 
       {/* Navigation overlays background */}
 
-      <main className="pt-24">
+      <main className="relative">
         {/* Navigation with background */}
-        <div className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
-          <Navigation />
-        </div>
+        <Navigation />
 
         <Hero />
 
@@ -69,6 +68,15 @@ const Index = () => {
             <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
           </div>
           <VoiceAgents />
+        </section>
+
+        <section className="relative">
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
+            <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
+          </div>
+          <DashboardSection />
         </section>
 
 

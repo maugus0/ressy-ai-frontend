@@ -1,40 +1,61 @@
 import { Play, Pause, Volume2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const VoiceAgents = () => {
   const [playingId, setPlayingId] = useState<number | null>(null);
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const voiceAgents = [
     {
       id: 1,
-      title: "Virtual Receptionist",
+      title: "Restaurant Reception",
       industry: "Restaurant Industry",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       duration: "0:32",
     },
     {
       id: 2,
-      title: "Appointment Scheduler",
+      title: "Salon Receptionist",
       industry: "Salons",
       avatar: "https://randomuser.me/api/portraits/women/65.jpg",
       duration: "0:28",
     },
     {
       id: 3,
-      title: "Dental Office Assistant",
+      title: "Dental Receptionist",
       industry: "Dental",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       duration: "0:45",
     },
-    
   ];
 
   const handlePlay = (id: number) => {
     setPlayingId(playingId === id ? null : id);
   };
 
+  // IntersectionObserver for scroll animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative w-full px-4 sm:px-6 lg:px-8 py-24 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className={`relative w-full px-4 sm:px-6 lg:px-8 py-24 overflow-hidden transition-all duration-1000 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
+    >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-50 via-white to-purple-50" />
@@ -43,7 +64,11 @@ const VoiceAgents = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-20 animate-fade-in-up">
+        <div
+          className={`text-center mb-20 transition-all duration-1000 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
           <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-100 text-purple-600 text-sm font-semibold mb-6 shadow-sm">
             <Volume2 className="w-4 h-4 mr-2" />
             Hear AI Voice Agents in action
@@ -66,8 +91,12 @@ const VoiceAgents = () => {
           {voiceAgents.map((agent, index) => (
             <div
               key={agent.id}
-              className="bg-white/90 backdrop-blur-xl border border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`bg-white/90 backdrop-blur-xl border border-gray-100 rounded-2xl p-6 shadow-lg transition-all duration-700 transform ${
+                visible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               {/* Header */}
               <div className="flex items-center mb-4">
@@ -132,28 +161,10 @@ const VoiceAgents = () => {
       </div>
 
       {/* Animations */}
-      <style >{`
-        @keyframes fade-in-up {
-          0% {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s ease forwards;
-        }
+      <style>{`
         @keyframes wave {
-          0%,
-          100% {
-            height: 4px;
-          }
-          50% {
-            height: 18px;
-          }
+          0%, 100% { height: 4px; }
+          50% { height: 18px; }
         }
         .animate-wave {
           animation: wave 1s ease-in-out infinite;
