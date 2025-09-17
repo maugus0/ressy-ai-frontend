@@ -136,9 +136,7 @@ const Footer = () => {
         {/* Bottom section */}
         <div className="border-t border-purple-200 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-            <p className="text-slate-500 text-sm flex items-center">
-              Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for businesses everywhere
-            </p>
+            
             <div className="flex space-x-6 text-sm">
               <a href="#privacy" className="text-slate-500 hover:text-purple-600 transition-colors duration-300">
                 Privacy Policy
