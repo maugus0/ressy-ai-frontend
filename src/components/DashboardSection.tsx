@@ -23,7 +23,7 @@ const DashboardSection = () => {
         </p>
 
         {/* Mockup */}
-        <div className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+        <div className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden ">
           <img
             src="/mac-dash.png" // Add your dashboard screenshot in /public
             alt="Dashboard Preview"
