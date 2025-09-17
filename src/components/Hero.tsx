@@ -61,7 +61,7 @@ const Hero = () => {
                 <div className="text-xs sm:text-sm text-gray-400">Availability</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">50%</div>
+                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">75%</div>
                 <div className="text-xs sm:text-sm text-gray-400">More bookings</div>
               </div>
             </div>
