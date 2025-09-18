@@ -61,7 +61,7 @@ const HowItWorks = () => {
             Start your free trial
           </button>
           <p className="text-sm text-muted-foreground mt-4">
-            No setup fees • Cancel anytime • 14-day free trial
+            No setup fees • Cancel anytime • -day free trial
           </p>
         </div>
       </div>

@@ -7,7 +7,7 @@ const DemoMockup = () => {
       <div className="relative w-[500px] h-[912px] animate-floating">
         {/* Phone Mockup Image */}
         <img
-          src="/mockup.png" // Make sure this file is in your /public folder!
+          src="/mockup.png" // Ensure this file is in your /public folder
           alt="Phone mockup"
           className="w-full h-full object-contain drop-shadow-2xl"
         />
@@ -16,10 +16,10 @@ const DemoMockup = () => {
         <div
           className="absolute flex flex-col justify-center items-center p-8 space-y-4"
           style={{
-            top: '320px', // Adjust this value to align with the top of the phone screen
-            bottom: '60px', // Adjust this value to align with the bottom of the phone screen
-            left: '35px', // Adjust this value to align with the left of the phone screen
-            right: '35px', // Adjust this value to align with the right of the phone screen
+            top: '320px',
+            bottom: '60px',
+            left: '35px',
+            right: '35px',
           }}
         >
           {/* Title */}
@@ -32,24 +32,29 @@ const DemoMockup = () => {
           <input
             type="tel"
             placeholder="Phone number"
-            className="w-[250px] px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            className="w-[250px] px-4 py-3 rounded-2xl border border-gray-300 shadow-sm 
+                       focus:ring-2 focus:ring-purple-500 focus:outline-none"
           />
 
           {/* Email Input */}
           <input
             type="email"
             placeholder="Email address"
-            className="w-[250px] px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
+            className="w-[250px] px-4 py-3 rounded-2xl border border-gray-300 shadow-sm 
+                       focus:ring-2 focus:ring-purple-500 focus:outline-none"
           />
 
           {/* Button */}
-          <button className="w-[250px] py-3 rounded-full bg-purple-600 text-white font-semibold shadow-md hover:scale-105 hover:shadow-lg transition">
+          <button
+            className="w-[250px] py-3 rounded-2xl bg-purple-600 text-white font-semibold 
+                       shadow-md hover:scale-105 hover:shadow-lg transition"
+          >
             Call me
           </button>
         </div>
       </div>
 
-      {/* Floating animation keyframes */}
+      {/* Floating animation */}
       <style>{`
         @keyframes floating {
           0%, 100% { transform: translateY(0); }

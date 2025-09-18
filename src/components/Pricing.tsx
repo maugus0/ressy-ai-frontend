@@ -75,7 +75,7 @@ const Pricing = () => {
             <span className="bg-gradient-primary bg-clip-text text-transparent">Start free, scale as you grow</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-            All plans include 14-day free trial. No setup fees. Cancel anytime.
+            All plans include 7-day free trial. No setup fees. Cancel anytime.
           </p>
 
           {/* Billing toggle */}

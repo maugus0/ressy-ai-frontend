@@ -55,9 +55,9 @@ const IndustrySolutions = () => {
       icon: Home,
       label: "Dental",
       solutions: [
-        { title: "Property Inquiries", description: "Qualify leads, schedule showings, and provide property details instantly." },
-        { title: "Listing Information", description: "Share photos, prices, neighborhood info, and availability status." },
-        { title: "Agent Coordination", description: "Route calls to available agents based on expertise and location." }
+        { title: "Appointment Booking", description: "Schedule cleanings, treatments, and emergencies instantly." },
+        { title: "Insurance verification", description: "Collect and verify patient insurance details during booking." },
+        { title: "Reminders & follow-ups", description: "Reduce no-shows with automated reminders and recalls." }
       ],
       additionalTools: [
         { title: "Lead Qualification", features: ["Budget screening", "Timeline assessment", "Preference matching"] },

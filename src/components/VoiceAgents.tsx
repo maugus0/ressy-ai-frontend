@@ -9,22 +9,22 @@ const VoiceAgents = () => {
   const voiceAgents = [
     {
       id: 1,
-      title: "Restaurant Reception",
-      industry: "Restaurant Industry",
+      title: "Restaurant Receptionist",
+      industry: "Ressy Restaurant",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       duration: "0:32",
     },
     {
       id: 2,
       title: "Salon Receptionist",
-      industry: "Salons",
+      industry: "Ressy Hair Salon",
       avatar: "https://randomuser.me/api/portraits/women/65.jpg",
       duration: "0:28",
     },
     {
       id: 3,
       title: "Dental Receptionist",
-      industry: "Dental",
+      industry: "Ressy Dental Clinic",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       duration: "0:45",
     },
@@ -136,7 +136,7 @@ const VoiceAgents = () => {
                   {[...Array(20)].map((_, i) => (
                     <span
                       key={i}
-                      className={`w-0.5 rounded-full transition-all duration-300 ${
+                      className={`w-1.5 rounded-full transition-all duration-300 ${
                         playingId === agent.id
                           ? "animate-wave bg-gradient-to-b from-purple-500 to-purple-600"
                           : "h-1 bg-gray-300"

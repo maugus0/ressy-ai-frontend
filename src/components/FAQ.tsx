@@ -31,7 +31,7 @@ const FAQ = () => {
     },
     {
       question: "Is there a contract or can I cancel anytime?",
-      answer: "No contracts required! You can start with our 14-day free trial and cancel anytime. We're confident you'll love the results, but we never lock you in."
+      answer: "No contracts required! You can start with our 7-day free trial and cancel anytime. We're confident you'll love the results, but we never lock you in."
     },
     {
       question: "How much does it cost compared to hiring staff?",
