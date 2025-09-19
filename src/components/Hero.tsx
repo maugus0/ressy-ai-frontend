@@ -1,10 +1,19 @@
 import DemoMockup from "./DemoMockup";
+import LiquidEther from "./LiquidEther";
+import Iridescence from "./Iridescence";
 
 const Hero = () => {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      {/* ✨ Flowing Gradient Background */}
-      <div className="absolute inset-0 -z-20 animate-gradient-flow"></div>
+      {/* 🌊 Liquid Ether Background */}
+      <div className="absolute inset-0 -z-20 ">
+        <Iridescence
+          color={[0.5, 0, 0.7]}
+          mouseReact={true}
+          amplitude={0.1}
+          speed={1.0}
+        />
+      </div>
 
       {/* 🌟 Content */}
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -78,21 +87,6 @@ const Hero = () => {
 
       {/* Animations */}
       <style>{`
-        /* Flowing layered gradient */
-        .animate-gradient-flow {
-          background-image: 
-            linear-gradient(#15131d 20%, #fff0 70%),
-            linear-gradient(90deg, #c74a7a, #7158d4);
-          background-size: 200% 200%;
-          animation: gradientFlow 12s ease-in-out infinite;
-        }
-
-        @keyframes gradientFlow {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
         @keyframes slideUp {
           from { opacity: 0; transform: translateY(40px); }
           to { opacity: 1; transform: translateY(0); }
