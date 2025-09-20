@@ -22,8 +22,8 @@ const DemoMockup = () => {
             flex flex-col justify-center items-center 
             p-3 sm:p-4 space-y-3
 
-            top-[45%] sm:top-[55%]   /* 📱 Mobile 45%, tablet+ 55% */
-            w-[65%] sm:w-[75%]       /* 📱 Mobile narrower, tablet+ normal */
+            top-[40%] sm:top-[50%]   /* 📱 Mobile 45%, tablet+ 55% */
+            w-[59%] sm:w-[75%]       /* 📱 Mobile narrower, tablet+ normal */
           "
         >
           {/* Title */}
