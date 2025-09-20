@@ -16,10 +16,9 @@ const Hero = () => {
       </div>
 
       {/* 🌟 Content */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+<div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 lg:pt-20">        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left animate-slide-up-slow">
+          <div className="text-center lg:text-left animate-slide-up-slow pt-40 lg:pt-0">
             {/* Badge */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 text-gray-200 text-xs sm:text-sm font-medium mb-4 backdrop-blur-md">
               <span className="relative flex w-2 h-2 mr-2">
@@ -84,15 +83,38 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      <style>{`
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-up-slow { animation: slideUp 1.5s ease-out forwards; }
+
+  /* 📱 Mobile (<= 640px) */
+  @media (max-width: 640px) {
+    .phone-mockup-wrapper {
+      margin-top: 2.5rem; /* ~mt-10 */
+    }
+      
+  }
+
+  /* 📲 Tablet (641px – 1024px) */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .phone-mockup-wrapper {
+      margin-top: 3rem; /* ~mt-12 */
+    }
+  }
+
+  /* 🖥️ Desktop (>= 1025px) */
+  @media (min-width: 1025px) {
+    .phone-mockup-wrapper {
+      margin-top: 0; /* reset for side-by-side */
+    }
+  }
+`}</style>
 
       {/* Animations */}
-      <style>{`
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-slide-up-slow { animation: slideUp 1.5s ease-out forwards; }
-      `}</style>
+
     </section>
   );
 };
