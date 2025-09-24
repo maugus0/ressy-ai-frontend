@@ -59,6 +59,7 @@ const Preloader = () => {
 const Index = () => {
   return (
     <>
+      {/* Added Preloader */}
       <Preloader />
       <div className="min-h-screen relative overflow-hidden from-background via-muted/20 to-accent/10">
         {/* Interactive animated background */}
