@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const Navigation = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,9 +17,17 @@ const Navigation = () => {
     setIsLoaded(true);
   }, []);
 
-  // Custom smooth scrolling for slower duration
+  // Smooth scrolling with navbar offset, native-first with JS fallback
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
     if (!hash.startsWith('#')) return;
+    
+    // If not on home, navigate to home and request scroll there
+    if (location.pathname !== '/') {
+      e.preventDefault();
+      setMobileOpen(false);
+      navigate('/', { state: { scrollTo: hash } });
+      return;
+    }
     const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const target = document.querySelector(hash) as HTMLElement | null;
     if (!target) return;
@@ -28,20 +37,28 @@ const Navigation = () => {
 
     e.preventDefault();
 
+    const navOffset = 80; // approximate fixed navbar height
+    const targetY = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+
+    // Try native smooth scrolling first
+    if ('scrollBehavior' in document.documentElement.style) {
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      setTimeout(() => setMobileOpen(false), 400);
+      return;
+    }
+
+    // Fallback JS animation
     const startY = window.pageYOffset;
-    const targetY = target.getBoundingClientRect().top + window.pageYOffset;
-    const duration = 1100; // slower scroll (ms)
-
+    const distance = targetY - startY;
+    const duration = 800;
     const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
     let startTime: number | null = null;
     const step = (timestamp: number) => {
       if (startTime === null) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = easeInOutCubic(progress);
-      const nextY = startY + (targetY - startY) * eased;
-      window.scrollTo(0, nextY);
+      window.scrollTo(0, startY + distance * eased);
       if (progress < 1) {
         window.requestAnimationFrame(step);
       } else {
@@ -59,13 +76,13 @@ const Navigation = () => {
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center cursor-pointer">
+          <Link to="/" className="flex items-center cursor-pointer" aria-label="Go to home">
             <img
               src="./ressy-logo.png" 
               alt="Ressy AI Logo"
               className="h-7 sm:h-8 w-auto"
             />
-          </div>
+          </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-gray-700 font-medium">

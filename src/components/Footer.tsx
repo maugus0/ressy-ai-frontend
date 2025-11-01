@@ -1,4 +1,5 @@
 import { Heart, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const XIcon = () => (
@@ -93,10 +94,10 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-slate-900 font-semibold text-lg">Support</h3>
             <ul className="space-y-3">
-              <li><a href="#faq" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Help Center</a></li>
-              <li><a href="#faq" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Documentation</a></li>
-              <li><a href="https://docs.ressy.ai" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">API Reference</a></li>
-              <li><a href="https://status.ressy.ai" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">System Status</a></li>
+              <li><Link to="/help-center" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Help Center</Link></li>
+              <li><Link to="/docs" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Documentation</Link></li>
+              <li><Link to="/api-reference" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">API Reference</Link></li>
+              <li><Link to="/status" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">System Status</Link></li>
               <li><a href="mailto:info@ressy.ai" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Contact Us</a></li>
             </ul>
           </div>
@@ -144,15 +145,15 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
             
             <div className="flex space-x-6 text-sm">
-              <a href="#privacy" className="text-slate-500 hover:text-purple-600 transition-colors duration-300">
+              <Link to="/privacy" className="text-slate-500 hover:text-purple-600 transition-colors duration-300">
                 Privacy Policy
-              </a>
-              <a href="#terms" className="text-slate-500 hover:text-purple-600 transition-colors duration-300">
+              </Link>
+              <Link to="/terms" className="text-slate-500 hover:text-purple-600 transition-colors duration-300">
                 Terms of Service
-              </a>
-              <a href="#cookies" className="text-slate-500 hover:text-purple-600 transition-colors duration-300">
+              </Link>
+              <Link to="/cookies" className="text-slate-500 hover:text-purple-600 transition-colors duration-300">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
           <p className="text-slate-500 text-sm">
