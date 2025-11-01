@@ -1,6 +1,9 @@
 import { Upload, Settings, Phone } from "lucide-react";
+import { useState } from "react";
+import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const HowItWorks = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const steps = [
     {
       icon: Upload,
@@ -57,12 +60,13 @@ const HowItWorks = () => {
         </div>
 
         <div className="text-center mt-16">
-          <button className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large">
+          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large">
             Start your free trial
           </button>
           <p className="text-sm text-muted-foreground mt-4">
             No setup fees • Cancel anytime • -day free trial
           </p>
+          <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
       </div>
     </section>

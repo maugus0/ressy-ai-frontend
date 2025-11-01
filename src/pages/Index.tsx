@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -57,6 +58,51 @@ const Preloader = () => {
 };
 
 const Index = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const state = location.state as { scrollTo?: string } | undefined;
+    if (state?.scrollTo) {
+      const hash = state.scrollTo;
+      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const navOffset = 80;
+
+      const scroll = () => {
+        const target = document.querySelector(hash) as HTMLElement | null;
+        if (!target) return;
+        const targetY = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+        if (prefersReduced) {
+          window.scrollTo(0, targetY);
+        } else if ('scrollBehavior' in document.documentElement.style) {
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        } else {
+          const startY = window.pageYOffset;
+          const distance = targetY - startY;
+          const duration = 800;
+          const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+          let startTime: number | null = null;
+          const step = (timestamp: number) => {
+            if (startTime === null) startTime = timestamp;
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeInOutCubic(progress);
+            window.scrollTo(0, startY + distance * eased);
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          };
+          window.requestAnimationFrame(step);
+        }
+      };
+
+      // wait a tick for the home sections to be present
+      setTimeout(scroll, 50);
+      // clear state so it doesn't keep trying
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
+
   return (
     <>
       {/* Added Preloader */}

@@ -1,8 +1,10 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const faqs = [
     {
@@ -48,7 +50,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-24">
+    <section id="faq" className="w-full px-4 sm:px-6 lg:px-8 py-24 scroll-mt-28">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-6 animate-scale-in">
@@ -104,10 +106,11 @@ const FAQ = () => {
           <p className="text-muted-foreground mb-4">
             Still have questions? We're here to help.
           </p>
-          <button className="px-6 py-3 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large">
+          <button onClick={() => setIsModalOpen(true)} className="px-6 py-3 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large">
             Contact Support
           </button>
         </div>
+        <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
     </section>
   );

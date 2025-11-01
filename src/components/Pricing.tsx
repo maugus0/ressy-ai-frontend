@@ -63,7 +63,7 @@ const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="w-full px-4 sm:px-6 lg:px-8 py-24 bg-gradient-subtle">
+    <section id="pricing" className="w-full px-4 sm:px-6 lg:px-8 py-24 bg-gradient-subtle scroll-mt-28">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-scale-in">

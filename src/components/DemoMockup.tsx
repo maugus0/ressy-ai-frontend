@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from "@/hooks/use-toast";
 
 const DemoMockup = () => {
   return (
@@ -50,6 +51,7 @@ const DemoMockup = () => {
 
           {/* Button */}
           <button
+            onClick={() => toast({ title: "Demo coming soon." })}
             className="w-full py-2 sm:py-3 rounded-xl bg-purple-600 text-white font-semibold 
                        shadow-md hover:scale-105 hover:shadow-lg transition text-xs sm:text-sm"
           >

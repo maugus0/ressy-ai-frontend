@@ -51,8 +51,9 @@ const VoiceAgents = () => {
 
   return (
     <section
+      id="voice-agents"
       ref={sectionRef}
-      className={`relative w-full px-4 sm:px-6 lg:px-8 py-24 overflow-hidden transition-all duration-1000 ${
+      className={`relative w-full px-4 sm:px-6 lg:px-8 py-24 overflow-hidden scroll-mt-28 transition-all duration-1000 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       }`}
     >

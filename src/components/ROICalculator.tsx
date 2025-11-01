@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const ROICalculator = () => {
   const [inputs, setInputs] = useState({
@@ -11,6 +12,7 @@ const ROICalculator = () => {
     aiRecoveryPercent: 99,
     staffWage: 20,
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const updateInput = useCallback(
     (field: keyof typeof inputs, value: number) => {
@@ -65,7 +67,7 @@ const ROICalculator = () => {
   }, [missedCalls, recoveredByAI, addedRevenue, laborSaved, estimatedWeeklyValue]);
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden">
+    <section id="roi" className="py-24 px-4 relative overflow-hidden scroll-mt-28">
       {/* Background unchanged */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/30 to-accent/15"></div>
@@ -231,10 +233,11 @@ const ROICalculator = () => {
           <p className="text-slate-600 mb-6 text-lg">
             Ready to start capturing this value for your business?
           </p>
-          <button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl">
+          <button onClick={() => setIsModalOpen(true)} className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl">
             Get Started Today
           </button>
         </div>
+        <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
 
       {/* Animations */}
