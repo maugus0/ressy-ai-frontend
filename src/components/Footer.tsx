@@ -36,21 +36,27 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://twitter.com/ressyai" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-600 hover:text-purple-800 transition-all duration-300 hover:scale-110"
                 aria-label="Follow us on Twitter"
               >
                 <XIcon  />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/company/ressy-ai/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-600 hover:text-purple-800 transition-all duration-300 hover:scale-110"
                 aria-label="Connect on LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/ressy.ai/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-600 hover:text-purple-800 transition-all duration-300 hover:scale-110"
                 aria-label="Follow us on Instagram"
               >
@@ -63,10 +69,10 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-slate-900 font-semibold text-lg">Products</h3>
             <ul className="space-y-3">
-              <li><a href="#features" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Voice Agents</a></li>
-              <li><a href="#reservations" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Reservations AI</a></li>
-              <li><a href="#ordering" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Order Management</a></li>
-              <li><a href="#analytics" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Analytics Dashboard</a></li>
+              <li><a href="#voice-agents" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Voice Agents</a></li>
+              <li><a href="#usecases" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Use Cases</a></li>
+              <li><a href="#dashboard" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Dashboard</a></li>
+              <li><a href="#roi" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">ROI Calculator</a></li>
               <li><a href="#integrations" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Integrations</a></li>
             </ul>
           </div>
@@ -75,11 +81,11 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-slate-900 font-semibold text-lg">Solutions</h3>
             <ul className="space-y-3">
-              <li><a href="#business" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Businesses</a></li>
-              <li><a href="#cafes" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Cafes & Bars</a></li>
-              <li><a href="#retail" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Retail</a></li>
-              <li><a href="#hospitality" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Hospitality</a></li>
-              <li><a href="#enterprise" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Enterprise</a></li>
+              <li><a href="#usecases" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Restaurants</a></li>
+              <li><a href="#usecases" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Salons & Spas</a></li>
+              <li><a href="#usecases" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Dental Clinics</a></li>
+              <li><a href="#usecases" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Retail Stores</a></li>
+              <li><a href="#usecases" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Enterprise</a></li>
             </ul>
           </div>
 
@@ -87,11 +93,11 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-slate-900 font-semibold text-lg">Support</h3>
             <ul className="space-y-3">
-              <li><a href="#help" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Help Center</a></li>
-              <li><a href="#documentation" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Documentation</a></li>
-              <li><a href="#api" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">API Reference</a></li>
-              <li><a href="#status" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">System Status</a></li>
-              <li><a href="#contact" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Contact Us</a></li>
+              <li><a href="#faq" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Help Center</a></li>
+              <li><a href="#faq" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Documentation</a></li>
+              <li><a href="https://docs.ressy.ai" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">API Reference</a></li>
+              <li><a href="https://status.ressy.ai" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">System Status</a></li>
+              <li><a href="mailto:info@ressy.ai" className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline">Contact Us</a></li>
             </ul>
           </div>
         </div>

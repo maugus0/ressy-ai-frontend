@@ -2,7 +2,7 @@ import React from "react";
 
 const IntegrationMarquee = () => {
   return (
-    <section className="relative w-full py-16 bg-gradient-to-b from-white via-purple-50/40 to-teal-50/30 overflow-hidden">
+    <section id="integrations" className="relative w-full py-16 bg-gradient-to-b from-white via-purple-50/40 to-teal-50/30 overflow-hidden scroll-mt-28">
       {/* Heading */}
       <div className="text-center mb-10">
         <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900">

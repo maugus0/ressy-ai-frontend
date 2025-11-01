@@ -1,9 +1,13 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const FinalCTA = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,10 +47,10 @@ const FinalCTA = () => {
 
         {/* Main CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-          <button className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large text-lg">
+          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large text-lg">
             Start 7-Day Free Trial
           </button>
-          <button className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft text-lg">
+          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft text-lg">
             Schedule Demo Call
           </button>
         </div>
@@ -73,6 +77,9 @@ const FinalCTA = () => {
           Join businesses increasing revenue by 30% with AI. Cancel anytime, no questions asked.
         </p>
       </div>
+
+      {/* Schedule Demo Modal */}
+      <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

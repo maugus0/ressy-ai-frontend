@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { ChefHat, Scissors, Home } from "lucide-react";
+import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const IndustrySolutions = () => {
   const [activeTab, setActiveTab] = useState("businesss");
   const [visible, setVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,8 +79,9 @@ const IndustrySolutions = () => {
 
   return (
     <section
+      id="usecases"
       ref={sectionRef}
-      className={`w-full px-4 sm:px-6 lg:px-8 py-24 relative overflow-hidden transition-all duration-1000 ${
+      className={`w-full px-4 sm:px-6 lg:px-8 py-24 relative overflow-hidden scroll-mt-28 transition-all duration-1000 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       }`}
     >
@@ -168,11 +171,14 @@ const IndustrySolutions = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
             Connect with the team
           </button>
         </div>
       </div>
+
+      {/* Schedule Demo Modal */}
+      <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

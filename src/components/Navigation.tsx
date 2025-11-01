@@ -1,15 +1,55 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
+import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const Navigation = () => {
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  // Custom smooth scrolling for slower duration
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    if (!hash.startsWith('#')) return;
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const target = document.querySelector(hash) as HTMLElement | null;
+    if (!target) return;
+
+    // If reduced motion preferred, allow default behavior
+    if (prefersReduced) return;
+
+    e.preventDefault();
+
+    const startY = window.pageYOffset;
+    const targetY = target.getBoundingClientRect().top + window.pageYOffset;
+    const duration = 1100; // slower scroll (ms)
+
+    const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+    let startTime: number | null = null;
+    const step = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+      const nextY = startY + (targetY - startY) * eased;
+      window.scrollTo(0, nextY);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        setMobileOpen(false);
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 sm:pt-4 font-inter">
@@ -21,7 +61,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center cursor-pointer">
             <img
-              src="./ressy-logo.png" // 👉 replace with actual path
+              src="./ressy-logo.png" 
               alt="Ressy AI Logo"
               className="h-7 sm:h-8 w-auto"
             />
@@ -31,50 +71,46 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-gray-700 font-medium">
             <a
               href="#usecases"
+              onClick={(e) => handleNavClick(e, '#usecases')}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               Use Cases
             </a>
 
-            {/* Features Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center space-x-1 hover:text-black transition-colors">
-                <span>Features</span>
-                <ChevronDown size={16} className="opacity-60 group-hover:opacity-100 transition" />
-              </button>
-              <div className="absolute hidden group-hover:block bg-white border border-gray-200 rounded-lg mt-3 shadow-xl w-48">
-                <a href="#business" className="block px-5 py-2 text-sm hover:bg-gray-50">
-                  Business
-                </a>
-                <a href="#retail" className="block px-5 py-2 text-sm hover:bg-gray-50">
-                  Retail
-                </a>
-              </div>
-            </div>
-
-            {/* Integrations Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center space-x-1 hover:text-black transition-colors">
-                <span>Integrations</span>
-              </button>
-              <div className="absolute hidden group-hover:block bg-white border border-gray-200 rounded-lg mt-3 shadow-xl w-48">
-                <a href="#pos" className="block px-5 py-2 text-sm hover:bg-gray-50">
-                  POS Systems
-                </a>
-                <a href="#crm" className="block px-5 py-2 text-sm hover:bg-gray-50">
-                  CRM
-                </a>
-              </div>
-            </div>
+            <a
+              href="#voice-agents"
+              onClick={(e) => handleNavClick(e, '#voice-agents')}
+              className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
+            >
+              Voice Agents
+            </a>
 
             <a
-              href="#pricing"
+              href="#dashboard"
+              onClick={(e) => handleNavClick(e, '#dashboard')}
+              className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
+            >
+              Dashboard
+            </a>
+
+            <a
+              href="#integrations"
+              onClick={(e) => handleNavClick(e, '#integrations')}
+              className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
+            >
+              Integrations
+            </a>
+
+            <a
+              href="#roi"
+              onClick={(e) => handleNavClick(e, '#roi')}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               Pricing
             </a>
             <a
               href="#faq"
+              onClick={(e) => handleNavClick(e, '#faq')}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               FAQ
@@ -86,6 +122,7 @@ const Navigation = () => {
             <Button
               size="sm"
               className="bg-black text-white font-semibold rounded-full px-5 sm:px-6 py-2 shadow-md hover:shadow-lg hover:scale-105 transition-transform"
+              onClick={() => setIsModalOpen(true)}
             >
               Schedule a demo
             </Button>
@@ -103,47 +140,33 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {mobileOpen && (
           <div className="mt-4 md:hidden flex flex-col space-y-3 text-gray-700 font-medium animate-fade-in">
-            <a href="#usecases" className="hover:text-black">
+            <a href="#usecases" onClick={(e) => handleNavClick(e, '#usecases')} className="hover:text-black">
               Use Cases
             </a>
-            <details>
-              <summary className="cursor-pointer hover:text-black flex items-center">
-                Features
-              </summary>
-              <div className="pl-4 mt-2 flex flex-col space-y-2">
-                <a href="#business" className="hover:text-black">
-                  Business
-                </a>
-                <a href="#retail" className="hover:text-black">
-                  Retail
-                </a>
-              </div>
-            </details>
-            <details>
-              <summary className="cursor-pointer hover:text-black flex items-center">
-                Integrations
-              </summary>
-              <div className="pl-4 mt-2 flex flex-col space-y-2">
-                <a href="#pos" className="hover:text-black">
-                  POS Systems
-                </a>
-                <a href="#crm" className="hover:text-black">
-                  CRM
-                </a>
-              </div>
-            </details>
-            <a href="#pricing" className="hover:text-black">
+            <a href="#voice-agents" onClick={(e) => handleNavClick(e, '#voice-agents')} className="hover:text-black">
+              Voice Agents
+            </a>
+            <a href="#dashboard" onClick={(e) => handleNavClick(e, '#dashboard')} className="hover:text-black">
+              Dashboard
+            </a>
+            <a href="#integrations" onClick={(e) => handleNavClick(e, '#integrations')} className="hover:text-black">
+              Integrations
+            </a>
+            <a href="#roi" onClick={(e) => handleNavClick(e, '#roi')} className="hover:text-black">
               Pricing
             </a>
-            <a href="#faq" className="hover:text-black">
+            <a href="#faq" onClick={(e) => handleNavClick(e, '#faq')} className="hover:text-black">
               FAQ
             </a>
-            <Button className="bg-black text-white font-semibold rounded-full w-full">
+            <Button className="bg-black text-white font-semibold rounded-full w-full" onClick={() => setIsModalOpen(true)}>
               Schedule a demo
             </Button>
           </div>
         )}
       </div>
+
+      {/* Schedule Demo Modal */}
+      <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Fade-in animation */}
       <style>{`
