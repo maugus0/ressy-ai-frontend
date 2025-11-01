@@ -1,4 +1,6 @@
 import React from "react";
+const integration1 = `${import.meta.env.BASE_URL}integration_1.svg`;
+const integration2 = `${import.meta.env.BASE_URL}integration_2.svg`;
 
 const IntegrationMarquee = () => {
   return (
@@ -18,17 +20,17 @@ const IntegrationMarquee = () => {
         <div className="flex overflow-hidden">
           <div className="flex animate-marquee whitespace-nowrap">
             <img
-              src="/integration_1.svg"
+              src={integration1}
               alt="Integration Logos"
               className="h-24 sm:h-28 lg:h-32 min-w-full"
             />
             <img
-              src="/integration_2.svg"
+              src={integration2}
               alt="Integration Logos"
               className="h-24 sm:h-28 lg:h-32 min-w-full"
             />
             <img
-              src="/integration_1.svg"
+              src={integration1}
               alt="Integration Logos"
               className="h-24 sm:h-28 lg:h-32 min-w-full"
             />
@@ -39,17 +41,17 @@ const IntegrationMarquee = () => {
         <div className="flex overflow-hidden">
           <div className="flex animate-marquee-reverse whitespace-nowrap">
             <img
-              src="/integration_2.svg"
+              src={integration2}
               alt="Integration Logos"
               className="h-24 sm:h-28 lg:h-32 min-w-full"
             />
             <img
-              src="/integration_1.svg"
+              src={integration1}
               alt="Integration Logos"
               className="h-24 sm:h-28 lg:h-32 min-w-full"
             />
             <img
-              src="/integration_2.svg"
+              src={integration2}
               alt="Integration Logos"
               className="h-24 sm:h-28 lg:h-32 min-w-full"
             />

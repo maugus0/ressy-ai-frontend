@@ -3,6 +3,7 @@ import { Calendar, Clock, User, Mail, Phone, Building, ArrowLeft } from "lucide-
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;
 
 const ScheduleDemo = () => {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ const ScheduleDemo = () => {
               <ArrowLeft className="w-5 h-5" />
               <span className="font-medium">Back to Home</span>
             </button>
-            <img src="/ressy-logo.png" alt="Ressy AI" className="h-8" />
+            <img src={ressyLogo} alt="Ressy AI" className="h-8" />
           </div>
         </div>
       </header>

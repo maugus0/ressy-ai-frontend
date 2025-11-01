@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;
 import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const Navigation = () => {
@@ -78,7 +79,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer" aria-label="Go to home">
             <img
-              src="./ressy-logo.png" 
+              src={ressyLogo}
               alt="Ressy AI Logo"
               className="h-7 sm:h-8 w-auto"
             />

@@ -5,8 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Use relative paths so assets work on GitHub Pages project sites
-  base: './',
+  // Use '/' in dev; use repo subpath in production for GitHub Pages
+  base: mode === 'production' ? '/ressy-ai-frontend/' : '/',
   server: {
     host: "::",
     port: 8080,

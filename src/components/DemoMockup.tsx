@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from "@/hooks/use-toast";
+import mockupImg from "@/assets/mockup.png";
 
 const DemoMockup = () => {
   return (
@@ -9,7 +10,7 @@ const DemoMockup = () => {
                       aspect-[500/912] animate-floating">
         {/* Phone Mockup Image */}
         <img
-          src="/mockup.png" // Ensure this file is in your /public folder
+          src={mockupImg}
           alt="Phone mockup"
           className="w-full h-full object-contain drop-shadow-2xl"
         />

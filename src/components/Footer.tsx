@@ -1,5 +1,6 @@
 import { Heart, Mail, Phone, MapPin, Linkedin, Twitter, Instagram, X } from "lucide-react";
 import { Link } from "react-router-dom";
+const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;
 
 const Footer = () => {
   const XIcon = () => (
@@ -26,7 +27,7 @@ const Footer = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center">
               <img
-                src="./ressy-logo.png"
+                src={ressyLogo}
                 alt="Ressy AI Logo"
                 className="h-8 w-auto"
               />

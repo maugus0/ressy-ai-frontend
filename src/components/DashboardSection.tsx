@@ -2,6 +2,7 @@
 import React from "react";
 import Squares from "./Squares";
 import { motion } from "framer-motion";
+const macDash = `${import.meta.env.BASE_URL}mac-dash.png`;
 
 const DashboardSection = () => {
   return (
@@ -56,7 +57,7 @@ const DashboardSection = () => {
           viewport={{ once: true, amount: 0.3 }}
         >
           <img
-            src="/mac-dash.png"
+            src={macDash}
             alt="Dashboard Preview"
             className="w-full h-auto object-cover"
           />
