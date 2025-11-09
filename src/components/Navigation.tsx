@@ -84,17 +84,24 @@ const Navigation = () => {
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link
-            to="/"
+          <a
+            href={import.meta.env.BASE_URL || "/"}
             className="flex items-center cursor-pointer"
-            aria-label="Go to home"
+            aria-label="Reload home"
+            onClick={(e) => {
+              e.preventDefault();
+              setMobileOpen(false);
+              const base = import.meta.env.BASE_URL || "/";
+              const target = new URL(base, window.location.origin).toString();
+              window.location.assign(target);
+            }}
           >
             <img
               src={ressyLogo}
               alt="Ressy AI Logo"
               className="h-7 sm:h-8 w-auto"
             />
-          </Link>
+          </a>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-gray-700 font-medium">

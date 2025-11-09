@@ -8,10 +8,68 @@ import {
   Instagram,
   X,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHashLink =
+    (hash: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (!hash.startsWith("#")) return;
+
+      const prefersReduced =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const smoothScroll = () => {
+        const target = document.querySelector(hash) as HTMLElement | null;
+        if (!target) return;
+        if (prefersReduced) {
+          target.scrollIntoView();
+          return;
+        }
+
+        const navOffset = 80;
+        const targetY =
+          target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+
+        if ("scrollBehavior" in document.documentElement.style) {
+          window.scrollTo({ top: targetY, behavior: "smooth" });
+          return;
+        }
+
+        const startY = window.pageYOffset;
+        const distance = targetY - startY;
+        const duration = 800;
+        const easeInOutCubic = (t: number) =>
+          t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        let startTime: number | null = null;
+
+        const step = (timestamp: number) => {
+          if (startTime === null) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeInOutCubic(progress);
+          window.scrollTo(0, startY + distance * eased);
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      };
+
+      if (location.pathname !== "/") {
+        e.preventDefault();
+        navigate("/", { state: { scrollTo: hash } });
+        return;
+      }
+
+      e.preventDefault();
+      smoothScroll();
+    };
+
   const XIcon = () => (
     <svg
       className="w-5 h-5"
@@ -85,6 +143,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#voice-agents"
+                  onClick={handleHashLink("#voice-agents")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Voice Agents
@@ -93,6 +152,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#usecases"
+                  onClick={handleHashLink("#usecases")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Use Cases
@@ -101,6 +161,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#dashboard"
+                  onClick={handleHashLink("#dashboard")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Dashboard
@@ -109,6 +170,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#roi"
+                  onClick={handleHashLink("#roi")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   ROI Calculator
@@ -117,6 +179,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#integrations"
+                  onClick={handleHashLink("#integrations")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Integrations
@@ -132,6 +195,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#usecases"
+                  onClick={handleHashLink("#usecases")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Restaurants
@@ -140,6 +204,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#usecases"
+                  onClick={handleHashLink("#usecases")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Salons & Spas
@@ -148,6 +213,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#usecases"
+                  onClick={handleHashLink("#usecases")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Dental Clinics
@@ -156,6 +222,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#usecases"
+                  onClick={handleHashLink("#usecases")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Retail Stores
@@ -164,6 +231,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#usecases"
+                  onClick={handleHashLink("#usecases")}
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Enterprise
