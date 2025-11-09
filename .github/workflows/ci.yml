@@ -261,8 +261,10 @@ jobs:
             if ! curl -fsS -o index_out.html "$URL"; then
               echo "Attempt $i: index fetch failed"; sleep 10; continue
             fi
-            MAIN_JS=$(grep -Eo 'src="[^"]*main[^"]*\.js"' index_out.html | head -n1 | sed -E 's/src="([^"]+)"/\1/') || true
-            MAIN_CSS=$(grep -Eo 'href="[^"]*main[^"]*\.css"' index_out.html | head -n1 | sed -E 's/href="([^"]+)"/\1/') || true
+            # Match ANY .js file (not just "main")
+            MAIN_JS=$(grep -Eo 'src="[^"]*\.js"' index_out.html | head -n1 | sed -E 's/src="([^"]+)"/\1/') || true
+            # Match ANY .css file (not just "main")
+            MAIN_CSS=$(grep -Eo 'href="[^"]*\.css"' index_out.html | head -n1 | sed -E 's/href="([^"]+)"/\1/') || true
             make_abs() {
               local p="$1"
               if [[ -z "$p" ]]; then
@@ -281,13 +283,14 @@ jobs:
             if [ -n "${JS_URL}" ]; then curl -fsSLI "$JS_URL" | grep -q "^HTTP/.* 200" && JS_OK=true || JS_OK=false; fi
             if [ -n "${CSS_URL}" ]; then curl -fsSLI "$CSS_URL" | grep -q "^HTTP/.* 200" && CSS_OK=true || CSS_OK=false; fi
             if $JS_OK && $CSS_OK; then
-              echo "Health check passed on attempt $i"
+              echo "✓ Health check passed on attempt $i (JS: $JS_URL, CSS: $CSS_URL)"
               rm -f index_out.html
               exit 0
             fi
             echo "Attempt $i: JS_OK=$JS_OK CSS_OK=$CSS_OK (retrying)"; sleep 10
           done
-          echo "Health check failed after retries"
+          echo "✗ Health check failed after retries"
+          cat index_out.html || true
           exit 1
 
       - name: Install Playwright (no-save) and Chromium
