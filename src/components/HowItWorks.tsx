@@ -64,7 +64,7 @@ const HowItWorks = () => {
             Start your free trial
           </button>
           <p className="text-sm text-muted-foreground mt-4">
-            No setup fees • Cancel anytime • -day free trial
+            No setup fees • Cancel anytime • 7-day free trial
           </p>
           <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
