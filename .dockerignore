@@ -6,6 +6,4 @@ coverage
 .github
 .env
 .env.*
-Dockerfile
-nginx.conf
 
