@@ -10,8 +10,9 @@ describe("Main page", () => {
   it("renders the hero headline", () => {
     render(<App />);
     expect(
-      screen.getByText(/Your AI receptionist that books, answers, and follows up/i),
+      screen.getByText(
+        /Your AI receptionist that books, answers, and follows up/i,
+      ),
     ).toBeInTheDocument();
   });
 });
-

@@ -19,17 +19,22 @@ const Navigation = () => {
   }, []);
 
   // Smooth scrolling with navbar offset, native-first with JS fallback
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
-    if (!hash.startsWith('#')) return;
-    
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    hash: string,
+  ) => {
+    if (!hash.startsWith("#")) return;
+
     // If not on home, navigate to home and request scroll there
-    if (location.pathname !== '/') {
+    if (location.pathname !== "/") {
       e.preventDefault();
       setMobileOpen(false);
-      navigate('/', { state: { scrollTo: hash } });
+      navigate("/", { state: { scrollTo: hash } });
       return;
     }
-    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReduced =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const target = document.querySelector(hash) as HTMLElement | null;
     if (!target) return;
 
@@ -39,11 +44,12 @@ const Navigation = () => {
     e.preventDefault();
 
     const navOffset = 80; // approximate fixed navbar height
-    const targetY = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+    const targetY =
+      target.getBoundingClientRect().top + window.pageYOffset - navOffset;
 
     // Try native smooth scrolling first
-    if ('scrollBehavior' in document.documentElement.style) {
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    if ("scrollBehavior" in document.documentElement.style) {
+      window.scrollTo({ top: targetY, behavior: "smooth" });
       setTimeout(() => setMobileOpen(false), 400);
       return;
     }
@@ -52,7 +58,8 @@ const Navigation = () => {
     const startY = window.pageYOffset;
     const distance = targetY - startY;
     const duration = 800;
-    const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     let startTime: number | null = null;
     const step = (timestamp: number) => {
       if (startTime === null) startTime = timestamp;
@@ -77,7 +84,11 @@ const Navigation = () => {
       >
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center cursor-pointer" aria-label="Go to home">
+          <Link
+            to="/"
+            className="flex items-center cursor-pointer"
+            aria-label="Go to home"
+          >
             <img
               src={ressyLogo}
               alt="Ressy AI Logo"
@@ -89,7 +100,7 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-gray-700 font-medium">
             <a
               href="#usecases"
-              onClick={(e) => handleNavClick(e, '#usecases')}
+              onClick={(e) => handleNavClick(e, "#usecases")}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               Use Cases
@@ -97,7 +108,7 @@ const Navigation = () => {
 
             <a
               href="#voice-agents"
-              onClick={(e) => handleNavClick(e, '#voice-agents')}
+              onClick={(e) => handleNavClick(e, "#voice-agents")}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               Voice Agents
@@ -105,7 +116,7 @@ const Navigation = () => {
 
             <a
               href="#dashboard"
-              onClick={(e) => handleNavClick(e, '#dashboard')}
+              onClick={(e) => handleNavClick(e, "#dashboard")}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               Dashboard
@@ -113,7 +124,7 @@ const Navigation = () => {
 
             <a
               href="#integrations"
-              onClick={(e) => handleNavClick(e, '#integrations')}
+              onClick={(e) => handleNavClick(e, "#integrations")}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               Integrations
@@ -121,14 +132,14 @@ const Navigation = () => {
 
             <a
               href="#roi"
-              onClick={(e) => handleNavClick(e, '#roi')}
+              onClick={(e) => handleNavClick(e, "#roi")}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               Pricing
             </a>
             <a
               href="#faq"
-              onClick={(e) => handleNavClick(e, '#faq')}
+              onClick={(e) => handleNavClick(e, "#faq")}
               className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
             >
               FAQ
@@ -158,25 +169,52 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {mobileOpen && (
           <div className="mt-4 md:hidden flex flex-col space-y-3 text-gray-700 font-medium animate-fade-in">
-            <a href="#usecases" onClick={(e) => handleNavClick(e, '#usecases')} className="hover:text-black">
+            <a
+              href="#usecases"
+              onClick={(e) => handleNavClick(e, "#usecases")}
+              className="hover:text-black"
+            >
               Use Cases
             </a>
-            <a href="#voice-agents" onClick={(e) => handleNavClick(e, '#voice-agents')} className="hover:text-black">
+            <a
+              href="#voice-agents"
+              onClick={(e) => handleNavClick(e, "#voice-agents")}
+              className="hover:text-black"
+            >
               Voice Agents
             </a>
-            <a href="#dashboard" onClick={(e) => handleNavClick(e, '#dashboard')} className="hover:text-black">
+            <a
+              href="#dashboard"
+              onClick={(e) => handleNavClick(e, "#dashboard")}
+              className="hover:text-black"
+            >
               Dashboard
             </a>
-            <a href="#integrations" onClick={(e) => handleNavClick(e, '#integrations')} className="hover:text-black">
+            <a
+              href="#integrations"
+              onClick={(e) => handleNavClick(e, "#integrations")}
+              className="hover:text-black"
+            >
               Integrations
             </a>
-            <a href="#roi" onClick={(e) => handleNavClick(e, '#roi')} className="hover:text-black">
+            <a
+              href="#roi"
+              onClick={(e) => handleNavClick(e, "#roi")}
+              className="hover:text-black"
+            >
               Pricing
             </a>
-            <a href="#faq" onClick={(e) => handleNavClick(e, '#faq')} className="hover:text-black">
+            <a
+              href="#faq"
+              onClick={(e) => handleNavClick(e, "#faq")}
+              className="hover:text-black"
+            >
               FAQ
             </a>
-            <Button className="bg-black text-white font-semibold rounded-full w-full" onClick={() => setIsModalOpen(true)}>
+            <Button
+              className="bg-black text-white font-semibold rounded-full w-full"
+              onClick={() => setIsModalOpen(true)}
+            >
               Schedule a demo
             </Button>
           </div>
@@ -184,7 +222,10 @@ const Navigation = () => {
       </div>
 
       {/* Schedule Demo Modal */}
-      <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ScheduleDemoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
       {/* Fade-in animation */}
       <style>{`

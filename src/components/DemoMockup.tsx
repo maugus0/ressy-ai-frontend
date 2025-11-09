@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { toast } from "@/hooks/use-toast";
 import mockupImg from "@/assets/mockup.png";
 
@@ -6,8 +6,10 @@ const DemoMockup = () => {
   return (
     <section className="relative w-full flex justify-center items-center py-12">
       {/* Phone Mockup Container with floating animation */}
-      <div className="relative w-[280px] sm:w-[360px] md:w-[420px] lg:w-[500px] 
-                      aspect-[500/912] animate-floating">
+      <div
+        className="relative w-[280px] sm:w-[360px] md:w-[420px] lg:w-[500px] 
+                      aspect-[500/912] animate-floating"
+      >
         {/* Phone Mockup Image */}
         <img
           src={mockupImg}
@@ -29,7 +31,9 @@ const DemoMockup = () => {
           "
         >
           {/* Title */}
-          <h2 className="text-sm sm:text-base font-bold text-gray-900 text-center">Try it!</h2>
+          <h2 className="text-sm sm:text-base font-bold text-gray-900 text-center">
+            Try it!
+          </h2>
           <p className="text-center text-gray-700 font-medium text-xs sm:text-sm">
             Call <span className="text-purple-600">Ressy.ai</span>
           </p>

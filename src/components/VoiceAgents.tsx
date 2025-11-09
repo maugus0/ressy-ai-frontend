@@ -43,7 +43,7 @@ const VoiceAgents = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -82,8 +82,8 @@ const VoiceAgents = () => {
             </span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Listen to our AI agents handling customer calls with professionalism,
-            speed, and clarity.
+            Listen to our AI agents handling customer calls with
+            professionalism, speed, and clarity.
           </p>
         </div>
 

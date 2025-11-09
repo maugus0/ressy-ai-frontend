@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Calendar, Clock, User, Mail, Phone, Building, ArrowLeft } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  User,
+  Mail,
+  Phone,
+  Building,
+  ArrowLeft,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -23,12 +31,17 @@ const ScheduleDemo = () => {
     // TODO: Integrate with actual scheduling API
     toast({
       title: "Demo Request Received!",
-      description: "Our team will contact you within 24 hours to confirm your demo.",
+      description:
+        "Our team will contact you within 24 hours to confirm your demo.",
     });
     setTimeout(() => navigate("/"), 2000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -66,7 +79,8 @@ const ScheduleDemo = () => {
               See RessyAI in Action
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Book a personalized demo and discover how RessyAI can transform your business operations with AI-powered voice agents.
+              Book a personalized demo and discover how RessyAI can transform
+              your business operations with AI-powered voice agents.
             </p>
           </div>
 
@@ -76,7 +90,10 @@ const ScheduleDemo = () => {
               {/* Personal Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     <User className="w-4 h-4 inline mr-2" />
                     Full Name *
                   </label>
@@ -93,7 +110,10 @@ const ScheduleDemo = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     <Mail className="w-4 h-4 inline mr-2" />
                     Email Address *
                   </label>
@@ -112,7 +132,10 @@ const ScheduleDemo = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     <Phone className="w-4 h-4 inline mr-2" />
                     Phone Number *
                   </label>
@@ -129,7 +152,10 @@ const ScheduleDemo = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="company"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     <Building className="w-4 h-4 inline mr-2" />
                     Company Name *
                   </label>
@@ -148,7 +174,10 @@ const ScheduleDemo = () => {
 
               {/* Industry Selection */}
               <div>
-                <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="industry"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Industry *
                 </label>
                 <select
@@ -172,7 +201,10 @@ const ScheduleDemo = () => {
               {/* Scheduling */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="preferredDate" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="preferredDate"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     <Calendar className="w-4 h-4 inline mr-2" />
                     Preferred Date
                   </label>
@@ -182,13 +214,16 @@ const ScheduleDemo = () => {
                     name="preferredDate"
                     value={formData.preferredDate}
                     onChange={handleChange}
-                    min={new Date().toISOString().split('T')[0]}
+                    min={new Date().toISOString().split("T")[0]}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="preferredTime"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     <Clock className="w-4 h-4 inline mr-2" />
                     Preferred Time
                   </label>
@@ -213,7 +248,10 @@ const ScheduleDemo = () => {
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Additional Information (Optional)
                 </label>
                 <textarea
@@ -236,7 +274,8 @@ const ScheduleDemo = () => {
               </Button>
 
               <p className="text-sm text-gray-500 text-center">
-                By submitting this form, you agree to our Privacy Policy and Terms of Service.
+                By submitting this form, you agree to our Privacy Policy and
+                Terms of Service.
               </p>
             </form>
           </div>
@@ -247,24 +286,36 @@ const ScheduleDemo = () => {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Clock className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">30-Minute Demo</h3>
-              <p className="text-gray-600 text-sm">Quick, personalized walkthrough of RessyAI features</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                30-Minute Demo
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Quick, personalized walkthrough of RessyAI features
+              </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-md">
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <User className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Expert Guidance</h3>
-              <p className="text-gray-600 text-sm">Get answers from our AI specialists</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                Expert Guidance
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Get answers from our AI specialists
+              </p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-md">
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                 <Building className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Custom Solutions</h3>
-              <p className="text-gray-600 text-sm">Tailored recommendations for your business</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                Custom Solutions
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Tailored recommendations for your business
+              </p>
             </div>
           </div>
         </div>

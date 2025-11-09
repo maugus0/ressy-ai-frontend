@@ -1,36 +1,49 @@
-import { Phone, Clock, TrendingUp, Shield, Headphones, Zap } from "lucide-react";
+import {
+  Phone,
+  Clock,
+  TrendingUp,
+  Shield,
+  Headphones,
+  Zap,
+} from "lucide-react";
 
 const Features = () => {
   const features = [
     {
       icon: Phone,
       title: "Smart Call Handling",
-      description: "AI answers every call instantly, understands complex orders, and handles multiple languages fluently.",
+      description:
+        "AI answers every call instantly, understands complex orders, and handles multiple languages fluently.",
     },
     {
       icon: Clock,
       title: "24/7 Availability",
-      description: "Never miss another order. Your AI agent works around the clock, even during peak hours and holidays.",
+      description:
+        "Never miss another order. Your AI agent works around the clock, even during peak hours and holidays.",
     },
     {
       icon: TrendingUp,
       title: "Increase Revenue",
-      description: "Capture 30% more orders with faster service, upselling capabilities, and zero missed calls.",
+      description:
+        "Capture 30% more orders with faster service, upselling capabilities, and zero missed calls.",
     },
     {
       icon: Shield,
       title: "99.9% Accuracy",
-      description: "Advanced NLP ensures perfect order capture every time, with automatic verification and confirmation.",
+      description:
+        "Advanced NLP ensures perfect order capture every time, with automatic verification and confirmation.",
     },
     {
       icon: Headphones,
       title: "Seamless Integration",
-      description: "Works with your existing POS system, kitchen displays, and payment processing - no disruption.",
+      description:
+        "Works with your existing POS system, kitchen displays, and payment processing - no disruption.",
     },
     {
       icon: Zap,
       title: "Instant Setup",
-      description: "Get up and running in under 30 minutes. Upload your menu and start taking AI-powered calls today.",
+      description:
+        "Get up and running in under 30 minutes. Upload your menu and start taking AI-powered calls today.",
     },
   ];
 
@@ -44,10 +57,13 @@ const Features = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6">
             Transform your phone orders
             <br />
-            <span className="text-muted-foreground">with intelligent automation</span>
+            <span className="text-muted-foreground">
+              with intelligent automation
+            </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Stop losing orders to busy signals and overwhelmed staff. Our AI handles it all.
+            Stop losing orders to busy signals and overwhelmed staff. Our AI
+            handles it all.
           </p>
         </div>
 
@@ -56,13 +72,20 @@ const Features = () => {
             <div
               key={index}
               className="bg-background rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1"
-              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
+              style={{
+                animationDelay: `${index * 0.1}s`,
+                animationFillMode: "both",
+              }}
             >
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
                 <feature.icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-4">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              <h3 className="text-xl font-bold text-foreground mb-4">
+                {feature.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>

@@ -9,7 +9,7 @@ import ScheduleDemoModal from "./ScheduleDemoModal";
 const Hero = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {/* 🌊 Liquid Ether Background */}
@@ -23,7 +23,9 @@ const Hero = () => {
       </div>
 
       {/* 🌟 Content */}
-<div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 lg:pt-20">        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 lg:pt-20">
+        {" "}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left animate-slide-up-slow pt-40 lg:pt-0">
             {/* Badge */}
@@ -42,13 +44,17 @@ const Hero = () => {
 
             {/* Subtext */}
             <p className="text-sm sm:text-base lg:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0 mb-6 sm:mb-8 leading-relaxed">
-              Capture every call, schedule appointments, qualify leads and answer questions instantly —
-              no hold music, no scripts to memorise.
+              Capture every call, schedule appointments, qualify leads and
+              answer questions instantly — no hold music, no scripts to
+              memorise.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-12">
-              <button onClick={() => setIsModalOpen(true)} className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base"
+              >
                 Start free trial
               </button>
               <button className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:from-gray-700 hover:via-gray-800 hover:to-black hover:shadow-xl hover:scale-105 transition-all duration-300 text-sm sm:text-base">
@@ -68,16 +74,28 @@ const Hero = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 sm:gap-6">
               <div className="text-center lg:text-left">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">99.9%</div>
-                <div className="text-xs sm:text-sm text-gray-400">Call accuracy</div>
+                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">
+                  99.9%
+                </div>
+                <div className="text-xs sm:text-sm text-gray-400">
+                  Call accuracy
+                </div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">24/7</div>
-                <div className="text-xs sm:text-sm text-gray-400">Availability</div>
+                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">
+                  24/7
+                </div>
+                <div className="text-xs sm:text-sm text-gray-400">
+                  Availability
+                </div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">75%</div>
-                <div className="text-xs sm:text-sm text-gray-400">More bookings</div>
+                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">
+                  75%
+                </div>
+                <div className="text-xs sm:text-sm text-gray-400">
+                  More bookings
+                </div>
               </div>
             </div>
           </div>
@@ -123,7 +141,10 @@ const Hero = () => {
       {/* Animations */}
 
       {/* Schedule Demo Modal */}
-      <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ScheduleDemoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

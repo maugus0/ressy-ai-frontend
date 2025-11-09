@@ -6,7 +6,10 @@ const macDash = `${import.meta.env.BASE_URL}mac-dash.png`;
 
 const DashboardSection = () => {
   return (
-    <section id="dashboard" className="relative w-full py-20 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-mt-28">
+    <section
+      id="dashboard"
+      className="relative w-full py-20 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-mt-28"
+    >
       {/* Background with grid */}
       <div className="absolute inset-0 -z-20">
         <Squares

@@ -10,17 +10,18 @@ Follow these steps to set up and run the RessyAI promotional website locally usi
 ### Installation
 
 1. Open your terminal and navigate to the project directory:
-	```bash
-	cd /path/to/ressy-ai-frontend
-	```
+   ```bash
+   cd /path/to/ressy-ai-frontend
+   ```
 2. Install dependencies:
-	```bash
-	npm install
-	```
+   ```bash
+   npm install
+   ```
 
 ### Running the Development Server
 
 Start the local development server:
+
 ```bash
 npm run dev
 ```
@@ -30,6 +31,7 @@ The site will be available at [http://localhost:8080](http://localhost:8080) (de
 ### Building for Production
 
 To build the site for production:
+
 ```bash
 npm run build
 ```
@@ -37,6 +39,7 @@ npm run build
 ### Previewing the Production Build
 
 To preview the production build locally:
+
 ```bash
 npm run preview
 ```
@@ -44,16 +47,19 @@ npm run preview
 ### Linting & Formatting
 
 Run ESLint with TypeScript/React defaults (warnings treated as errors):
+
 ```bash
 npm run lint
 ```
 
 Generate an ESLint SARIF report for GitHub code scanning:
+
 ```bash
 npm run lint:sarif
 ```
 
 Format the codebase (Prettier) or verify formatting without changing files:
+
 ```bash
 npm run format        # writes changes
 npm run format:check  # read-only check
@@ -62,11 +68,13 @@ npm run format:check  # read-only check
 ### Testing
 
 Execute the Vitest suite interactively:
+
 ```bash
 npm run test
 ```
 
 Run the CI-friendly Vitest command with coverage output in `coverage/`:
+
 ```bash
 npm run test:ci
 ```
@@ -84,4 +92,20 @@ npm run test:ci
 - `npm run deploy` – publish the latest build directory to the `gh-pages` branch using the `gh-pages` CLI.
 
 ---
+
+## GitHub Actions – Required Secrets
+
+To allow the CI/CD pipeline in `.github/workflows/ci.yml` to run end-to-end, configure the following repository secrets in **Settings → Secrets and variables → Actions**:
+
+| Secret        | Purpose                                                                                  |
+| ------------- | ---------------------------------------------------------------------------------------- |
+| `SONAR_TOKEN` | Authentication token for SonarCloud analysis. Generate one from your SonarCloud account. |
+| `SNYK_TOKEN`  | API token for Snyk Open Source scanning. Obtain from your Snyk account.                  |
+
+The workflow also relies on the built-in `GITHUB_TOKEN` for publishing Docker images, uploading SARIF files, and deploying to GitHub Pages—no action needed unless you have custom permissions.
+
+If you intend to push Docker images to a private GitHub Container Registry, ensure the repository has the `packages` permission enabled and your organization allows fine-grained tokens if applicable.
+
+---
+
 For troubleshooting, see console output for errors or check your Node/npm versions.

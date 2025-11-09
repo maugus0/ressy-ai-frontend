@@ -9,19 +9,22 @@ const HowItWorks = () => {
       icon: Upload,
       number: "01",
       title: "Upload Your Menu",
-      description: "Simply upload your menu and pricing. Our AI learns your items, modifications, and pricing structure instantly.",
+      description:
+        "Simply upload your menu and pricing. Our AI learns your items, modifications, and pricing structure instantly.",
     },
     {
       icon: Settings,
-      number: "02", 
+      number: "02",
       title: "Configure Settings",
-      description: "Set your hours, delivery zones, and preferences. Customize how your AI agent interacts with customers.",
+      description:
+        "Set your hours, delivery zones, and preferences. Customize how your AI agent interacts with customers.",
     },
     {
       icon: Phone,
       number: "03",
       title: "Start Taking Calls",
-      description: "Forward your phone line to ressyai. We handle orders, answer questions, and send everything to your kitchen.",
+      description:
+        "Forward your phone line to ressyai. We handle orders, answer questions, and send everything to your kitchen.",
     },
   ];
 
@@ -46,9 +49,15 @@ const HowItWorks = () => {
                 <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-medium">
                   <step.icon className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <div className="text-sm font-bold text-primary mb-2">{step.number}</div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">{step.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                <div className="text-sm font-bold text-primary mb-2">
+                  {step.number}
+                </div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {step.description}
+                </p>
               </div>
 
               {/* Connector line */}
@@ -60,13 +69,19 @@ const HowItWorks = () => {
         </div>
 
         <div className="text-center mt-16">
-          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large"
+          >
             Start your free trial
           </button>
           <p className="text-sm text-muted-foreground mt-4">
             No setup fees • Cancel anytime • 7-day free trial
           </p>
-          <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+          <ScheduleDemoModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
         </div>
       </div>
     </section>

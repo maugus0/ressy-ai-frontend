@@ -3,11 +3,36 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const ComparisonTable = () => {
   const features = [
-    { feature: "Available 24/7", ressyAI: "Yes", frontDesk: "No (shifts)", answeringService: "Limited" },
-    { feature: "Missed calls", ressyAI: "0", frontDesk: "Medium", answeringService: "Low" },
-    { feature: "Takes payments", ressyAI: "Yes", frontDesk: "Sometimes", answeringService: "Rare" },
-    { feature: "POS/Calendar sync", ressyAI: "Real-time", frontDesk: "Manual", answeringService: "Limited" },
-    { feature: "Cost predictability", ressyAI: "Transparent", frontDesk: "Overtime/turnover", answeringService: "Bundles" },
+    {
+      feature: "Available 24/7",
+      ressyAI: "Yes",
+      frontDesk: "No (shifts)",
+      answeringService: "Limited",
+    },
+    {
+      feature: "Missed calls",
+      ressyAI: "0",
+      frontDesk: "Medium",
+      answeringService: "Low",
+    },
+    {
+      feature: "Takes payments",
+      ressyAI: "Yes",
+      frontDesk: "Sometimes",
+      answeringService: "Rare",
+    },
+    {
+      feature: "POS/Calendar sync",
+      ressyAI: "Real-time",
+      frontDesk: "Manual",
+      answeringService: "Limited",
+    },
+    {
+      feature: "Cost predictability",
+      ressyAI: "Transparent",
+      frontDesk: "Overtime/turnover",
+      answeringService: "Bundles",
+    },
   ];
 
   return (

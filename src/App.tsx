@@ -19,7 +19,8 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    document.title = "RessyAI | AI Receptionist for Phone Calls, Reservations & Scheduling";
+    document.title =
+      "RessyAI | AI Receptionist for Phone Calls, Reservations & Scheduling";
   }, []);
 
   return (

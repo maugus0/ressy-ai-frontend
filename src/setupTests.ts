@@ -61,4 +61,3 @@ if (typeof window.IntersectionObserver === "undefined") {
     value: MockIntersectionObserver,
   });
 }
-

@@ -7,16 +7,14 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // Use '/' in dev; use repo subpath in production for GitHub Pages
-  base: mode === 'production' ? '/ressy-ai-frontend/' : '/',
+  base: mode === "production" ? "/ressy-ai-frontend/" : "/",
   server: {
     host: "::",
     port: 8080,
   },
-  plugins: [
-    react(),
-    mode === 'development' &&
-    componentTagger(),
-  ].filter(Boolean),
+  plugins: [react(), mode === "development" && componentTagger()].filter(
+    Boolean,
+  ),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

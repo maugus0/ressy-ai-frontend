@@ -24,9 +24,9 @@ const Preloader = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFadeOut(true); 
-      setTimeout(() => setLoading(false), 800); 
-    }, 2500); 
+      setFadeOut(true);
+      setTimeout(() => setLoading(false), 800);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -66,22 +66,26 @@ const Index = () => {
     const state = location.state as { scrollTo?: string } | undefined;
     if (state?.scrollTo) {
       const hash = state.scrollTo;
-      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReduced =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const navOffset = 80;
 
       const scroll = () => {
         const target = document.querySelector(hash) as HTMLElement | null;
         if (!target) return;
-        const targetY = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+        const targetY =
+          target.getBoundingClientRect().top + window.pageYOffset - navOffset;
         if (prefersReduced) {
           window.scrollTo(0, targetY);
-        } else if ('scrollBehavior' in document.documentElement.style) {
-          window.scrollTo({ top: targetY, behavior: 'smooth' });
+        } else if ("scrollBehavior" in document.documentElement.style) {
+          window.scrollTo({ top: targetY, behavior: "smooth" });
         } else {
           const startY = window.pageYOffset;
           const distance = targetY - startY;
           const duration = 800;
-          const easeInOutCubic = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+          const easeInOutCubic = (t: number) =>
+            t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
           let startTime: number | null = null;
           const step = (timestamp: number) => {
             if (startTime === null) startTime = timestamp;

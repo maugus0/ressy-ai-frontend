@@ -16,7 +16,7 @@ const IndustrySolutions = () => {
           observer.disconnect(); // trigger once
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
@@ -29,43 +29,129 @@ const IndustrySolutions = () => {
       icon: ChefHat,
       label: "Restaurants",
       solutions: [
-        { title: "Reservation Triage", description: "Waitlist, parties, special requests—handled and logged." },
-        { title: "Menu & Hours", description: "Specials, dietary info, holiday hours—always right." },
-        { title: "Table Management", description: "Syncs with your reservation tool for live availability." }
+        {
+          title: "Reservation Triage",
+          description:
+            "Waitlist, parties, special requests—handled and logged.",
+        },
+        {
+          title: "Menu & Hours",
+          description: "Specials, dietary info, holiday hours—always right.",
+        },
+        {
+          title: "Table Management",
+          description:
+            "Syncs with your reservation tool for live availability.",
+        },
       ],
       additionalTools: [
-        { title: "Order Taking", features: ["Instant replies", "Menu recommendations", "Special requests"] },
-        { title: "Customer Support", features: ["24/7 availability", "Multi-language", "Issue resolution"] },
-        { title: "Analytics & Reports", features: ["Call transcripts", "Peak hours analysis", "Revenue tracking"] }
-      ]
+        {
+          title: "Order Taking",
+          features: [
+            "Instant replies",
+            "Menu recommendations",
+            "Special requests",
+          ],
+        },
+        {
+          title: "Customer Support",
+          features: ["24/7 availability", "Multi-language", "Issue resolution"],
+        },
+        {
+          title: "Analytics & Reports",
+          features: [
+            "Call transcripts",
+            "Peak hours analysis",
+            "Revenue tracking",
+          ],
+        },
+      ],
     },
     salons: {
       icon: Scissors,
       label: "Salons",
       solutions: [
-        { title: "Service matching", description: "Recommend the right slot and pro." },
-        { title: "Deposits & policies", description: "Cut last-minute cancels with clear policies." },
-        { title: "Retail upsell", description: "Suggest add-ons and retail at booking." }
+        {
+          title: "Service matching",
+          description: "Recommend the right slot and pro.",
+        },
+        {
+          title: "Deposits & policies",
+          description: "Cut last-minute cancels with clear policies.",
+        },
+        {
+          title: "Retail upsell",
+          description: "Suggest add-ons and retail at booking.",
+        },
       ],
       additionalTools: [
-        { title: "Reminder System", features: ["Appointment confirmations", "Follow-up calls", "Rescheduling options"] },
-        { title: "Package Sales", features: ["Service bundles", "Membership offers", "Loyalty programs"] },
-        { title: "Staff Coordination", features: ["Stylist scheduling", "Break management", "Skill matching"] }
-      ]
+        {
+          title: "Reminder System",
+          features: [
+            "Appointment confirmations",
+            "Follow-up calls",
+            "Rescheduling options",
+          ],
+        },
+        {
+          title: "Package Sales",
+          features: [
+            "Service bundles",
+            "Membership offers",
+            "Loyalty programs",
+          ],
+        },
+        {
+          title: "Staff Coordination",
+          features: [
+            "Stylist scheduling",
+            "Break management",
+            "Skill matching",
+          ],
+        },
+      ],
     },
     realestate: {
       icon: Home,
       label: "Dental",
       solutions: [
-        { title: "Appointment Booking", description: "Schedule cleanings, treatments, and emergencies instantly." },
-        { title: "Insurance verification", description: "Collect and verify patient insurance details during booking." },
-        { title: "Reminders & follow-ups", description: "Reduce no-shows with automated reminders and recalls." }
+        {
+          title: "Appointment Booking",
+          description:
+            "Schedule cleanings, treatments, and emergencies instantly.",
+        },
+        {
+          title: "Insurance verification",
+          description:
+            "Collect and verify patient insurance details during booking.",
+        },
+        {
+          title: "Reminders & follow-ups",
+          description: "Reduce no-shows with automated reminders and recalls.",
+        },
       ],
       additionalTools: [
-        { title: "Lead Qualification", features: ["Budget screening", "Timeline assessment", "Preference matching"] },
-        { title: "Market Updates", features: ["Price changes", "New listings", "Market trends"] },
-        { title: "Virtual Tours", features: ["Booking assistance", "Technical support", "Follow-up scheduling"] }
-      ]
+        {
+          title: "Lead Qualification",
+          features: [
+            "Budget screening",
+            "Timeline assessment",
+            "Preference matching",
+          ],
+        },
+        {
+          title: "Market Updates",
+          features: ["Price changes", "New listings", "Market trends"],
+        },
+        {
+          title: "Virtual Tours",
+          features: [
+            "Booking assistance",
+            "Technical support",
+            "Follow-up scheduling",
+          ],
+        },
+      ],
     },
   };
 
@@ -131,12 +217,18 @@ const IndustrySolutions = () => {
             <div
               key={index}
               className={`bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:border-purple-300 transition-all duration-700 hover:shadow-lg transform ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                visible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{solution.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{solution.description}</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                {solution.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {solution.description}
+              </p>
             </div>
           ))}
         </div>
@@ -151,14 +243,21 @@ const IndustrySolutions = () => {
               <div
                 key={index}
                 className={`bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:border-purple-300 transition-all duration-700 hover:shadow-lg transform ${
-                  visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  visible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">{tool.title}</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  {tool.title}
+                </h4>
                 <ul className="space-y-2">
                   {tool.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-gray-600">
+                    <li
+                      key={featureIndex}
+                      className="flex items-center text-gray-600"
+                    >
                       <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-3"></div>
                       {feature}
                     </li>
@@ -171,14 +270,20 @@ const IndustrySolutions = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
             Connect with the team
           </button>
         </div>
       </div>
 
       {/* Schedule Demo Modal */}
-      <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ScheduleDemoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };
