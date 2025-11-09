@@ -118,8 +118,8 @@ const LiveDemo = () => {
                     step.startsWith("AI:")
                       ? "bg-purple-100 text-purple-800 self-start shadow"
                       : step.startsWith("Caller:")
-                      ? "bg-gray-200 text-gray-800 self-end shadow"
-                      : "bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center font-semibold mx-auto"
+                        ? "bg-gray-200 text-gray-800 self-end shadow"
+                        : "bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center font-semibold mx-auto"
                   }`}
                 >
                   {step}
@@ -138,8 +138,8 @@ const LiveDemo = () => {
                   {isDialing
                     ? "Dialing..."
                     : isPlaying
-                    ? "Stop Demo"
-                    : "Start Demo Call"}
+                      ? "Stop Demo"
+                      : "Start Demo Call"}
                 </span>
               </button>
             </div>

@@ -18,15 +18,15 @@ const ROICalculator = () => {
     (field: keyof typeof inputs, value: number) => {
       setInputs((prev) => ({ ...prev, [field]: value }));
     },
-    []
+    [],
   );
 
   // Calculations
   const missedCalls = Math.round(
-    (inputs.callsPerWeek * inputs.missedCallPercent) / 100
+    (inputs.callsPerWeek * inputs.missedCallPercent) / 100,
   );
   const recoveredByAI = Math.round(
-    (missedCalls * inputs.aiRecoveryPercent) / 100
+    (missedCalls * inputs.aiRecoveryPercent) / 100,
   );
   const addedRevenue = recoveredByAI * inputs.avgOrderValue;
   const laborSaved = Math.round(recoveredByAI * 0.5 * inputs.staffWage); // 30min per call
@@ -64,10 +64,19 @@ const ROICalculator = () => {
     animateValue("revenue", addedRevenue);
     animateValue("labor", laborSaved);
     animateValue("total", estimatedWeeklyValue);
-  }, [missedCalls, recoveredByAI, addedRevenue, laborSaved, estimatedWeeklyValue]);
+  }, [
+    missedCalls,
+    recoveredByAI,
+    addedRevenue,
+    laborSaved,
+    estimatedWeeklyValue,
+  ]);
 
   return (
-    <section id="roi" className="py-24 px-4 relative overflow-hidden scroll-mt-28">
+    <section
+      id="roi"
+      className="py-24 px-4 relative overflow-hidden scroll-mt-28"
+    >
       {/* Background unchanged */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/30 to-accent/15"></div>
@@ -117,7 +126,10 @@ const ROICalculator = () => {
                     type="number"
                     value={inputs.avgOrderValue}
                     onChange={(e) =>
-                      updateInput("avgOrderValue", parseInt(e.target.value) || 0)
+                      updateInput(
+                        "avgOrderValue",
+                        parseInt(e.target.value) || 0,
+                      )
                     }
                     className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
                   />
@@ -136,7 +148,7 @@ const ROICalculator = () => {
                     onChange={(e) =>
                       updateInput(
                         "missedCallPercent",
-                        parseInt(e.target.value) || 0
+                        parseInt(e.target.value) || 0,
                       )
                     }
                     className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
@@ -155,7 +167,7 @@ const ROICalculator = () => {
                     onChange={(e) =>
                       updateInput(
                         "aiRecoveryPercent",
-                        parseInt(e.target.value) || 0
+                        parseInt(e.target.value) || 0,
                       )
                     }
                     className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
@@ -185,28 +197,36 @@ const ROICalculator = () => {
             <CardContent className="p-8 space-y-6 animate-fade-in delay-200">
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
-                  <span className="text-slate-600 font-medium">Missed calls</span>
+                  <span className="text-slate-600 font-medium">
+                    Missed calls
+                  </span>
                   <span className="text-slate-800 text-xl font-bold">
                     {animated.missed}/wk
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
-                  <span className="text-slate-600 font-medium">Recovered by AI</span>
+                  <span className="text-slate-600 font-medium">
+                    Recovered by AI
+                  </span>
                   <span className="text-purple-600 text-xl font-bold">
                     {animated.recovered}/wk
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
-                  <span className="text-slate-600 font-medium">Added revenue</span>
+                  <span className="text-slate-600 font-medium">
+                    Added revenue
+                  </span>
                   <span className="text-purple-600 text-xl font-bold">
                     ${animated.revenue}/wk
                   </span>
                 </div>
 
                 <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
-                  <span className="text-slate-600 font-medium">Labor saved</span>
+                  <span className="text-slate-600 font-medium">
+                    Labor saved
+                  </span>
                   <span className="text-purple-600 text-xl font-bold">
                     ${animated.labor}/wk
                   </span>
@@ -233,11 +253,17 @@ const ROICalculator = () => {
           <p className="text-slate-600 mb-6 text-lg">
             Ready to start capturing this value for your business?
           </p>
-          <button onClick={() => setIsModalOpen(true)} className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl"
+          >
             Get Started Today
           </button>
         </div>
-        <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <ScheduleDemoModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
       </div>
 
       {/* Animations */}

@@ -28,7 +28,9 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
 
     const prevBodyOverflow = document.body.style.overflow;
     const prevHtmlOverflow = document.documentElement.style.overflow;
-    type OverscrollStyle = CSSStyleDeclaration & { overscrollBehavior?: string };
+    type OverscrollStyle = CSSStyleDeclaration & {
+      overscrollBehavior?: string;
+    };
     const bodyStyle = document.body.style as OverscrollStyle;
     const htmlStyle = document.documentElement.style as OverscrollStyle;
     const prevBodyOverscroll = bodyStyle.overscrollBehavior;
@@ -109,7 +111,11 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -119,9 +125,13 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 animate-fadeIn" aria-modal="true" role="dialog">
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 animate-fadeIn"
+      aria-modal="true"
+      role="dialog"
+    >
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fadeIn"
         onClick={onClose}
       />
@@ -152,7 +162,10 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
           {/* Personal Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
                 <User className="w-4 h-4 inline mr-1.5 text-purple-600" />
                 Full Name *
               </label>
@@ -169,7 +182,10 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 <Mail className="w-4 h-4 inline mr-1.5 text-purple-600" />
                 Email Address *
               </label>
@@ -188,7 +204,10 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-gray-700"
+              >
                 <Phone className="w-4 h-4 inline mr-1.5 text-purple-600" />
                 Phone Number *
               </label>
@@ -205,7 +224,10 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="company" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="company"
+                className="block text-sm font-medium text-gray-700"
+              >
                 <Building className="w-4 h-4 inline mr-1.5 text-purple-600" />
                 Company Name *
               </label>
@@ -224,7 +246,10 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
 
           {/* Industry Selection with Custom Styling */}
           <div className="space-y-2">
-            <label htmlFor="industry" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="industry"
+              className="block text-sm font-medium text-gray-700"
+            >
               Industry *
             </label>
             <div className="relative">
@@ -245,8 +270,18 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
                 <option value="other">📋 Other</option>
               </select>
               <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <svg
+                  className="w-5 h-5 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </div>
             </div>
@@ -255,7 +290,10 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
           {/* Scheduling */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="preferredDate" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="preferredDate"
+                className="block text-sm font-medium text-gray-700"
+              >
                 <Calendar className="w-4 h-4 inline mr-1.5 text-purple-600" />
                 Preferred Date
               </label>
@@ -265,13 +303,16 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
                 name="preferredDate"
                 value={formData.preferredDate}
                 onChange={handleChange}
-                min={new Date().toISOString().split('T')[0]}
+                min={new Date().toISOString().split("T")[0]}
                 className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all outline-none hover:border-purple-300"
               />
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="preferredTime"
+                className="block text-sm font-medium text-gray-700"
+              >
                 <Clock className="w-4 h-4 inline mr-1.5 text-purple-600" />
                 Preferred Time
               </label>
@@ -293,8 +334,18 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
                   <option value="4:00 PM">🌆 4:00 PM</option>
                 </select>
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </div>
               </div>
@@ -303,7 +354,10 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
 
           {/* Message */}
           <div className="space-y-2">
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-gray-700"
+            >
               Additional Information (Optional)
             </label>
             <textarea
@@ -365,7 +419,7 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
         }
       `}</style>
     </div>,
-    document.body
+    document.body,
   );
 };
 

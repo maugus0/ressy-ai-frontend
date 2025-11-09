@@ -38,29 +38,45 @@ const FinalCTA = () => {
           </span>
         </h2>
 
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
-          Join 1000+ businesses already using AI to handle their calls. Start your 7-day free trial today – no credit card required.
+        <p
+          className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-slide-up"
+          style={{ animationDelay: "0.1s", animationFillMode: "both" }}
+        >
+          Join 1000+ businesses already using AI to handle their calls. Start
+          your 7-day free trial today – no credit card required.
         </p>
 
         {/* Email signup form */}
 
-
         {/* Main CTA buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
-          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large text-lg">
+        <div
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up"
+          style={{ animationDelay: "0.3s", animationFillMode: "both" }}
+        >
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large text-lg"
+          >
             Start 7-Day Free Trial
           </button>
-          <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft text-lg">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-8 py-4 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft text-lg"
+          >
             Schedule Demo Call
           </button>
         </div>
 
         {/* Trust indicators */}
         {/* Trust indicators */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto text-center animate-fade-in"
-          style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+        <div
+          className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto text-center animate-fade-in"
+          style={{ animationDelay: "0.4s", animationFillMode: "both" }}
+        >
           <div>
-            <div className="text-2xl font-black text-foreground mb-1">7-Day</div>
+            <div className="text-2xl font-black text-foreground mb-1">
+              7-Day
+            </div>
             <div className="text-sm text-muted-foreground">Free Trial</div>
           </div>
           <div>
@@ -73,13 +89,20 @@ const FinalCTA = () => {
           </div>
         </div>
         {/* Small print */}
-        <p className="text-sm text-muted-foreground mt-8 animate-fade-in" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
-          Join businesses increasing revenue by 30% with AI. Cancel anytime, no questions asked.
+        <p
+          className="text-sm text-muted-foreground mt-8 animate-fade-in"
+          style={{ animationDelay: "0.5s", animationFillMode: "both" }}
+        >
+          Join businesses increasing revenue by 30% with AI. Cancel anytime, no
+          questions asked.
         </p>
       </div>
 
       {/* Schedule Demo Modal */}
-      <ScheduleDemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ScheduleDemoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

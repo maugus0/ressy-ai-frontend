@@ -7,9 +7,13 @@ All colors MUST be HSL.
 */
 
 /* Global smooth scrolling for in-page anchors */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 @layer base {
@@ -44,13 +48,24 @@ html { scroll-behavior: smooth; }
     --ring: 262 83% 58%;
 
     /* Custom gradient tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(262 83% 68%));
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
-    
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(262 83% 58%),
+      hsl(262 83% 68%)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      hsl(0 0% 100%),
+      hsl(220 14% 98%)
+    );
+
     /* Enhanced shadows */
-    --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-large: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-soft:
+      0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-medium:
+      0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-large:
+      0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
     --radius: 0.5rem;
 
@@ -119,6 +134,5 @@ html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground;
     background-color: transparent; /* instead of bg-background */
-
   }
 }

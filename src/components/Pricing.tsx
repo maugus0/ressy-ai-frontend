@@ -2,7 +2,9 @@ import { Check, Zap, Building, Crown } from "lucide-react";
 import { useState } from "react";
 
 const Pricing = () => {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
+    "monthly",
+  );
 
   const plans = [
     {
@@ -17,10 +19,10 @@ const Pricing = () => {
         "Call forwarding",
         "Email notifications",
         "Basic analytics",
-        "Standard support"
+        "Standard support",
       ],
       popular: false,
-      cta: "Start Free Trial"
+      cta: "Start Free Trial",
     },
     {
       name: "Business",
@@ -36,10 +38,10 @@ const Pricing = () => {
         "Advanced analytics",
         "Priority support",
         "Custom voice training",
-        "API access"
+        "API access",
       ],
       popular: true,
-      cta: "Start Free Trial"
+      cta: "Start Free Trial",
     },
     {
       name: "Enterprise",
@@ -55,15 +57,18 @@ const Pricing = () => {
         "White-label solution",
         "Dedicated support",
         "SLA guarantee",
-        "Custom deployment"
+        "Custom deployment",
       ],
       popular: false,
-      cta: "Contact Sales"
-    }
+      cta: "Contact Sales",
+    },
   ];
 
   return (
-    <section id="pricing" className="w-full px-4 sm:px-6 lg:px-8 py-24 bg-gradient-subtle scroll-mt-28">
+    <section
+      id="pricing"
+      className="w-full px-4 sm:px-6 lg:px-8 py-24 bg-gradient-subtle scroll-mt-28"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 animate-scale-in">
@@ -72,26 +77,44 @@ const Pricing = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 animate-slide-up">
             Choose your plan
             <br />
-            <span className="bg-gradient-primary bg-clip-text text-transparent">Start free, scale as you grow</span>
+            <span className="bg-gradient-primary bg-clip-text text-transparent">
+              Start free, scale as you grow
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
+          <p
+            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up"
+            style={{ animationDelay: "0.1s", animationFillMode: "both" }}
+          >
             All plans include 7-day free trial. No setup fees. Cancel anytime.
           </p>
 
           {/* Billing toggle */}
-          <div className="flex items-center justify-center space-x-4 mb-12 animate-fade-in" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
-            <span className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-foreground' : 'text-muted-foreground'}`}>
+          <div
+            className="flex items-center justify-center space-x-4 mb-12 animate-fade-in"
+            style={{ animationDelay: "0.2s", animationFillMode: "both" }}
+          >
+            <span
+              className={`text-sm font-medium ${billingCycle === "monthly" ? "text-foreground" : "text-muted-foreground"}`}
+            >
               Monthly
             </span>
             <button
-              onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
+              onClick={() =>
+                setBillingCycle(
+                  billingCycle === "monthly" ? "yearly" : "monthly",
+                )
+              }
               className="relative w-12 h-6 bg-muted rounded-full transition-all duration-300 hover:scale-110"
             >
-              <div className={`absolute top-1 w-4 h-4 bg-primary rounded-full transition-all duration-300 ${
-                billingCycle === 'yearly' ? 'left-7' : 'left-1'
-              }`}></div>
+              <div
+                className={`absolute top-1 w-4 h-4 bg-primary rounded-full transition-all duration-300 ${
+                  billingCycle === "yearly" ? "left-7" : "left-1"
+                }`}
+              ></div>
             </button>
-            <span className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-foreground' : 'text-muted-foreground'}`}>
+            <span
+              className={`text-sm font-medium ${billingCycle === "yearly" ? "text-foreground" : "text-muted-foreground"}`}
+            >
               Yearly
             </span>
             <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium">
@@ -105,9 +128,12 @@ const Pricing = () => {
             <div
               key={plan.name}
               className={`relative bg-background rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 animate-fade-in ${
-                plan.popular ? 'ring-2 ring-primary scale-105' : ''
+                plan.popular ? "ring-2 ring-primary scale-105" : ""
               }`}
-              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
+              style={{
+                animationDelay: `${index * 0.1}s`,
+                animationFillMode: "both",
+              }}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -121,17 +147,24 @@ const Pricing = () => {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <plan.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{plan.description}</p>
-                
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  {plan.name}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  {plan.description}
+                </p>
+
                 <div className="mb-6">
                   <div className="flex items-baseline justify-center">
                     <span className="text-4xl font-black text-foreground">
-                      ${billingCycle === 'monthly' ? plan.monthlyPrice : Math.floor(plan.yearlyPrice / 12)}
+                      $
+                      {billingCycle === "monthly"
+                        ? plan.monthlyPrice
+                        : Math.floor(plan.yearlyPrice / 12)}
                     </span>
                     <span className="text-muted-foreground ml-1">/month</span>
                   </div>
-                  {billingCycle === 'yearly' && (
+                  {billingCycle === "yearly" && (
                     <div className="text-sm text-muted-foreground mt-1">
                       Billed yearly (${plan.yearlyPrice})
                     </div>
@@ -141,20 +174,27 @@ const Pricing = () => {
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center space-x-3">
+                  <li
+                    key={featureIndex}
+                    className="flex items-center space-x-3"
+                  >
                     <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <Check className="w-3 h-3 text-green-600" />
                     </div>
-                    <span className="text-sm text-muted-foreground">{feature}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
 
-              <button className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
-                plan.popular
-                  ? 'bg-gradient-primary text-primary-foreground shadow-medium hover:shadow-large'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-              }`}>
+              <button
+                className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
+                  plan.popular
+                    ? "bg-gradient-primary text-primary-foreground shadow-medium hover:shadow-large"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                }`}
+              >
                 {plan.cta}
               </button>
             </div>
