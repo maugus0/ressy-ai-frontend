@@ -43,15 +43,6 @@ jobs:
       - name: Lint (ESLint)
         run: npm run lint
 
-      - name: Generate ESLint SARIF
-        run: npm run lint:sarif || true
-
-      - name: Upload ESLint SARIF
-        if: always() && hashFiles('eslint.sarif') != ''
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: eslint.sarif
-
   unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
