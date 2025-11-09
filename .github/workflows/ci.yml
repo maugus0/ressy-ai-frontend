@@ -366,7 +366,42 @@ jobs:
         run: |
           docker run --rm -v $(pwd):/zap/wrk -t ghcr.io/zaproxy/zaproxy:stable \
             zap-baseline.py -t "https://${{ github.repository_owner }}.github.io/ressy-ai-frontend/" \
-            -J zap-production.json -w zap-production.md -r zap-production.html -a || true
+            -J zap-production.json -w zap-production.md -r zap-production.html -a \
+            > zap-baseline.log 2>&1 || true
+
+      - name: Ensure ZAP artifacts exist
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f zap-baseline.log ]; then
+            cat zap-baseline.log
+          fi
+          for file in zap-production.html zap-production.json zap-production.md; do
+            if [ ! -f "$file" ] || [ ! -s "$file" ]; then
+              echo "ZAP output $file missing; creating placeholder."
+              case "$file" in
+                *.html)
+                  printf '%s\n' \
+                    '<!DOCTYPE html>' \
+                    '<html lang="en">' \
+                    '  <head><meta charset="utf-8"><title>ZAP Baseline Report</title></head>' \
+                    '  <body>' \
+                    '    <h1>ZAP Baseline Report</h1>' \
+                    '    <p>No report was generated during this run.</p>' \
+                    '  </body>' \
+                    '</html>' > "$file"
+                  ;;
+                *.json)
+                  echo '{ "message": "No ZAP baseline JSON report was generated in this run." }' > "$file"
+                  ;;
+                *.md)
+                  echo "# ZAP Baseline Report" > "$file"
+                  echo "_No report was generated during this run._" >> "$file"
+                  ;;
+              esac
+            fi
+          done
 
       - name: Upload ZAP Production report
         if: always()

@@ -6,6 +6,11 @@ const VoiceAgents = () => {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const sampleAudio = new URL(
+    "../assets/audio/ressy-audio1.mp3",
+    import.meta.url,
+  ).href;
+
   const voiceAgents = [
     {
       id: 1,
@@ -13,6 +18,7 @@ const VoiceAgents = () => {
       industry: "Ressy Restaurant",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
       duration: "0:32",
+      audio: sampleAudio,
     },
     {
       id: 2,
@@ -20,6 +26,7 @@ const VoiceAgents = () => {
       industry: "Ressy Hair Salon",
       avatar: "https://randomuser.me/api/portraits/women/65.jpg",
       duration: "0:28",
+      audio: sampleAudio,
     },
     {
       id: 3,
@@ -27,11 +34,30 @@ const VoiceAgents = () => {
       industry: "Ressy Dental Clinic",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
       duration: "0:45",
+      audio: sampleAudio,
     },
   ];
 
-  const handlePlay = (id: number) => {
-    setPlayingId(playingId === id ? null : id);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handlePlay = (agent: (typeof voiceAgents)[number]) => {
+    if (playingId === agent.id) {
+      audioRef.current?.pause();
+      setPlayingId(null);
+      return;
+    }
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current = new Audio();
+      audioRef.current.addEventListener("ended", () => setPlayingId(null));
+    }
+
+    audioRef.current.src = agent.audio;
+    audioRef.current.currentTime = 0;
+    audioRef.current.play().catch(() => setPlayingId(null));
+    setPlayingId(agent.id);
   };
 
   // IntersectionObserver for scroll animation
@@ -122,7 +148,7 @@ const VoiceAgents = () => {
               {/* Audio Player */}
               <div className="bg-gray-50 rounded-xl px-4 py-3 flex items-center space-x-3 border border-gray-100">
                 <button
-                  onClick={() => handlePlay(agent.id)}
+                  onClick={() => handlePlay(agent)}
                   className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-md hover:scale-110 transition-all"
                 >
                   {playingId === agent.id ? (
