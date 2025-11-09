@@ -16,6 +16,7 @@ import ROICalculator from "@/components/ROICalculator";
 import ComparisonTable from "@/components/ComparisonTable";
 import DashboardSection from "@/components/DashboardSection";
 import IntegrationMarquee from "@/components/IntegrationMarquee";
+import logoWhite from "@/assets/logo-white.png";
 
 const Preloader = () => {
   const [loading, setLoading] = useState(true);
@@ -39,7 +40,7 @@ const Preloader = () => {
       }`}
     >
       <img
-        src="/logo-white.png"
+        src={logoWhite}
         alt="Loading..."
         className="w-24 h-24 animate-spin-slow"
       />
