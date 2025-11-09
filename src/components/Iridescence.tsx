@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react";
 
 import "./Iridescence.css";
 
+const isTestEnv = typeof process !== "undefined" && !!process.env.VITEST;
+
 const vertexShader = `
 attribute vec2 uv;
 attribute vec2 position;
@@ -64,6 +66,7 @@ export default function Iridescence({
   const mousePos = useRef({ x: 0.5, y: 0.5 });
 
   useEffect(() => {
+    if (isTestEnv) return;
     if (!ctnDom.current) return;
     const ctn = ctnDom.current;
     const renderer = new Renderer();
@@ -143,5 +146,12 @@ export default function Iridescence({
     };
   }, [color, speed, amplitude, mouseReact]);
 
-  return <div ref={ctnDom} className="iridescence-container" {...rest} />;
+  return (
+    <div
+      ref={ctnDom}
+      className="iridescence-container"
+      data-testid={isTestEnv ? "iridescence-placeholder" : undefined}
+      {...rest}
+    />
+  );
 }

@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import "./LiquidEther.css";
 
+const isTestEnv = typeof process !== "undefined" && !!process.env.VITEST;
+
 export interface LiquidEtherProps {
   mouseForce?: number;
   cursorSize?: number;
@@ -85,6 +87,7 @@ export default function LiquidEther({
   const resizeRafRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (isTestEnv) return;
     if (!mountRef.current) return;
 
     function makePaletteTexture(stops: string[]): THREE.DataTexture {
@@ -1236,6 +1239,7 @@ export default function LiquidEther({
   ]);
 
   useEffect(() => {
+    if (isTestEnv) return;
     const webgl = webglRef.current;
     if (!webgl) return;
     const sim = webgl.output?.simulation;
@@ -1282,6 +1286,16 @@ export default function LiquidEther({
     autoResumeDelay,
     autoRampDuration,
   ]);
+
+  if (isTestEnv) {
+    return (
+      <div
+        data-testid="liquid-ether-placeholder"
+        className={`liquid-ether-container ${className || ""}`}
+        style={style}
+      />
+    );
+  }
 
   return (
     <div

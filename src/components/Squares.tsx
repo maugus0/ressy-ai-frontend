@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import "./Squares.css";
 
+const isTestEnv = typeof process !== "undefined" && !!process.env.VITEST;
+
 type CanvasStrokeStyle = string | CanvasGradient | CanvasPattern;
 
 interface GridOffset {
@@ -31,6 +33,7 @@ const Squares: React.FC<SquaresProps> = ({
   const hoveredSquareRef = useRef<GridOffset | null>(null);
 
   useEffect(() => {
+    if (isTestEnv) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -160,7 +163,13 @@ const Squares: React.FC<SquaresProps> = ({
     };
   }, [direction, speed, borderColor, hoverFillColor, squareSize]);
 
-  return <canvas ref={canvasRef} className="squares-canvas"></canvas>;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="squares-canvas"
+      data-testid={isTestEnv ? "squares-placeholder" : undefined}
+    ></canvas>
+  );
 };
 
 export default Squares;

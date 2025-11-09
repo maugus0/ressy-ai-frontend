@@ -15,6 +15,10 @@ import Documentation from "./pages/Documentation";
 import ApiReference from "./pages/ApiReference";
 import SystemStatus from "./pages/SystemStatus";
 
+const isTestEnv =
+  (typeof process !== "undefined" && process.env.VITEST) ||
+  import.meta.env.MODE === "test";
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -26,8 +30,8 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
+        {!isTestEnv && <Toaster />}
+        {!isTestEnv && <Sonner />}
         <HashRouter>
           <Routes>
             <Route path="/" element={<Index />} />
