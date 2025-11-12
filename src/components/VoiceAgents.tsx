@@ -1,15 +1,14 @@
 import { Play, Pause, Volume2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import ressyRestaurantAudio from "@/assets/audio/ressy_restaurant_audio.mp3";
+import ressySalonAudio from "@/assets/audio/ressy_salon_audio.mp3";
+import ressyDentalAudio from "@/assets/audio/ressy_dental_audio.mp3";
 
 const VoiceAgents = () => {
   const [playingId, setPlayingId] = useState<number | null>(null);
   const [visible, setVisible] = useState(false);
+  const [durations, setDurations] = useState<Record<number, string>>({});
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  const sampleAudio = new URL(
-    "../assets/audio/ressy-audio1.mp3",
-    import.meta.url,
-  ).href;
 
   const voiceAgents = [
     {
@@ -17,26 +16,64 @@ const VoiceAgents = () => {
       title: "Restaurant Receptionist",
       industry: "Ressy Restaurant",
       avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-      duration: "0:32",
-      audio: sampleAudio,
+      audio: ressyRestaurantAudio,
     },
     {
       id: 2,
       title: "Salon Receptionist",
       industry: "Ressy Hair Salon",
       avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-      duration: "0:28",
-      audio: sampleAudio,
+      audio: ressySalonAudio,
     },
     {
       id: 3,
       title: "Dental Receptionist",
       industry: "Ressy Dental Clinic",
       avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-      duration: "0:45",
-      audio: sampleAudio,
+      audio: ressyDentalAudio,
     },
   ];
+
+  // Format seconds to MM:SS
+  const formatDuration = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  // Load audio durations
+  useEffect(() => {
+    const loadDurations = async () => {
+      const durationMap: Record<number, string> = {};
+
+      const audioSources = [
+        { id: 1, audio: ressyRestaurantAudio },
+        { id: 2, audio: ressySalonAudio },
+        { id: 3, audio: ressyDentalAudio },
+      ];
+
+      for (const { id, audio } of audioSources) {
+        try {
+          const audioElement = new Audio(audio);
+          await new Promise<void>((resolve, reject) => {
+            audioElement.addEventListener("loadedmetadata", () => {
+              durationMap[id] = formatDuration(audioElement.duration);
+              resolve();
+            });
+            audioElement.addEventListener("error", reject);
+            audioElement.load();
+          });
+        } catch (error) {
+          console.error(`Failed to load duration for agent ${id}:`, error);
+          durationMap[id] = "0:00";
+        }
+      }
+
+      setDurations(durationMap);
+    };
+
+    loadDurations();
+  }, []);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -180,7 +217,9 @@ const VoiceAgents = () => {
                 </div>
 
                 {/* Duration */}
-                <span className="text-xs text-gray-500">{agent.duration}</span>
+                <span className="text-xs text-gray-500">
+                  {durations[agent.id] || "0:00"}
+                </span>
               </div>
             </div>
           ))}
