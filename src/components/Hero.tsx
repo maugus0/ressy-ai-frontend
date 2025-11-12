@@ -3,12 +3,68 @@ import DemoMockup from "./DemoMockup";
 import LiquidEther from "./LiquidEther";
 import Iridescence from "./Iridescence";
 import { toast } from "@/hooks/use-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handlePlayDemo = () => {
+    const hash = "#voice-agents";
+
+    // If not on home, navigate to home and request scroll there
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: hash } });
+      return;
+    }
+
+    // If on home page, scroll to the section
+    const prefersReduced =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const target = document.querySelector(hash) as HTMLElement | null;
+    if (!target) return;
+
+    // If reduced motion preferred, use instant scroll
+    if (prefersReduced) {
+      const navOffset = 80;
+      const targetY =
+        target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+      window.scrollTo(0, targetY);
+      return;
+    }
+
+    const navOffset = 80; // approximate fixed navbar height
+    const targetY =
+      target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+
+    // Try native smooth scrolling first
+    if ("scrollBehavior" in document.documentElement.style) {
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+      return;
+    }
+
+    // Fallback JS animation
+    const startY = window.pageYOffset;
+    const distance = targetY - startY;
+    const duration = 800;
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    let startTime: number | null = null;
+    const step = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+      window.scrollTo(0, startY + distance * eased);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
 
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
@@ -57,7 +113,10 @@ const Hero = () => {
               >
                 Start free trial
               </button>
-              <button className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:from-gray-700 hover:via-gray-800 hover:to-black hover:shadow-xl hover:scale-105 transition-all duration-300 text-sm sm:text-base">
+              <button
+                onClick={handlePlayDemo}
+                className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:from-gray-700 hover:via-gray-800 hover:to-black hover:shadow-xl hover:scale-105 transition-all duration-300 text-sm sm:text-base"
+              >
                 <span className="flex items-center justify-center gap-2">
                   <svg
                     className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 group-hover:text-purple-300 transition-colors"
