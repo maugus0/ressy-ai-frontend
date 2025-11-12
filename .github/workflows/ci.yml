@@ -210,7 +210,7 @@ jobs:
       contents: write
     environment:
       name: github-pages
-      url: https://${{ github.repository_owner }}.github.io/ressy-ai-frontend/
+      url: https://ressy.ai
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -254,7 +254,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          URL="https://${{ github.repository_owner }}.github.io/ressy-ai-frontend/"
+          URL="https://ressy.ai"
           ORIGIN=$(echo "$URL" | sed -E 's#^(https?://[^/]+)/.*#\1#')
           echo "Checking $URL ..."
           for i in {1..24}; do
@@ -304,7 +304,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          export URL="https://${{ github.repository_owner }}.github.io/ressy-ai-frontend/"
+          export URL="https://ressy.ai"
           cat > smoke.cjs << 'JS'
           const { chromium } = require('playwright');
           (async () => {
@@ -365,7 +365,7 @@ jobs:
       - name: OWASP ZAP Baseline on Production
         run: |
           docker run --rm -v $(pwd):/zap/wrk -t ghcr.io/zaproxy/zaproxy:stable \
-            zap-baseline.py -t "https://${{ github.repository_owner }}.github.io/ressy-ai-frontend/" \
+            zap-baseline.py -t "https://ressy.ai" \
             -J zap-production.json -w zap-production.md -r zap-production.html -a \
             > zap-baseline.log 2>&1 || true
 

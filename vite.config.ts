@@ -6,8 +6,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Use '/' in dev; use repo subpath in production for GitHub Pages
-  base: mode === "production" ? "/ressy-ai-frontend/" : "/",
+  // Use '/' for both dev and production (custom domain ressy.ai)
+  base: "/",
   server: {
     host: "::",
     port: 8080,
