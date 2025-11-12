@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
@@ -16,47 +16,6 @@ import ROICalculator from "@/components/ROICalculator";
 import ComparisonTable from "@/components/ComparisonTable";
 import DashboardSection from "@/components/DashboardSection";
 import IntegrationMarquee from "@/components/IntegrationMarquee";
-import logoWhite from "@/assets/logo-white.png";
-
-const Preloader = () => {
-  const [loading, setLoading] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(() => setLoading(false), 800);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!loading) return null;
-
-  return (
-    <div
-      className={`fixed inset-0 flex items-center justify-center bg-black z-[9999] transition-opacity duration-700 ${
-        fadeOut ? "opacity-0" : "opacity-100"
-      }`}
-    >
-      <img
-        src={logoWhite}
-        alt="Loading..."
-        className="w-24 h-24 animate-spin-slow"
-      />
-      <style>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 3s linear infinite;
-          filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
-        }
-      `}</style>
-    </div>
-  );
-};
 
 const Index = () => {
   const location = useLocation();
@@ -110,8 +69,6 @@ const Index = () => {
 
   return (
     <>
-      {/* Added Preloader */}
-      <Preloader />
       <div className="min-h-screen relative overflow-hidden from-background via-muted/20 to-accent/10">
         {/* Interactive animated background */}
         <div className="absolute inset-0 -z-20">
