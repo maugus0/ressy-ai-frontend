@@ -101,7 +101,7 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
         preferredTime: "",
         message: "",
       });
-    } catch (err) {
+    } catch (_err) {
       toast({
         title: "Could not send your request",
         description: "Please try again in a moment or email info@ressy.ai",

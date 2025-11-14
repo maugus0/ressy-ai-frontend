@@ -1,12 +1,12 @@
 import {
-  Heart,
+  // Heart,
   Mail,
   Phone,
   MapPin,
   Linkedin,
-  Twitter,
+  // Twitter,
   Instagram,
-  X,
+  // X,
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;

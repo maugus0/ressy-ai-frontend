@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+// import { toast } from "@/hooks/use-toast";
+import { useNavigate, /* Link, */ useLocation } from "react-router-dom";
 const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;
 import ScheduleDemoModal from "./ScheduleDemoModal";
 

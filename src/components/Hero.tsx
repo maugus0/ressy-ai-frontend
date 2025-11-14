@@ -1,8 +1,8 @@
 import { useState } from "react";
 import DemoMockup from "./DemoMockup";
-import LiquidEther from "./LiquidEther";
+// import LiquidEther from "./LiquidEther";
 import Iridescence from "./Iridescence";
-import { toast } from "@/hooks/use-toast";
+// import { toast } from "@/hooks/use-toast";
 import { useNavigate, useLocation } from "react-router-dom";
 import ScheduleDemoModal from "./ScheduleDemoModal";
 

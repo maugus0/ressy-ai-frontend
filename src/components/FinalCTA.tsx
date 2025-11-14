@@ -1,20 +1,20 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { /* ArrowRight, */ Sparkles } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {} from /* useNavigate */ "react-router-dom";
 import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const FinalCTA = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // const navigate = useNavigate();
+  // const [email, setEmail] = useState("");
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    // Here you would typically send the email to your backend
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setIsSubmitted(true);
+  //   // Here you would typically send the email to your backend
+  //   setTimeout(() => setIsSubmitted(false), 3000);
+  // };
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 py-24 bg-gradient-to-br from-primary/5 via-background to-primary/10 relative overflow-hidden">
