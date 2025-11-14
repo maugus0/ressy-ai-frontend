@@ -67,6 +67,63 @@ const Index = () => {
     }
   }, [location, navigate]);
 
+  // Viewport reveal + parallax
+  useEffect(() => {
+    const prefersReduced =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Intersection reveal
+    let observer: IntersectionObserver | null = null;
+    if (!prefersReduced && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+            }
+          }
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+      );
+      document
+        .querySelectorAll<HTMLElement>("[data-reveal]")
+        .forEach((el) => observer && observer.observe(el));
+    } else {
+      // Immediately reveal for reduced motion
+      document
+        .querySelectorAll<HTMLElement>("[data-reveal]")
+        .forEach((el) => el.classList.add("is-revealed"));
+    }
+
+    // Parallax
+    const parallaxEls = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-parallax]"),
+    );
+    let ticking = false;
+    const onScroll = () => {
+      if (prefersReduced) return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY || window.pageYOffset;
+          parallaxEls.forEach((el) => {
+            const speed = parseFloat(el.dataset.parallax || "0.1");
+            const translate = Math.round(scrollY * speed);
+            el.style.transform = `translateY(${translate}px)`;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     <>
       <div className="min-h-screen relative overflow-hidden from-background via-muted/20 to-accent/10">
@@ -82,7 +139,7 @@ const Index = () => {
           <Hero />
 
           {/* ✅ Your sections */}
-          <section className="relative">
+          <section className="relative" data-reveal data-delay="0">
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
@@ -91,7 +148,7 @@ const Index = () => {
             <IndustrySolutions />
           </section>
 
-          <section className="relative">
+          <section className="relative" data-reveal data-delay="80">
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
@@ -100,7 +157,7 @@ const Index = () => {
             <VoiceAgents />
           </section>
 
-          <section className="relative">
+          <section className="relative" data-reveal data-delay="120">
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
@@ -109,7 +166,7 @@ const Index = () => {
             <DashboardSection />
           </section>
 
-          <section className="relative">
+          <section className="relative" data-reveal data-delay="160">
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
@@ -121,16 +178,16 @@ const Index = () => {
           <ROICalculator />
           <ComparisonTable />
 
-          <section className="relative">
+          {/* <section className="relative" data-reveal data-delay="200">
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-tr from-rose-50/40 via-pink-50/20 to-purple-50/40"></div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(236,72,153,0.08),transparent_50%)]"></div>
               <div className="absolute inset-0 bg-[linear-gradient(60deg,transparent_40%,rgba(236,72,153,0.02)_50%,transparent_60%)]"></div>
             </div>
             <SocialProof />
-          </section>
+          </section> */}
 
-          <section className="relative">
+          <section className="relative" data-reveal data-delay="240">
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-t from-slate-100/60 via-gray-50/40 to-white"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.08),transparent_70%)]"></div>
@@ -139,11 +196,14 @@ const Index = () => {
             <FinalCTA />
           </section>
 
-          <section className="relative">
+          <section className="relative" data-reveal data-delay="280">
             <div className="absolute inset-0 -z-10">
               <div className="absolute inset-0 bg-gradient-to-bl from-green-50/40 via-emerald-50/20 to-teal-50/40"></div>
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,185,129,0.02)_0%,transparent_50%,rgba(16,185,129,0.02)_100%)] bg-[length:100px_100px]"></div>
-              <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-to-tr from-emerald-300/6 to-teal-300/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
+              <div
+                data-parallax="0.18"
+                className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-to-tr from-emerald-300/6 to-teal-300/3 rounded-full blur-3xl animate-pulse delay-1000"
+              ></div>
             </div>
             <FAQ />
           </section>
@@ -155,6 +215,15 @@ const Index = () => {
           .delay-1000 { animation-delay: 1s; }
           .delay-2000 { animation-delay: 2s; }
           .delay-4000 { animation-delay: 4s; }
+          /* Reveal transitions */
+          [data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+          .is-revealed { opacity: 1; transform: translateY(0); }
+          [data-reveal][data-delay="80"] { transition-delay: .08s; }
+          [data-reveal][data-delay="120"] { transition-delay: .12s; }
+          [data-reveal][data-delay="160"] { transition-delay: .16s; }
+          [data-reveal][data-delay="200"] { transition-delay: .2s; }
+          [data-reveal][data-delay="240"] { transition-delay: .24s; }
+          [data-reveal][data-delay="280"] { transition-delay: .28s; }
         `}</style>
       </div>
     </>

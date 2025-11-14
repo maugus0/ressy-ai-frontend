@@ -14,6 +14,9 @@ import HelpCenter from "./pages/HelpCenter";
 import Documentation from "./pages/Documentation";
 import ApiReference from "./pages/ApiReference";
 import SystemStatus from "./pages/SystemStatus";
+import Restaurant from "./pages/Restaurant";
+import Salons from "./pages/Salons";
+import Dental from "./pages/Dental";
 
 const isTestEnv =
   (typeof process !== "undefined" && process.env.VITEST) ||
@@ -35,6 +38,9 @@ const App = () => {
         <HashRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/solutions/restaurant" element={<Restaurant />} />
+            <Route path="/solutions/salons" element={<Salons />} />
+            <Route path="/solutions/dental" element={<Dental />} />
             <Route path="/schedule-demo" element={<ScheduleDemo />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
