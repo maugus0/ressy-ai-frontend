@@ -184,14 +184,14 @@ const IntegrationMarquee = () => {
       className="relative w-full py-16 bg-gradient-to-b from-white via-purple-50/40 to-teal-50/30 overflow-hidden scroll-mt-28"
     >
       {/* Heading */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-6 sm:mb-10">
         <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900">
           Integrates with your{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-teal-500">
             Existing Stack
           </span>
         </h2>
-        <p className="mt-3 text-sm sm:text-base text-gray-600">
+        <p className="mt-2 sm:mt-3 text-sm sm:text-base text-gray-600">
           Connect your favorite tools in seconds. No heavy setup.
         </p>
       </div>
@@ -234,7 +234,7 @@ const IntegrationMarquee = () => {
         </svg>
 
         {/* Section intro text */}
-        <div className="mx-auto max-w-3xl text-center mb-10">
+        <div className="mx-auto max-w-3xl text-center mb-6 sm:mb-8">
           <p className="text-gray-600 text-sm sm:text-base">
             Seamless connections to the tools you already trust. No custom code
             required.

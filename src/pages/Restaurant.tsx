@@ -1,41 +1,17 @@
-import {
-  ArrowLeft,
-  Calendar,
-  UtensilsCrossed,
-  Clock,
-  Users,
-  Phone,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import ScheduleDemoModal from "@/components/ScheduleDemoModal";
+import { useEffect } from "react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Calendar, UtensilsCrossed, Clock, Users, Phone } from "lucide-react";
 
 const Restaurant = () => {
-  const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => navigate("/")}
-              className="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span className="font-medium">Back to Home</span>
-            </button>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="px-4 py-2 rounded-full bg-black text-white text-sm font-semibold hover:scale-105 transition"
-            >
-              Schedule a demo
-            </button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-white">
+      <Navigation />
 
-      <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 via-white to-indigo-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-600 text-sm font-medium mb-6">
@@ -113,12 +89,6 @@ const Restaurant = () => {
               </li>
             </ul>
             <div className="mt-6 flex flex-col sm:flex-row items-center gap-3">
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="px-6 py-3 rounded-full bg-black text-white font-semibold hover:scale-105 transition"
-              >
-                Get a restaurant demo
-              </button>
               <a
                 href="tel:+12345678900"
                 className="inline-flex items-center text-gray-700 hover:text-purple-600 transition"
@@ -209,12 +179,7 @@ const Restaurant = () => {
           </div>
         </div>
       </main>
-
-      {/* Schedule Demo Modal */}
-      <ScheduleDemoModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      <Footer />
     </div>
   );
 };

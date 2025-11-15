@@ -194,7 +194,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  to="/solutions/restaurant"
+                  to="/restaurants"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Restaurants
@@ -202,25 +202,43 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/solutions/salons"
+                  to="/salons"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
-                  Salons & Spas
+                  Salons
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/solutions/dental"
+                  to="/dental"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Dental Clinics
                 </Link>
               </li>
+              <li>
+                <a
+                  href="#usecases"
+                  onClick={handleHashLink("#usecases")}
+                  className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
+                >
+                  Retail Stores
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#usecases"
+                  onClick={handleHashLink("#usecases")}
+                  className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
+                >
+                  Enterprise
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Support */}
-          {/* <div className="space-y-6">
+          <div className="space-y-6">
             <h3 className="text-slate-900 font-semibold text-lg">Support</h3>
             <ul className="space-y-3">
               <li>
@@ -264,7 +282,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div> */}
+          </div>
         </div>
 
         {/* Contact info section */}
@@ -291,10 +309,10 @@ const Footer = () => {
               <div>
                 <p className="text-slate-500 text-sm">Call us</p>
                 <a
-                  href="tel:+1-2345678900"
+                  href="tel:+1 (234) 567 8900"
                   className="text-slate-800 hover:text-purple-600 transition-colors duration-300"
                 >
-                  +1(234)5678900
+                  +1 (234) 567 8900
                 </a>
               </div>
             </div>
