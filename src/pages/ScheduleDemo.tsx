@@ -26,16 +26,63 @@ const ScheduleDemo = () => {
     preferredTime: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Integrate with actual scheduling API
-    toast({
-      title: "Demo Request Received!",
-      description:
-        "Our team will contact you within 24 hours to confirm your demo.",
-    });
-    setTimeout(() => navigate("/"), 2000);
+    if (submitting) return;
+    setSubmitting(true);
+    try {
+      const ACCESS_KEY = "5f9a6bfe-1a62-477a-8d68-8b268cb5f597";
+      const payload = {
+        access_key: ACCESS_KEY,
+        subject: "New Schedule Demo Request",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        industry: formData.industry,
+        preferredDate: formData.preferredDate,
+        preferredTime: formData.preferredTime,
+        message: formData.message,
+        to: "ahanj049@gmail.com",
+      };
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({} as any));
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.message || `Web3Forms failed (${res.status})`);
+      }
+      toast({
+        title: "Demo request sent!",
+        description: "We'll reach out within 24 hours to schedule your call.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        industry: "",
+        preferredDate: "",
+        preferredTime: "",
+        message: "",
+      });
+      setTimeout(() => navigate("/"), 1200);
+    } catch (err) {
+      console.error("Schedule demo error:", err);
+      toast({
+        title: "Could not send your request",
+        description: "Please try again in a moment or email info@ressy.ai",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -257,9 +304,10 @@ const ScheduleDemo = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                disabled={submitting}
+                className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-semibold text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Schedule My Demo
+                {submitting ? "Sending..." : "Schedule My Demo"}
               </Button>
 
               <p className="text-sm text-gray-500 text-center">
