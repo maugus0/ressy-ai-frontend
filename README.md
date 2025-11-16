@@ -1,5 +1,7 @@
 ## RessyAI Promotional Website – Local Setup (npm)
 
+Promotional website for a cloud-based conversational AI interface for restaurants.
+
 Follow these steps to set up and run the RessyAI promotional website locally using npm:
 
 ### Prerequisites
@@ -93,19 +95,10 @@ npm run test:ci
 
 ---
 
-## GitHub Actions – Required Secrets
-
-To allow the CI/CD pipeline in `.github/workflows/ci.yml` to run end-to-end, configure the following repository secrets in **Settings → Secrets and variables → Actions**:
-
-| Secret        | Purpose                                                                                  |
-| ------------- | ---------------------------------------------------------------------------------------- |
-| `SONAR_TOKEN` | Authentication token for SonarCloud analysis. Generate one from your SonarCloud account. |
-| `SNYK_TOKEN`  | API token for Snyk Open Source scanning. Obtain from your Snyk account.                  |
-
-The workflow also relies on the built-in `GITHUB_TOKEN` for publishing Docker images, uploading SARIF files, and deploying to GitHub Pages—no action needed unless you have custom permissions.
-
-If you intend to push Docker images to a private GitHub Container Registry, ensure the repository has the `packages` permission enabled and your organization allows fine-grained tokens if applicable.
+For troubleshooting, see console output for errors or check your Node/npm versions.
 
 ---
 
-For troubleshooting, see console output for errors or check your Node/npm versions.
+## Credits
+
+Developed by the RessyAI Team.

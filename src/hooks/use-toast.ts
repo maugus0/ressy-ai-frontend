@@ -4,6 +4,7 @@ import type { ToastActionElement, ToastProps } from "@/components/ui/toast";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
+const AUTO_DISMISS_DELAY = 7000; // auto-close after 7s
 
 type ToasterToast = ToastProps & {
   id: string;
@@ -157,6 +158,15 @@ function toast({ ...props }: Toast) {
       },
     },
   });
+
+  // Auto-dismiss after a short delay to keep UX tidy
+  try {
+    setTimeout(() => {
+      dismiss();
+    }, AUTO_DISMISS_DELAY);
+  } catch {
+    // ignore timer errors
+  }
 
   return {
     id: id,

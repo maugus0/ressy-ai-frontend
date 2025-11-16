@@ -65,8 +65,11 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
     setSubmitting(true);
 
     try {
-      const payload = new URLSearchParams({
-        _subject: "New Schedule Demo Request",
+      // Web3Forms – reliable and CORS-friendly
+      const ACCESS_KEY = "5f9a6bfe-1a62-477a-8d68-8b268cb5f597";
+      const basePayload = {
+        access_key: ACCESS_KEY,
+        subject: "New Schedule Demo Request",
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -75,16 +78,25 @@ const ScheduleDemoModal = ({ isOpen, onClose }: ScheduleDemoModalProps) => {
         preferredDate: formData.preferredDate,
         preferredTime: formData.preferredTime,
         message: formData.message,
-        _captcha: "false",
-      });
+      };
 
-      const res = await fetch("https://formsubmit.co/ajax/info@ressy.ai", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: payload.toString(),
-      });
+      const submitOnce = async (to: string) => {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({ ...basePayload, to }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data?.success) {
+          throw new Error(data?.message || `Web3Forms failed (${res.status})`);
+        }
+      };
 
-      if (!res.ok) throw new Error(`Email failed (${res.status})`);
+      // Send to single recipient as requested
+      await submitOnce("ahanj049@gmail.com");
 
       toast({
         title: "Demo request sent!",
