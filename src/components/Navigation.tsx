@@ -13,6 +13,7 @@ const Navigation = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [mobileUsecasesOpen, setMobileUsecasesOpen] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -105,13 +106,40 @@ const Navigation = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-gray-700 font-medium">
-            <a
-              href="#usecases"
-              onClick={(e) => handleNavClick(e, "#usecases")}
-              className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
-            >
-              Use Cases
-            </a>
+            <span className="relative group">
+              <a
+                href="#usecases"
+                onClick={(e) => handleNavClick(e, "#usecases")}
+                className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
+              >
+                Use Cases
+              </a>
+              {/* Dropdown */}
+              <div className="pointer-events-none absolute left-0 top-full pt-2 z-50">
+                <div className="pointer-events-auto invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-150 w-56 rounded-xl border border-gray-200 bg-white shadow-lg">
+                  <div className="py-2">
+                  <Link
+                    to="/restaurants"
+                    className="block px-4 py-2.5 hover:bg-gray-50"
+                  >
+                    Restaurants
+                  </Link>
+                  <Link
+                    to="/salons"
+                    className="block px-4 py-2.5 hover:bg-gray-50"
+                  >
+                    Salons
+                  </Link>
+                  <Link
+                    to="/dental"
+                    className="block px-4 py-2.5 hover:bg-gray-50"
+                  >
+                    Dental
+                  </Link>
+                  </div>
+                </div>
+              </div>
+            </span>
 
             <a
               href="#voice-agents"
@@ -176,48 +204,31 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {mobileOpen && (
           <div className="mt-4 md:hidden flex flex-col space-y-3 text-gray-700 font-medium animate-fade-in">
-            <a
-              href="#usecases"
-              onClick={(e) => handleNavClick(e, "#usecases")}
-              className="hover:text-black"
+            <button
+              type="button"
+              onClick={() => setMobileUsecasesOpen((o) => !o)}
+              className="flex items-center justify-between w-full text-left hover:text-black"
+              aria-expanded={mobileUsecasesOpen}
             >
-              Use Cases
-            </a>
-            <a
-              href="#voice-agents"
-              onClick={(e) => handleNavClick(e, "#voice-agents")}
-              className="hover:text-black"
-            >
-              Voice Agents
-            </a>
-            <a
-              href="#dashboard"
-              onClick={(e) => handleNavClick(e, "#dashboard")}
-              className="hover:text-black"
-            >
-              Dashboard
-            </a>
-            <a
-              href="#integrations"
-              onClick={(e) => handleNavClick(e, "#integrations")}
-              className="hover:text-black"
-            >
-              Integrations
-            </a>
-            <a
-              href="#roi"
-              onClick={(e) => handleNavClick(e, "#roi")}
-              className="hover:text-black"
-            >
-              Pricing
-            </a>
-            <a
-              href="#faq"
-              onClick={(e) => handleNavClick(e, "#faq")}
-              className="hover:text-black"
-            >
-              FAQ
-            </a>
+              <span>Use Cases</span>
+              <span className={`transition-transform ${mobileUsecasesOpen ? "rotate-180" : ""}`}>
+                ▾
+              </span>
+            </button>
+            {mobileUsecasesOpen && (
+              <div className="ml-3 flex flex-col space-y-2">
+                <Link to="/restaurants" className="hover:text-black" onClick={() => setMobileOpen(false)}>
+                  Restaurants
+                </Link>
+                <Link to="/salons" className="hover:text-black" onClick={() => setMobileOpen(false)}>
+                  Salons
+                </Link>
+                <Link to="/dental" className="hover:text-black" onClick={() => setMobileOpen(false)}>
+                  Dental
+                </Link>
+              </div>
+            )}
+            {/* Keep main nav lightweight on mobile; anchors removed per request */}
             <Button
               className="bg-black text-white font-semibold rounded-full w-full"
               onClick={() => setIsModalOpen(true)}

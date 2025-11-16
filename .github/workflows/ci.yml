@@ -89,33 +89,28 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  security-scan:
-    name: Security Scan (Snyk OSS)
+  osv-scan:
+    name: Dependency Security Scan (OSV-Scanner)
     runs-on: ubuntu-latest
     needs: [lint-quality, unit-tests]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup Snyk CLI
-        uses: snyk/actions/setup@master
-
-      - name: Snyk Open Source scan
-        id: snyk
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: |
-          snyk auth "$SNYK_TOKEN"
-          snyk test \
-            --severity-threshold=high \
-            --sarif-file-output=snyk.sarif
-
-      - name: Upload Snyk SARIF artifact
-        if: always() && hashFiles('snyk.sarif') != ''
+      - name: OSV-Scanner
+        id: osv
+        uses: google/osv-scanner-action@v1
+        continue-on-error: true
+        with:
+          scan-args: >-
+            --lockfile=package-lock.json
+            --format=sarif
+            --output=osv.sarif
+      - name: Upload OSV SARIF artifact
+        if: always() && hashFiles('osv.sarif') != ''
         uses: actions/upload-artifact@v4
         with:
-          name: snyk-sarif
-          path: snyk.sarif
+          name: osv-sarif
+          path: osv.sarif
 
   build-verification:
     name: Build Verification
@@ -147,7 +142,7 @@ jobs:
   docker-build:
     name: Build Docker Image & Trivy Scan
     runs-on: ubuntu-latest
-    needs: [lint-quality, unit-tests, build-verification, security-scan]
+    needs: [lint-quality, unit-tests, build-verification, osv-scan]
     permissions:
       contents: read
       packages: write
@@ -434,7 +429,7 @@ jobs:
             echo "## Artifacts";
             COV=$(ls reports/**/lcov.info 2>/dev/null | head -n1 || true); if [ -n "$COV" ]; then echo "- Coverage: $COV"; fi
             ESL=$(ls reports/**/eslint*.sarif 2>/dev/null | head -n1 || true); if [ -n "$ESL" ]; then echo "- ESLint SARIF: $ESL"; fi
-            SYN=$(ls reports/**/snyk*.sarif 2>/dev/null | head -n1 || true); if [ -n "$SYN" ]; then echo "- Snyk SARIF: $SYN"; fi
+            OSV=$(ls reports/**/osv*.sarif 2>/dev/null | head -n1 || true); if [ -n "$OSV" ]; then echo "- OSV SARIF: $OSV"; fi
             TRV=$(ls reports/**/trivy-results.json 2>/dev/null | head -n1 || true); if [ -n "$TRV" ]; then echo "- Trivy JSON: $TRV"; fi
             ZAP_PROD=$(ls reports/**/zap-production.html 2>/dev/null | head -n1 || true); if [ -n "$ZAP_PROD" ]; then echo "- ZAP Production: $ZAP_PROD"; fi
           } > summary.md
