@@ -13,14 +13,17 @@ const SocialProof = () => {
             <span className="text-primary">ressy.ai</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            We’re about to launch our pilot and many businesses across Canada are already on our waitlist.
-            Join them today to be among the first to experience AI-powered reception that books, answers, and follows up.
+            We’re about to launch our pilot and many businesses across Canada
+            are already on our waitlist. Join them today to be among the first
+            to experience AI-powered reception that books, answers, and follows
+            up.
           </p>
         </div>
 
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-10 text-center">
           <p className="text-base sm:text-lg text-gray-700 mb-6">
-            Pilot cohorts fill up quickly. Secure your spot and we’ll reach out with next steps.
+            Pilot cohorts fill up quickly. Secure your spot and we’ll reach out
+            with next steps.
           </p>
           <a
             href="/schedule-demo"

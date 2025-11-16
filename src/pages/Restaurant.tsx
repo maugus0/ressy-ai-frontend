@@ -57,7 +57,9 @@ const Restaurant = () => {
               <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
                 <Users className="w-5 h-5 text-purple-600" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Loyalty & notes</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                Loyalty & notes
+              </h3>
               <p className="text-gray-600">
                 Recognizes VIPs, stores notes, and personalizes the experience.
               </p>
@@ -99,7 +101,9 @@ const Restaurant = () => {
           {/* Outcomes */}
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-2xl p-6 border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Fewer missed calls</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">
+                Fewer missed calls
+              </h3>
               <p className="text-gray-600 text-sm">
                 Answer 100% of calls during rush with instant triage and SMS
                 follow‑ups.
@@ -114,7 +118,9 @@ const Restaurant = () => {
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6 border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Happier guests</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">
+                Happier guests
+              </h3>
               <p className="text-gray-600 text-sm">
                 Remember preferences, allergies, and notes for a consistent
                 experience.
@@ -179,5 +185,3 @@ const Restaurant = () => {
 };
 
 export default Restaurant;
-
-

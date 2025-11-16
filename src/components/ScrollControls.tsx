@@ -8,7 +8,8 @@ const ScrollControls = () => {
   useEffect(() => {
     const updateVisibility = () => {
       const scrollY = window.scrollY || window.pageYOffset;
-      const viewportH = window.innerHeight || document.documentElement.clientHeight;
+      const viewportH =
+        window.innerHeight || document.documentElement.clientHeight;
       const docH =
         Math.max(
           document.body.scrollHeight,
@@ -74,5 +75,3 @@ const ScrollControls = () => {
 };
 
 export default ScrollControls;
-
-

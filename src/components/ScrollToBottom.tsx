@@ -17,5 +17,3 @@ const ScrollToBottom = ({ enabled = false }: ScrollToBottomProps) => {
 };
 
 export default ScrollToBottom;
-
-

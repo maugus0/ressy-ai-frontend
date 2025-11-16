@@ -118,24 +118,24 @@ const Navigation = () => {
               <div className="pointer-events-none absolute left-0 top-full pt-2 z-50">
                 <div className="pointer-events-auto invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-150 w-56 rounded-xl border border-gray-200 bg-white shadow-lg">
                   <div className="py-2">
-                  <Link
-                    to="/restaurants"
-                    className="block px-4 py-2.5 hover:bg-gray-50"
-                  >
-                    Restaurants
-                  </Link>
-                  <Link
-                    to="/salons"
-                    className="block px-4 py-2.5 hover:bg-gray-50"
-                  >
-                    Salons
-                  </Link>
-                  <Link
-                    to="/dental"
-                    className="block px-4 py-2.5 hover:bg-gray-50"
-                  >
-                    Dental
-                  </Link>
+                    <Link
+                      to="/restaurants"
+                      className="block px-4 py-2.5 hover:bg-gray-50"
+                    >
+                      Restaurants
+                    </Link>
+                    <Link
+                      to="/salons"
+                      className="block px-4 py-2.5 hover:bg-gray-50"
+                    >
+                      Salons
+                    </Link>
+                    <Link
+                      to="/dental"
+                      className="block px-4 py-2.5 hover:bg-gray-50"
+                    >
+                      Dental
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -211,19 +211,33 @@ const Navigation = () => {
               aria-expanded={mobileUsecasesOpen}
             >
               <span>Use Cases</span>
-              <span className={`transition-transform ${mobileUsecasesOpen ? "rotate-180" : ""}`}>
+              <span
+                className={`transition-transform ${mobileUsecasesOpen ? "rotate-180" : ""}`}
+              >
                 ▾
               </span>
             </button>
             {mobileUsecasesOpen && (
               <div className="ml-3 flex flex-col space-y-2">
-                <Link to="/restaurants" className="hover:text-black" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/restaurants"
+                  className="hover:text-black"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Restaurants
                 </Link>
-                <Link to="/salons" className="hover:text-black" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/salons"
+                  className="hover:text-black"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Salons
                 </Link>
-                <Link to="/dental" className="hover:text-black" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/dental"
+                  className="hover:text-black"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Dental
                 </Link>
               </div>

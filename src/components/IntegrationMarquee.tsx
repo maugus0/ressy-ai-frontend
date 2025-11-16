@@ -114,7 +114,11 @@ const IntegrationMarquee = () => {
         title: "MyCase",
         summary: "Push client intake, notes, and tasks into your case system.",
         learnMore: "https://www.mycase.com/integrations/",
-        bullets: ["Create clients and matters", "Attach call notes and documents", "Update case statuses"],
+        bullets: [
+          "Create clients and matters",
+          "Attach call notes and documents",
+          "Update case statuses",
+        ],
       },
       Salesforce: {
         title: "Salesforce",
@@ -259,7 +263,9 @@ const IntegrationMarquee = () => {
                 animationDelay: `${(idx % 6) * 120}ms`,
                 ["--d" as any]: `${(idx % 5) * 0.2}s`,
               }}
-              onClick={() => setActive({ alt: logo.alt, src: logo.src as string })}
+              onClick={() =>
+                setActive({ alt: logo.alt, src: logo.src as string })
+              }
             >
               <div className="flex items-center justify-center h-24 sm:h-28 lg:h-28 px-4 animate-fade-up">
                 <img
@@ -312,8 +318,8 @@ const IntegrationMarquee = () => {
                             id="integration-dialog-title"
                             className="text-xl sm:text-2xl font-semibold text-slate-900"
                           >
-                            {details[active.alt as keyof typeof details]?.title ||
-                              active.alt}
+                            {details[active.alt as keyof typeof details]
+                              ?.title || active.alt}
                           </h3>
                           <p className="mt-1 text-sm text-slate-700 max-w-2xl">
                             {details[active.alt as keyof typeof details]
@@ -331,15 +337,16 @@ const IntegrationMarquee = () => {
                         <div className="mb-3">
                           <dt className="text-slate-500">Company</dt>
                           <dd className="font-medium text-slate-800">
-                            {details[active.alt as keyof typeof details]?.title ||
-                              active.alt}
+                            {details[active.alt as keyof typeof details]
+                              ?.title || active.alt}
                           </dd>
                         </div>
                         <div className="mb-3">
                           <dt className="text-slate-500">Categories</dt>
                           <dd className="font-medium text-slate-800">
-                            {(details[active.alt as keyof typeof details] as any)
-                              ?.category || "CRM"}
+                            {(
+                              details[active.alt as keyof typeof details] as any
+                            )?.category || "CRM"}
                           </dd>
                         </div>
                         <div className="mb-3">
@@ -347,15 +354,20 @@ const IntegrationMarquee = () => {
                           <dd className="font-medium">
                             <ul className="space-y-1">
                               {(
-                                ((details[
-                                  active.alt as keyof typeof details
-                                ] as any)?.worksWith ?? [
+                                (
+                                  details[
+                                    active.alt as keyof typeof details
+                                  ] as any
+                                )?.worksWith ?? [
                                   "Virtual Receptionists",
                                   "Outreach Campaigns",
-                                ])
+                                ]
                               ).map((w: string, i: number) => (
                                 <li key={i}>
-                                  <a href="#" className="text-emerald-700 hover:underline">
+                                  <a
+                                    href="#"
+                                    className="text-emerald-700 hover:underline"
+                                  >
                                     {w}
                                   </a>
                                 </li>
@@ -366,8 +378,9 @@ const IntegrationMarquee = () => {
                         <div className="mb-3">
                           <dt className="text-slate-500">Integration type</dt>
                           <dd className="font-medium text-slate-800">
-                            {(details[active.alt as keyof typeof details] as any)
-                              ?.type || "Native"}
+                            {(
+                              details[active.alt as keyof typeof details] as any
+                            )?.type || "Native"}
                           </dd>
                         </div>
                         <div className="mt-5 flex items-center gap-3">
@@ -380,8 +393,11 @@ const IntegrationMarquee = () => {
                           </Link>
                           <a
                             href={
-                              (details[active.alt as keyof typeof details] as any)
-                                ?.learnMore || "#"
+                              (
+                                details[
+                                  active.alt as keyof typeof details
+                                ] as any
+                              )?.learnMore || "#"
                             }
                             target="_blank"
                             rel="noopener noreferrer"
@@ -411,19 +427,22 @@ const IntegrationMarquee = () => {
                         <p className="mt-2 text-sm text-slate-700">
                           <strong>
                             When you connect Ressy AI with{" "}
-                            {details[active.alt as keyof typeof details]?.title ||
-                              active.alt}
+                            {details[active.alt as keyof typeof details]
+                              ?.title || active.alt}
                             , key interactions will automatically sync to your
                             CRM.
                           </strong>{" "}
                           After every call or conversation, Ressy AI can:
                         </p>
                         <ul className="mt-3 space-y-2">
-                          {(details[active.alt as keyof typeof details]?.bullets || [
-                            "Create/update records",
-                            "Log calls and notes",
-                            "Trigger workflows",
-                          ]).map((b, i) => (
+                          {(
+                            details[active.alt as keyof typeof details]
+                              ?.bullets || [
+                              "Create/update records",
+                              "Log calls and notes",
+                              "Trigger workflows",
+                            ]
+                          ).map((b, i) => (
                             <li
                               key={i}
                               className="flex items-start gap-2 text-sm text-slate-700"

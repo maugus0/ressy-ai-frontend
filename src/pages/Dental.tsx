@@ -98,14 +98,18 @@ const Dental = () => {
           {/* Outcomes */}
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             <div className="bg-white rounded-2xl p-6 border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Reduced no‑shows</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">
+                Reduced no‑shows
+              </h3>
               <p className="text-gray-600 text-sm">
                 Automated confirmations and recall campaigns keep the schedule
                 full.
               </p>
             </div>
             <div className="bg-white rounded-2xl p-6 border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-1">Faster intake</h3>
+              <h3 className="font-semibold text-gray-900 mb-1">
+                Faster intake
+              </h3>
               <p className="text-gray-600 text-sm">
                 Insurance capture during calls speeds up front‑desk workflows.
               </p>
@@ -177,5 +181,3 @@ const Dental = () => {
 };
 
 export default Dental;
-
-
