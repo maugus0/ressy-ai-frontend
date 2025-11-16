@@ -101,7 +101,14 @@ jobs:
         run: |
           set -euo pipefail
           VER="v1.7.3"
-          curl -sSfL https://raw.githubusercontent.com/google/osv-scanner/main/install.sh | sh -s -- -b . "$VER"
+          OS="linux"
+          ARCH="amd64"
+          TARBALL="osv-scanner_${VER#v}_${OS}_${ARCH}.tar.gz"
+          URL="https://github.com/google/osv-scanner/releases/download/${VER}/${TARBALL}"
+          echo "Downloading $URL"
+          curl -fSL "$URL" -o "$TARBALL"
+          tar -xzf "$TARBALL" osv-scanner
+          chmod +x ./osv-scanner
           echo "OSV version:"; ./osv-scanner --version
       - name: Run OSV-Scanner
         id: osv

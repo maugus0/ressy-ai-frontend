@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;
@@ -211,11 +211,9 @@ const Navigation = () => {
               aria-expanded={mobileUsecasesOpen}
             >
               <span>Use Cases</span>
-              <span
-                className={`transition-transform ${mobileUsecasesOpen ? "rotate-180" : ""}`}
-              >
-                ▾
-              </span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${mobileUsecasesOpen ? "rotate-180" : ""}`}
+              />
             </button>
             {mobileUsecasesOpen && (
               <div className="ml-3 flex flex-col space-y-2">
@@ -242,7 +240,41 @@ const Navigation = () => {
                 </Link>
               </div>
             )}
-            {/* Keep main nav lightweight on mobile; anchors removed per request */}
+            <a
+              href="#voice-agents"
+              onClick={(e) => handleNavClick(e, "#voice-agents")}
+              className="hover:text-black"
+            >
+              Voice Agents
+            </a>
+            <a
+              href="#dashboard"
+              onClick={(e) => handleNavClick(e, "#dashboard")}
+              className="hover:text-black"
+            >
+              Dashboard
+            </a>
+            <a
+              href="#integrations"
+              onClick={(e) => handleNavClick(e, "#integrations")}
+              className="hover:text-black"
+            >
+              Integrations
+            </a>
+            <a
+              href="#roi"
+              onClick={(e) => handleNavClick(e, "#roi")}
+              className="hover:text-black"
+            >
+              Pricing
+            </a>
+            <a
+              href="#faq"
+              onClick={(e) => handleNavClick(e, "#faq")}
+              className="hover:text-black"
+            >
+              FAQ
+            </a>
             <Button
               className="bg-black text-white font-semibold rounded-full w-full"
               onClick={() => setIsModalOpen(true)}
