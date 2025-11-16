@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Calendar,
   Clock,
@@ -11,7 +11,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-const ressyLogo = `${import.meta.env.BASE_URL}ressy-logo.png`;
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const ScheduleDemo = () => {
   const navigate = useNavigate();
@@ -48,26 +49,14 @@ const ScheduleDemo = () => {
     });
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-indigo-50">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => navigate("/")}
-              className="flex items-center space-x-2 text-gray-700 hover:text-purple-600 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span className="font-medium">Back to Home</span>
-            </button>
-            <img src={ressyLogo} alt="Ressy AI" className="h-8" />
-          </div>
-        </div>
-      </header>
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
 
-      {/* Main Content */}
-      <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+  return (
+    <div className="min-h-screen bg-white">
+      <Navigation />
+      <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-50 via-white to-indigo-50">
         <div className="max-w-4xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
@@ -320,6 +309,7 @@ const ScheduleDemo = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

@@ -75,7 +75,7 @@ const ROICalculator = () => {
   return (
     <section
       id="roi"
-      className="py-24 px-4 relative overflow-hidden scroll-mt-28"
+      className="py-16 sm:py-24 px-4 relative overflow-hidden scroll-mt-28"
     >
       {/* Background unchanged */}
       <div className="absolute inset-0 -z-10">
@@ -87,23 +87,23 @@ const ROICalculator = () => {
 
       <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-slide-up bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+        <div className="text-center mb-10 sm:mb-16 animate-fade-in">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-slide-up bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
             ROI Calculator
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto animate-fade-in delay-200">
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto animate-fade-in delay-200">
             Estimate weekly value from saved labor + recovered missed calls.
           </p>
         </div>
 
         {/* Input + Results */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {/* Input Section */}
-          <Card className="bg-white/80 backdrop-blur-md border border-purple-200 shadow-xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
-            <CardContent className="p-8 space-y-6 animate-slide-up">
-              <div className="grid grid-cols-2 gap-6">
+          <Card className="bg-white/80 backdrop-blur-md border border-purple-200 shadow-xl transition-all duration-500 hover:shadow-2xl">
+            <CardContent className="p-5 sm:p-8 space-y-5 sm:space-y-6 animate-slide-up">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Calls per week */}
-                <div className="space-y-2 hover:scale-[1.02] transition-transform duration-300">
+                <div className="space-y-2">
                   <Label className="text-slate-700 text-sm font-medium">
                     Calls per week
                   </Label>
@@ -113,12 +113,12 @@ const ROICalculator = () => {
                     onChange={(e) =>
                       updateInput("callsPerWeek", parseInt(e.target.value) || 0)
                     }
-                    className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
+                    className="bg-white/70 border-purple-200 text-slate-800 text-lg sm:text-2xl font-bold h-12 sm:h-14 focus:border-purple-400 focus:ring-purple-400"
                   />
                 </div>
 
                 {/* Avg Order Value */}
-                <div className="space-y-2 hover:scale-[1.02] transition-transform duration-300">
+                <div className="space-y-2">
                   <Label className="text-slate-700 text-sm font-medium">
                     Avg order value ($)
                   </Label>
@@ -131,14 +131,14 @@ const ROICalculator = () => {
                         parseInt(e.target.value) || 0,
                       )
                     }
-                    className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
+                    className="bg-white/70 border-purple-200 text-slate-800 text-lg sm:text-2xl font-bold h-12 sm:h-14 focus:border-purple-400 focus:ring-purple-400"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {/* Missed % */}
-                <div className="space-y-2 hover:scale-[1.02] transition-transform duration-300">
+                <div className="space-y-2">
                   <Label className="text-slate-700 text-sm font-medium">
                     Missed call %
                   </Label>
@@ -151,12 +151,12 @@ const ROICalculator = () => {
                         parseInt(e.target.value) || 0,
                       )
                     }
-                    className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
+                    className="bg-white/70 border-purple-200 text-slate-800 text-lg sm:text-2xl font-bold h-12 sm:h-14 focus:border-purple-400 focus:ring-purple-400"
                   />
                 </div>
 
                 {/* AI Recovery */}
-                <div className="space-y-2 hover:scale-[1.02] transition-transform duration-300">
+                <div className="space-y-2">
                   <Label className="text-slate-700 text-sm font-medium">
                     Recovery % by AI (0% downtime)
                   </Label>
@@ -170,13 +170,13 @@ const ROICalculator = () => {
                         parseInt(e.target.value) || 0,
                       )
                     }
-                    className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
+                    className="bg-white/70 border-purple-200 text-slate-800 text-lg sm:text-2xl font-bold h-12 sm:h-14 focus:border-purple-400 focus:ring-purple-400"
                   />
                 </div>
               </div>
 
               {/* Staff Wage */}
-              <div className="space-y-2 hover:scale-[1.02] transition-transform duration-300">
+              <div className="space-y-2">
                 <Label className="text-slate-700 text-sm font-medium">
                   Staff wage ($/hr)
                 </Label>
@@ -186,59 +186,59 @@ const ROICalculator = () => {
                   onChange={(e) =>
                     updateInput("staffWage", parseInt(e.target.value) || 0)
                   }
-                  className="bg-white/70 border-purple-200 text-slate-800 text-2xl font-bold h-14 focus:border-purple-400 focus:ring-purple-400"
+                  className="bg-white/70 border-purple-200 text-slate-800 text-lg sm:text-2xl font-bold h-12 sm:h-14 focus:border-purple-400 focus:ring-purple-400"
                 />
               </div>
             </CardContent>
           </Card>
 
           {/* Results Section */}
-          <Card className="bg-white/80 backdrop-blur-md border border-purple-200 shadow-xl transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
-            <CardContent className="p-8 space-y-6 animate-fade-in delay-200">
+          <Card className="bg-white/80 backdrop-blur-md border border-purple-200 shadow-xl transition-all duration-500 hover:shadow-2xl">
+            <CardContent className="p-5 sm:p-8 space-y-5 sm:space-y-6 animate-fade-in delay-200">
               <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
+                <div className="flex justify-between items-center py-2.5 sm:py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
                   <span className="text-slate-600 font-medium">
                     Missed calls
                   </span>
-                  <span className="text-slate-800 text-xl font-bold">
+                  <span className="text-slate-800 text-lg sm:text-xl font-bold">
                     {animated.missed}/wk
                   </span>
                 </div>
 
-                <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
+                <div className="flex justify-between items-center py-2.5 sm:py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
                   <span className="text-slate-600 font-medium">
                     Recovered by AI
                   </span>
-                  <span className="text-purple-600 text-xl font-bold">
+                  <span className="text-purple-600 text-lg sm:text-xl font-bold">
                     {animated.recovered}/wk
                   </span>
                 </div>
 
-                <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
+                <div className="flex justify-between items-center py-2.5 sm:py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
                   <span className="text-slate-600 font-medium">
                     Added revenue
                   </span>
-                  <span className="text-purple-600 text-xl font-bold">
+                  <span className="text-purple-600 text-lg sm:text-xl font-bold">
                     ${animated.revenue}/wk
                   </span>
                 </div>
 
-                <div className="flex justify-between items-center py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
+                <div className="flex justify-between items-center py-2.5 sm:py-3 border-b border-purple-100 hover:bg-purple-50/40 rounded-lg px-3 transition">
                   <span className="text-slate-600 font-medium">
                     Labor saved
                   </span>
-                  <span className="text-purple-600 text-xl font-bold">
+                  <span className="text-purple-600 text-lg sm:text-xl font-bold">
                     ${animated.labor}/wk
                   </span>
                 </div>
 
                 {/* Total */}
-                <div className="mt-8 p-6 bg-gradient-to-r from-purple-500/10 to-purple-600/10 rounded-xl border border-purple-300/50 shadow-inner animate-pulse">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-700 text-lg font-semibold">
+                <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-purple-500/10 to-purple-600/10 rounded-xl border border-purple-300/50 shadow-inner animate-pulse">
+                  <div className="flex flex-wrap justify-between items-center gap-3">
+                    <span className="text-slate-700 text-base sm:text-lg font-semibold">
                       Estimated weekly value
                     </span>
-                    <span className="text-purple-700 text-3xl font-bold">
+                    <span className="text-purple-700 text-2xl sm:text-3xl font-bold">
                       ${animated.total}
                     </span>
                   </div>
@@ -249,13 +249,13 @@ const ROICalculator = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16 animate-fade-in delay-500">
-          <p className="text-slate-600 mb-6 text-lg">
+        <div className="text-center mt-12 sm:mt-16 animate-fade-in delay-500">
+          <p className="text-slate-600 mb-5 sm:mb-6 text-base sm:text-lg">
             Ready to start capturing this value for your business?
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-500 transform hover:scale-110 hover:shadow-2xl"
+            className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-7 sm:px-10 py-3.5 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-500 transform hover:scale-105 sm:hover:scale-110 hover:shadow-2xl"
           >
             Get Started Today
           </button>

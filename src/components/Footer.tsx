@@ -193,31 +193,28 @@ const Footer = () => {
             <h3 className="text-slate-900 font-semibold text-lg">Solutions</h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#usecases"
-                  onClick={handleHashLink("#usecases")}
+                <Link
+                  to="/restaurants"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Restaurants
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#usecases"
-                  onClick={handleHashLink("#usecases")}
+                <Link
+                  to="/salons"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
-                  Salons & Spas
-                </a>
+                  Salons
+                </Link>
               </li>
               <li>
-                <a
-                  href="#usecases"
-                  onClick={handleHashLink("#usecases")}
+                <Link
+                  to="/dental"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   Dental Clinics
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -298,7 +295,7 @@ const Footer = () => {
               <div>
                 <p className="text-slate-500 text-sm">Email us</p>
                 <a
-                  href="mailto:hello@ressy.ai"
+                  href="mailto:info@ressy.ai"
                   className="text-slate-800 hover:text-purple-600 transition-colors duration-300"
                 >
                   info@ressy.ai
@@ -312,10 +309,10 @@ const Footer = () => {
               <div>
                 <p className="text-slate-500 text-sm">Call us</p>
                 <a
-                  href="tel:+1-2367771255"
+                  href="tel:+1 (234) 567 8900"
                   className="text-slate-800 hover:text-purple-600 transition-colors duration-300"
                 >
-                  +1(2367771255), 6049082605
+                  +1 (234) 567 8900
                 </a>
               </div>
             </div>
