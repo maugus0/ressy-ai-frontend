@@ -96,16 +96,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Trivy FS scan (dependencies)
+      - name: Security Scan (TrivyFS)
         uses: aquasecurity/trivy-action@0.24.0
         continue-on-error: true
         with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          scanners: 'vuln'
+          scan-type: "fs"
+          scan-ref: "."
+          scanners: "vuln"
           ignore-unfixed: true
-          format: 'sarif'
-          output: 'trivy-deps.sarif'
+          format: "sarif"
+          output: "trivy-deps.sarif"
       - name: Upload Trivy dependency SARIF
         if: always() && hashFiles('trivy-deps.sarif') != ''
         uses: actions/upload-artifact@v4
@@ -143,7 +143,8 @@ jobs:
   docker-build:
     name: Build Docker Image & Trivy Scan
     runs-on: ubuntu-latest
-    needs: [lint-quality, unit-tests, build-verification, dependency-security-scan]
+    needs:
+      [lint-quality, unit-tests, build-verification, dependency-security-scan]
     permissions:
       contents: read
       packages: write
