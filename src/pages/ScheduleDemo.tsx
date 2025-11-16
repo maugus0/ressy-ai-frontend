@@ -55,7 +55,7 @@ const ScheduleDemo = () => {
         },
         body: JSON.stringify(payload),
       });
-      const data = await res.json().catch(() => ({} as any));
+      const data = await res.json().catch(() => ({}) as any);
       if (!res.ok || !data?.success) {
         throw new Error(data?.message || `Web3Forms failed (${res.status})`);
       }

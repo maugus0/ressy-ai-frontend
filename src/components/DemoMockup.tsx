@@ -4,7 +4,9 @@ import mockupImg from "@/assets/mockup.png";
 
 const DemoMockup = () => {
   const [businessName, setBusinessName] = useState("");
-  const [businessType, setBusinessType] = useState<"restaurant" | "salon" | "dental_clinic">("restaurant");
+  const [businessType, setBusinessType] = useState<
+    "restaurant" | "salon" | "dental_clinic"
+  >("restaurant");
   const [phoneLocal, setPhoneLocal] = useState("");
   const countries = [
     { label: "US / Canada", code: "+1" },
@@ -13,9 +15,8 @@ const DemoMockup = () => {
     { label: "Vietnam", code: "+84" },
     { label: "India", code: "+91" },
   ] as const;
-  const [dialCode, setDialCode] = useState<typeof countries[number]["code"]>(
-    "+1",
-  );
+  const [dialCode, setDialCode] =
+    useState<(typeof countries)[number]["code"]>("+1");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -191,7 +192,9 @@ const DemoMockup = () => {
             <select
               value={dialCode}
               onChange={(e) =>
-                setDialCode(e.target.value as typeof countries[number]["code"])
+                setDialCode(
+                  e.target.value as (typeof countries)[number]["code"],
+                )
               }
               className="px-2 h-10 rounded-xl border border-gray-300 bg-white/90 shadow-sm focus:ring-2 focus:ring-purple-500 focus:outline-none text-xs sm:text-sm"
               aria-label="Country code"
