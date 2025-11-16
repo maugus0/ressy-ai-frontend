@@ -96,15 +96,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: OSV-Scanner
+      - name: Install OSV-Scanner (pinned)
+        shell: bash
+        run: |
+          set -euo pipefail
+          VER="v1.7.3"
+          curl -sSfL https://raw.githubusercontent.com/google/osv-scanner/main/install.sh | sh -s -- -b . "$VER"
+          echo "OSV version:"; ./osv-scanner --version
+      - name: Run OSV-Scanner
         id: osv
-        uses: google/osv-scanner-action@v1
         continue-on-error: true
-        with:
-          scan-args: >-
-            --lockfile=package-lock.json
-            --format=sarif
-            --output=osv.sarif
+        run: |
+          ./osv-scanner --lockfile=package-lock.json --format sarif --output osv.sarif || true
       - name: Upload OSV SARIF artifact
         if: always() && hashFiles('osv.sarif') != ''
         uses: actions/upload-artifact@v4
