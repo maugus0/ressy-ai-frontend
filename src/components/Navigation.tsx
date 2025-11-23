@@ -140,9 +140,8 @@ const Navigation = () => {
                 }
               }}
               onMouseLeave={() => {
-                if (!dropdownOpenedByClick) {
-                  setDesktopUsecasesOpen(false);
-                }
+                setDesktopUsecasesOpen(false);
+                setDropdownOpenedByClick(false);
               }}
             >
               <button

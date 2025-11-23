@@ -55,6 +55,8 @@ const FinalCTA = () => {
         >
           <button
             onClick={() => setIsTrialModalOpen(true)}
+            aria-label="Start 7-Day Free Trial"
+            aria-haspopup="dialog"
             className="px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large text-lg"
           >
             Start 7-Day Free Trial

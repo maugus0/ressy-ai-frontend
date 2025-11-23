@@ -56,6 +56,10 @@ const DemoMockup = () => {
     if (!/^[a-zA-Z0-9\s\-'.,&()]+$/.test(trimmed)) {
       return "Business name contains invalid characters.";
     }
+    // Ensure at least one alphanumeric character is present
+    if (!/[a-zA-Z0-9]/.test(trimmed)) {
+      return "Business name must contain at least one letter or number.";
+    }
     return undefined;
   };
 

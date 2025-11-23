@@ -94,20 +94,23 @@ const Hero = () => {
 
             {/* Heading */}
             <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold text-white mb-3 sm:mb-4 lg:mb-6 leading-snug sm:leading-tight font-sans">
-              Your all-in-one AI receptionist.
+              Your all-in-one AI receptionist that books, answers, and follows
+              up.
             </h1>
 
             {/* Subtext */}
             <p className="text-sm sm:text-base lg:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0 mb-5 sm:mb-6 lg:mb-8 leading-relaxed font-sans">
               Capture every call, schedule appointments, qualify leads and
               answer questions instantly — no hold music, no scripts to
-              memorise.
+              memorize.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 lg:mb-12">
               <button
                 onClick={() => setIsModalOpen(true)}
+                aria-label="Start free trial"
+                aria-haspopup="dialog"
                 className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base font-sans"
               >
                 Start free trial

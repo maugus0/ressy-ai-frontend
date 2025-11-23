@@ -198,6 +198,14 @@ const Pricing = () => {
                     window.location.href = "tel:+16049082605";
                   }
                 }}
+                aria-haspopup={
+                  plan.cta === "Start Free Trial" ? "dialog" : undefined
+                }
+                aria-label={
+                  plan.cta === "Start Free Trial"
+                    ? "Start free trial"
+                    : plan.cta
+                }
                 className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
                   plan.popular
                     ? "bg-gradient-primary text-primary-foreground shadow-medium hover:shadow-large"

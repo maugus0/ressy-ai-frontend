@@ -159,12 +159,12 @@ const ScheduleDemoModal = ({
     try {
       // Web3Forms – reliable and CORS-friendly
       const ACCESS_KEY = "5f9a6bfe-1a62-477a-8d68-8b268cb5f597";
-      const subject =
-        mode === "trial"
-          ? "New Free Trial Request"
-          : mode === "waitlist"
-            ? "New Waitlist Signup"
-            : "New Schedule Demo Request";
+      let subject = "New Schedule Demo Request";
+      if (mode === "trial") {
+        subject = "New Free Trial Request";
+      } else if (mode === "waitlist") {
+        subject = "New Waitlist Signup";
+      }
       const basePayload = {
         access_key: ACCESS_KEY,
         subject,
@@ -196,21 +196,21 @@ const ScheduleDemoModal = ({
       // Send to single recipient as requested
       await submitOnce("ahanj049@gmail.com");
 
-      const successMessage =
-        mode === "trial"
-          ? "Trial request sent! We'll reach out within 24 hours to get you started."
-          : mode === "waitlist"
-            ? "You're on the waitlist! We'll notify you when we launch."
-            : "Demo request sent! We'll reach out within 24 hours to schedule your call.";
+      let title = "Demo request sent!";
+      let description =
+        "We'll reach out within 24 hours to schedule your call.";
+
+      if (mode === "trial") {
+        title = "Trial request sent!";
+        description = "We'll reach out within 24 hours to get you started.";
+      } else if (mode === "waitlist") {
+        title = "You're on the waitlist!";
+        description = "We'll notify you when we launch.";
+      }
 
       toast({
-        title:
-          mode === "trial"
-            ? "Trial request sent!"
-            : mode === "waitlist"
-              ? "You're on the waitlist!"
-              : "Demo request sent!",
-        description: successMessage,
+        title,
+        description,
       });
       onClose();
       setFormData({
@@ -587,13 +587,12 @@ const ScheduleDemoModal = ({
               disabled={submitting}
               className="flex-1 py-2.5 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {submitting
-                ? "Sending..."
-                : mode === "trial"
-                  ? "Start Free Trial"
-                  : mode === "waitlist"
-                    ? "Join Waitlist"
-                    : "Schedule Demo"}
+              {(() => {
+                if (submitting) return "Sending...";
+                if (mode === "trial") return "Start Free Trial";
+                if (mode === "waitlist") return "Join Waitlist";
+                return "Schedule Demo";
+              })()}
             </Button>
           </div>
 

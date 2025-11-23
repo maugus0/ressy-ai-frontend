@@ -32,6 +32,8 @@ const SocialProof = () => {
             </p>
             <button
               onClick={() => setIsModalOpen(true)}
+              aria-label="Join the waitlist"
+              aria-haspopup="dialog"
               className="inline-flex items-center justify-center rounded-lg bg-gray-900 text-white text-sm sm:text-base font-semibold px-6 sm:px-8 py-2.5 sm:py-3 hover:bg-gray-800 transition-colors w-full sm:w-auto"
             >
               Join the waitlist
