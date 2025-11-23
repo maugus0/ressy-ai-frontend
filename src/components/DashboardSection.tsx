@@ -11,7 +11,7 @@ const DashboardSection = () => {
       className="relative w-full py-20 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-mt-28"
     >
       {/* Background with grid */}
-      <div className="absolute inset-0 -z-20">
+      <div className="absolute inset-0 -z-20 will-change-transform">
         <Squares
           speed={0.5}
           squareSize={40}
@@ -25,10 +25,10 @@ const DashboardSection = () => {
         {/* Heading */}
         <motion.h2
           className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1, margin: "100px" }}
         >
           Your{" "}
           <span className="text-purple-600 bg-clip-text bg-gradient-to-r from-purple-600 to-teal-500">
@@ -40,10 +40,10 @@ const DashboardSection = () => {
         {/* Subtext */}
         <motion.p
           className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base lg:text-lg leading-relaxed mb-12"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.05, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1, margin: "100px" }}
         >
           See live calls, transcripts, transactions, and outcomes in one place.
           Update business info, track payments, monitor earnings, and identify
@@ -54,10 +54,10 @@ const DashboardSection = () => {
         {/* Mockup */}
         <motion.div
           className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1, margin: "100px" }}
         >
           <img
             src={macDash}

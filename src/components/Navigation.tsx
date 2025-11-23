@@ -244,13 +244,14 @@ const Navigation = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
-            <Button
-              size="sm"
-              className="bg-black text-white font-semibold rounded-full px-5 sm:px-6 py-2 shadow-md hover:shadow-lg hover:scale-105 transition-transform"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Schedule a demo
-            </Button>
+            <Link to="/schedule-demo">
+              <Button
+                size="sm"
+                className="bg-black text-white font-semibold rounded-full px-5 sm:px-6 py-2 shadow-md hover:shadow-lg hover:scale-105 transition-transform"
+              >
+                Schedule a demo
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -336,12 +337,15 @@ const Navigation = () => {
             >
               FAQ
             </a>
-            <Button
-              className="bg-black text-white font-semibold rounded-full w-full"
-              onClick={() => setIsModalOpen(true)}
+            <Link
+              to="/schedule-demo"
+              className="w-full"
+              onClick={() => setMobileOpen(false)}
             >
-              Schedule a demo
-            </Button>
+              <Button className="bg-black text-white font-semibold rounded-full w-full">
+                Schedule a demo
+              </Button>
+            </Link>
           </div>
         )}
       </div>
