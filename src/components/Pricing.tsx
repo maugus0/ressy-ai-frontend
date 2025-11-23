@@ -1,10 +1,12 @@
 import { Check, Zap, Building, Crown } from "lucide-react";
 import { useState } from "react";
+import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
     "monthly",
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const plans = [
     {
@@ -189,6 +191,21 @@ const Pricing = () => {
               </ul>
 
               <button
+                onClick={() => {
+                  if (plan.cta === "Start Free Trial") {
+                    setIsModalOpen(true);
+                  } else if (plan.cta === "Contact Sales") {
+                    window.location.href = "tel:+16049082605";
+                  }
+                }}
+                aria-haspopup={
+                  plan.cta === "Start Free Trial" ? "dialog" : undefined
+                }
+                aria-label={
+                  plan.cta === "Start Free Trial"
+                    ? "Start free trial"
+                    : plan.cta
+                }
                 className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${
                   plan.popular
                     ? "bg-gradient-primary text-primary-foreground shadow-medium hover:shadow-large"
@@ -205,11 +222,20 @@ const Pricing = () => {
           <p className="text-muted-foreground mb-6">
             Need a custom solution? We've got you covered.
           </p>
-          <button className="px-6 py-3 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft">
+          <a
+            href="tel:+16049082605"
+            className="inline-block px-6 py-3 border border-border text-foreground rounded-xl font-semibold hover:bg-secondary transition-all duration-300 hover:shadow-soft"
+          >
             Contact Sales Team
-          </button>
+          </a>
         </div>
       </div>
+
+      <ScheduleDemoModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        mode="trial"
+      />
     </section>
   );
 };

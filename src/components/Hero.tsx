@@ -67,7 +67,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pb-12 sm:pb-16 lg:pb-20">
       {/* 🌊 Liquid Ether Background */}
       <div className="absolute inset-0 -z-20 ">
         <Iridescence
@@ -79,13 +79,12 @@ const Hero = () => {
       </div>
 
       {/* 🌟 Content */}
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 lg:pt-20">
-        {" "}
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-8 sm:pt-12 lg:pt-20 pb-8 sm:pb-12 lg:pb-0">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left animate-slide-up-slow pt-40 lg:pt-0">
+          <div className="order-2 lg:order-1 text-center lg:text-left animate-slide-up-slow pt-6 sm:pt-8 lg:pt-0 font-sans">
             {/* Badge */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 text-gray-200 text-xs sm:text-sm font-medium mb-4 backdrop-blur-md">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 text-gray-200 text-xs sm:text-sm font-medium mb-3 sm:mb-4 backdrop-blur-md font-sans">
               <span className="relative flex w-2 h-2 mr-2">
                 <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
                 <span className="relative inline-flex w-2 h-2 rounded-full bg-green-500"></span>
@@ -94,28 +93,31 @@ const Hero = () => {
             </div>
 
             {/* Heading */}
-            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6 leading-snug sm:leading-tight">
-              Your AI receptionist that books, answers, and follows up.
+            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-extrabold text-white mb-3 sm:mb-4 lg:mb-6 leading-snug sm:leading-tight font-sans">
+              Your all-in-one AI receptionist that books, answers, and follows
+              up.
             </h1>
 
             {/* Subtext */}
-            <p className="text-sm sm:text-base lg:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0 mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-xl text-gray-300 max-w-xl mx-auto lg:mx-0 mb-5 sm:mb-6 lg:mb-8 leading-relaxed font-sans">
               Capture every call, schedule appointments, qualify leads and
               answer questions instantly — no hold music, no scripts to
-              memorise.
+              memorize.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-12">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 lg:mb-12">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base"
+                aria-label="Start free trial"
+                aria-haspopup="dialog"
+                className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base font-sans"
               >
                 Start free trial
               </button>
               <button
                 onClick={handlePlayDemo}
-                className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:from-gray-700 hover:via-gray-800 hover:to-black hover:shadow-xl hover:scale-105 transition-all duration-300 text-sm sm:text-base"
+                className="px-5 sm:px-7 py-3 sm:py-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white rounded-lg sm:rounded-xl font-semibold shadow-lg hover:from-gray-700 hover:via-gray-800 hover:to-black hover:shadow-xl hover:scale-105 transition-all duration-300 text-sm sm:text-base font-sans"
               >
                 <span className="flex items-center justify-center gap-2">
                   <svg
@@ -131,28 +133,28 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 font-sans">
               <div className="text-center lg:text-left">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">
+                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white font-sans">
                   99.9%
                 </div>
-                <div className="text-xs sm:text-sm text-gray-400">
+                <div className="text-xs sm:text-sm text-gray-400 font-sans">
                   Call accuracy
                 </div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">
+                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white font-sans">
                   24/7
                 </div>
-                <div className="text-xs sm:text-sm text-gray-400">
+                <div className="text-xs sm:text-sm text-gray-400 font-sans">
                   Availability
                 </div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">
+                <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white font-sans">
                   75%
                 </div>
-                <div className="text-xs sm:text-sm text-gray-400">
+                <div className="text-xs sm:text-sm text-gray-400 font-sans">
                   More bookings
                 </div>
               </div>
@@ -160,8 +162,8 @@ const Hero = () => {
           </div>
 
           {/* Right Content - Phone Mockup */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="w-[80%] max-w-[280px] sm:max-w-sm lg:max-w-md">
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end pt-8 sm:pt-12 lg:pt-0">
+            <div className="w-[75%] sm:w-[80%] max-w-[280px] sm:max-w-sm lg:max-w-md">
               <DemoMockup />
             </div>
           </div>
@@ -203,6 +205,7 @@ const Hero = () => {
       <ScheduleDemoModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        mode="trial"
       />
     </section>
   );

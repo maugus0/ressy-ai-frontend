@@ -1,7 +1,17 @@
 import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import App from "@/App";
+
+// Mock window.scrollTo
+beforeEach(() => {
+  window.scrollTo = vi.fn();
+});
+
+// Mock HTMLMediaElement.prototype.load
+beforeEach(() => {
+  HTMLMediaElement.prototype.load = vi.fn();
+});
 
 afterEach(() => {
   cleanup();
@@ -11,9 +21,7 @@ describe("Main page", () => {
   it("renders the hero headline", () => {
     render(<App />);
     expect(
-      screen.getByText(
-        /Your AI receptionist that books, answers, and follows up/i,
-      ),
+      screen.getByText(/Your all-in-one AI receptionist/i),
     ).toBeInTheDocument();
   });
 });

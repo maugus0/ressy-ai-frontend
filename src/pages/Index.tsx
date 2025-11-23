@@ -83,7 +83,7 @@ const Index = () => {
 
           {/* ✅ Your sections */}
           <section className="relative">
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 will-change-transform">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
               <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
@@ -92,7 +92,7 @@ const Index = () => {
           </section>
 
           <section className="relative">
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 will-change-transform">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
               <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
@@ -101,7 +101,7 @@ const Index = () => {
           </section>
 
           <section className="relative">
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 will-change-transform">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
               <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
@@ -110,7 +110,7 @@ const Index = () => {
           </section>
 
           <section className="relative">
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 will-change-transform">
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-50/60 via-teal-50/30 to-emerald-50/50"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(6,182,212,0.1),transparent_70%)]"></div>
               <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-teal-100/20 to-transparent"></div>
@@ -122,7 +122,7 @@ const Index = () => {
           <ComparisonTable />
 
           <section className="relative">
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 will-change-transform">
               <div className="absolute inset-0 bg-gradient-to-tr from-rose-50/40 via-pink-50/20 to-purple-50/40"></div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_25%,rgba(236,72,153,0.08),transparent_50%)]"></div>
               <div className="absolute inset-0 bg-[linear-gradient(60deg,transparent_40%,rgba(236,72,153,0.02)_50%,transparent_60%)]"></div>
@@ -131,7 +131,7 @@ const Index = () => {
           </section>
 
           <section className="relative">
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 will-change-transform">
               <div className="absolute inset-0 bg-gradient-to-t from-slate-100/60 via-gray-50/40 to-white"></div>
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.08),transparent_70%)]"></div>
               <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-purple-100/30 to-transparent"></div>
@@ -140,7 +140,7 @@ const Index = () => {
           </section>
 
           <section className="relative">
-            <div className="absolute inset-0 -z-10">
+            <div className="absolute inset-0 -z-10 will-change-transform">
               <div className="absolute inset-0 bg-gradient-to-bl from-green-50/40 via-emerald-50/20 to-teal-50/40"></div>
               <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,185,129,0.02)_0%,transparent_50%,rgba(16,185,129,0.02)_100%)] bg-[length:100px_100px]"></div>
               <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-gradient-to-tr from-emerald-300/6 to-teal-300/3 rounded-full blur-3xl animate-pulse delay-1000"></div>

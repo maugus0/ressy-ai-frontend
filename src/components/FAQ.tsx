@@ -1,10 +1,8 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import ScheduleDemoModal from "./ScheduleDemoModal";
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const faqs = [
     {
@@ -128,17 +126,13 @@ const FAQ = () => {
           <p className="text-muted-foreground mb-4">
             Still have questions? We're here to help.
           </p>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="px-6 py-3 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large"
+          <a
+            href="tel:+16049082605"
+            className="inline-block px-6 py-3 bg-gradient-primary text-primary-foreground rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-medium hover:shadow-large"
           >
             Contact Support
-          </button>
+          </a>
         </div>
-        <ScheduleDemoModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
       </div>
     </section>
   );

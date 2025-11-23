@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
@@ -14,10 +14,35 @@ const Navigation = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mobileUsecasesOpen, setMobileUsecasesOpen] = useState(false);
+  const [desktopUsecasesOpen, setDesktopUsecasesOpen] = useState(false);
+  const [dropdownOpenedByClick, setDropdownOpenedByClick] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  // Handle click outside to close desktop dropdown (only when opened by click)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        dropdownOpenedByClick
+      ) {
+        setDesktopUsecasesOpen(false);
+        setDropdownOpenedByClick(false);
+      }
+    };
+
+    if (desktopUsecasesOpen && dropdownOpenedByClick) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [desktopUsecasesOpen, dropdownOpenedByClick]);
 
   // Smooth scrolling with navbar offset, native-first with JS fallback
   const handleNavClick = (
@@ -106,33 +131,68 @@ const Navigation = () => {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-8 text-gray-700 font-medium">
-            <span className="relative group">
-              <a
-                href="#usecases"
-                onClick={(e) => handleNavClick(e, "#usecases")}
+            <span
+              ref={dropdownRef}
+              className="relative"
+              onMouseEnter={() => {
+                if (!dropdownOpenedByClick) {
+                  setDesktopUsecasesOpen(true);
+                }
+              }}
+              onMouseLeave={() => {
+                setDesktopUsecasesOpen(false);
+                setDropdownOpenedByClick(false);
+              }}
+            >
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const newState = !desktopUsecasesOpen;
+                  setDesktopUsecasesOpen(newState);
+                  setDropdownOpenedByClick(newState);
+                }}
                 className="relative transition-colors hover:text-black after:absolute after:w-0 after:h-[2px] after:left-0 after:-bottom-1 after:bg-black after:transition-all hover:after:w-full"
               >
                 Use Cases
-              </a>
+              </button>
               {/* Dropdown */}
-              <div className="pointer-events-none absolute left-0 top-full pt-2 z-50">
-                <div className="pointer-events-auto invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-150 w-56 rounded-xl border border-gray-200 bg-white shadow-lg">
+              <div className="absolute left-0 top-full pt-2 z-50">
+                <div
+                  className={`${
+                    desktopUsecasesOpen
+                      ? "visible opacity-100 pointer-events-auto"
+                      : "invisible opacity-0 pointer-events-none"
+                  } transition-opacity duration-150 w-56 rounded-xl border border-gray-200 bg-white shadow-lg`}
+                >
                   <div className="py-2">
                     <Link
                       to="/restaurants"
-                      className="block px-4 py-2.5 hover:bg-gray-50"
+                      className="block px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                      onClick={() => {
+                        setDesktopUsecasesOpen(false);
+                        setDropdownOpenedByClick(false);
+                      }}
                     >
                       Restaurants
                     </Link>
                     <Link
                       to="/salons"
-                      className="block px-4 py-2.5 hover:bg-gray-50"
+                      className="block px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                      onClick={() => {
+                        setDesktopUsecasesOpen(false);
+                        setDropdownOpenedByClick(false);
+                      }}
                     >
                       Salons
                     </Link>
                     <Link
                       to="/dental"
-                      className="block px-4 py-2.5 hover:bg-gray-50"
+                      className="block px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                      onClick={() => {
+                        setDesktopUsecasesOpen(false);
+                        setDropdownOpenedByClick(false);
+                      }}
                     >
                       Dental
                     </Link>
@@ -183,13 +243,14 @@ const Navigation = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center">
-            <Button
-              size="sm"
-              className="bg-black text-white font-semibold rounded-full px-5 sm:px-6 py-2 shadow-md hover:shadow-lg hover:scale-105 transition-transform"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Schedule a demo
-            </Button>
+            <Link to="/schedule-demo">
+              <Button
+                size="sm"
+                className="bg-black text-white font-semibold rounded-full px-5 sm:px-6 py-2 shadow-md hover:shadow-lg hover:scale-105 transition-transform"
+              >
+                Schedule a demo
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -275,12 +336,15 @@ const Navigation = () => {
             >
               FAQ
             </a>
-            <Button
-              className="bg-black text-white font-semibold rounded-full w-full"
-              onClick={() => setIsModalOpen(true)}
+            <Link
+              to="/schedule-demo"
+              className="w-full"
+              onClick={() => setMobileOpen(false)}
             >
-              Schedule a demo
-            </Button>
+              <Button className="bg-black text-white font-semibold rounded-full w-full">
+                Schedule a demo
+              </Button>
+            </Link>
           </div>
         )}
       </div>

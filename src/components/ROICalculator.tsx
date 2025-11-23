@@ -263,6 +263,7 @@ const ROICalculator = () => {
         <ScheduleDemoModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
+          mode="trial"
         />
       </div>
 

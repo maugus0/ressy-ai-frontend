@@ -106,7 +106,7 @@ const VoiceAgents = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.05, rootMargin: "100px 0px" },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -116,12 +116,12 @@ const VoiceAgents = () => {
     <section
       id="voice-agents"
       ref={sectionRef}
-      className={`relative w-full px-4 sm:px-6 lg:px-8 py-24 overflow-hidden scroll-mt-28 transition-all duration-1000 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      className={`relative w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 overflow-hidden scroll-mt-28 transition-all duration-300 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
     >
       {/* Background */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 will-change-transform">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-50 via-white to-purple-50" />
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
@@ -129,78 +129,79 @@ const VoiceAgents = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div
-          className={`text-center mb-20 transition-all duration-1000 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          className={`text-center mb-8 sm:mb-12 lg:mb-20 transition-all duration-300 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
           }`}
         >
-          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-100 text-purple-600 text-sm font-semibold mb-6 shadow-sm">
-            <Volume2 className="w-4 h-4 mr-2" />
+          <div className="inline-flex items-center px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-purple-100 text-purple-600 text-xs sm:text-sm font-semibold mb-4 sm:mb-6 shadow-sm">
+            <Volume2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
             Hear AI Voice Agents in action
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-5 lg:mb-6 leading-tight px-2">
             Real conversations,
             <br />
             <span className="bg-gradient-to-r from-purple-500 to-purple-600 bg-clip-text text-transparent">
               across every industry
             </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto px-2">
             Listen to our AI agents handling customer calls with
             professionalism, speed, and clarity.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {voiceAgents.map((agent, index) => (
             <div
               key={agent.id}
-              className={`bg-white/90 backdrop-blur-xl border border-gray-100 rounded-2xl p-6 shadow-lg transition-all duration-700 transform ${
+              className={`bg-white/90 backdrop-blur-xl border border-gray-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg transition-all duration-300 transform ${
                 visible
                   ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
+                  : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ transitionDelay: `${index * 50}ms` }}
             >
               {/* Header */}
-              <div className="flex items-center mb-4">
-                <div className="relative">
+              <div className="flex items-center mb-3 sm:mb-4">
+                <div className="relative flex-shrink-0">
                   <img
                     src={agent.avatar}
                     alt={agent.title}
-                    className="w-12 h-12 rounded-full object-cover shadow-md"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover shadow-md"
                   />
-                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 border-2 border-white rounded-full"></span>
                 </div>
-                <div className="ml-3">
-                  <h3 className="text-base font-semibold text-gray-900">
+                <div className="ml-2.5 sm:ml-3 min-w-0 flex-1">
+                  <h3 className="text-sm sm:text-base font-semibold text-gray-900 truncate">
                     {agent.title}
                   </h3>
-                  <span className="inline-block mt-1 px-2 py-0.5 text-xs bg-purple-100 text-purple-600 rounded-full">
+                  <span className="inline-block mt-0.5 sm:mt-1 px-2 py-0.5 text-[10px] sm:text-xs bg-purple-100 text-purple-600 rounded-full">
                     {agent.industry}
                   </span>
                 </div>
               </div>
 
               {/* Audio Player */}
-              <div className="bg-gray-50 rounded-xl px-4 py-3 flex items-center space-x-3 border border-gray-100">
+              <div className="bg-gray-50 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 flex items-center space-x-2 sm:space-x-3 border border-gray-100">
                 <button
                   onClick={() => handlePlay(agent)}
-                  className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-md hover:scale-110 transition-all"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-md hover:scale-110 active:scale-95 transition-all flex-shrink-0"
+                  aria-label={playingId === agent.id ? "Pause" : "Play"}
                 >
                   {playingId === agent.id ? (
-                    <Pause className="w-4 h-4" />
+                    <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   ) : (
-                    <Play className="w-4 h-4 ml-0.5" />
+                    <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-0.5" />
                   )}
                 </button>
 
                 {/* Waveform */}
-                <div className="flex-1 flex items-center space-x-1 h-6">
+                <div className="flex-1 flex items-center space-x-0.5 sm:space-x-1 h-5 sm:h-6 min-w-0">
                   {[...Array(20)].map((_, i) => (
                     <span
                       key={i}
-                      className={`w-1.5 rounded-full transition-all duration-300 ${
+                      className={`w-1 sm:w-1.5 rounded-full transition-all duration-300 flex-shrink-0 ${
                         playingId === agent.id
                           ? "animate-wave bg-gradient-to-b from-purple-500 to-purple-600"
                           : "h-1 bg-gray-300"
@@ -209,7 +210,7 @@ const VoiceAgents = () => {
                         animationDelay: `${i * 0.05}s`,
                         height:
                           playingId === agent.id
-                            ? `${6 + (i % 5) * 6}px`
+                            ? `${4 + (i % 5) * 4}px`
                             : "4px",
                       }}
                     />
@@ -217,7 +218,7 @@ const VoiceAgents = () => {
                 </div>
 
                 {/* Duration */}
-                <span className="text-xs text-gray-500">
+                <span className="text-[10px] sm:text-xs text-gray-500 flex-shrink-0 font-medium">
                   {durations[agent.id] || "0:00"}
                 </span>
               </div>
