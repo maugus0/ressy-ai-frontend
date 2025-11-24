@@ -22,12 +22,6 @@ html {
 
 /* Safari compatibility fixes */
 @supports (-webkit-appearance: none) {
-  /* Fix for Safari gradient rendering */
-  * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
   /* Fix for backdrop-blur on older Safari */
   @supports not (backdrop-filter: blur(10px)) {
     [class*="backdrop-blur"] {
@@ -198,12 +192,6 @@ html {
 
 /* Performance optimizations for older devices */
 @media (max-width: 768px) {
-  /* Reduce animations on mobile for better performance */
-  * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
   /* Simplify gradients on older mobile devices */
   @supports not (background: linear-gradient(90deg, red, blue)) {
     [class*="bg-gradient"] {
@@ -224,4 +212,38 @@ html {
     display: -webkit-grid;
     display: grid;
   }
+}
+
+/* Hardware acceleration for Dashboard Section animations */
+/* Applies only to the dashboard section and its animated children */
+/* Compatible with Chrome (including iPhone 13), Safari, Firefox, and Edge */
+.dashboard-animated-section {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0); /* iOS Safari & Chrome compatibility */
+  will-change: contents;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Apply hardware acceleration hints to animated children */
+/* Framer Motion will apply its own transforms via inline styles */
+.dashboard-animated-section h2,
+.dashboard-animated-section p,
+.dashboard-animated-section > div > div {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Specific optimization for the dashboard image container */
+.dashboard-animated-section img {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
