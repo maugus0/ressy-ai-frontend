@@ -9,10 +9,46 @@ All colors MUST be HSL.
 /* Global smooth scrolling for in-page anchors */
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+}
+
+/* Safari compatibility fixes */
+@supports (-webkit-appearance: none) {
+  /* Fix for Safari gradient rendering */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* Fix for backdrop-blur on older Safari */
+  @supports not (backdrop-filter: blur(10px)) {
+    [class*="backdrop-blur"] {
+      background-color: rgba(255, 255, 255, 0.8) !important;
+    }
+  }
+}
+
+/* Gradient fallbacks for older browsers */
+@supports not (background: linear-gradient(90deg, red, blue)) {
+  [class*="bg-gradient"] {
+    background-color: #9333ea; /* Purple fallback */
+  }
+}
+
+/* Fix for transform and will-change on older Safari */
+@supports not (will-change: transform) {
+  [class*="transform"],
+  [class*="hover:scale"] {
+    -webkit-transform: none;
+    transform: none;
   }
 }
 
@@ -134,5 +170,58 @@ html {
   body {
     @apply bg-background text-foreground;
     background-color: transparent; /* instead of bg-background */
+  }
+}
+
+/* Cross-browser compatibility utilities */
+@layer utilities {
+  /* Hardware acceleration for better performance on mobile */
+  .gpu-accelerated {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+  }
+
+  /* Gradient fallback for older browsers */
+  .gradient-fallback {
+    background-color: #9333ea; /* Purple fallback */
+  }
+
+  /* Backdrop blur fallback */
+  .backdrop-blur-fallback {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Performance optimizations for older devices */
+@media (max-width: 768px) {
+  /* Reduce animations on mobile for better performance */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
+  /* Simplify gradients on older mobile devices */
+  @supports not (background: linear-gradient(90deg, red, blue)) {
+    [class*="bg-gradient"] {
+      background-color: #9333ea;
+    }
+  }
+}
+
+/* Fix for Safari flexbox issues */
+@supports (-webkit-appearance: none) {
+  .flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .grid {
+    display: -webkit-grid;
+    display: grid;
   }
 }
