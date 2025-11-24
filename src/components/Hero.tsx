@@ -84,7 +84,13 @@ const Hero = () => {
           {/* Desktop: Left Column Wrapper (contains title + rest) */}
           <div className="hidden lg:flex lg:flex-col lg:order-1 text-center lg:text-left animate-slide-up-slow pt-4 sm:pt-6 lg:pt-0 font-sans">
             {/* Badge */}
-            <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/20 text-gray-200 text-xs sm:text-sm font-medium mb-4 sm:mb-5 lg:mb-6 backdrop-blur-md font-sans shadow-lg lg:inline-flex lg:self-start">
+            <div
+              className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/20 text-gray-200 text-xs sm:text-sm font-medium mb-4 sm:mb-5 lg:mb-6 backdrop-blur-md font-sans shadow-lg lg:inline-flex lg:self-start"
+              style={{
+                WebkitBackdropFilter: "blur(12px)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
               <span className="relative flex w-2 h-2 mr-2">
                 <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
                 <span className="relative inline-flex w-2 h-2 rounded-full bg-green-500"></span>
@@ -112,12 +118,23 @@ const Hero = () => {
                 aria-label="Start free trial"
                 aria-haspopup="dialog"
                 className="px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 text-base sm:text-lg font-sans"
+                style={{
+                  background: "linear-gradient(to right, #9333ea, #db2777)",
+                  WebkitTransform: "translateZ(0)",
+                  transform: "translateZ(0)",
+                }}
               >
                 Start free trial
               </button>
               <button
                 onClick={handlePlayDemo}
                 className="px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white rounded-xl font-semibold shadow-xl hover:from-gray-700 hover:via-gray-800 hover:to-black hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 text-base sm:text-lg font-sans"
+                style={{
+                  background:
+                    "linear-gradient(to right, #1f2937, #111827, #000000)",
+                  WebkitTransform: "translateZ(0)",
+                  transform: "translateZ(0)",
+                }}
               >
                 <span className="flex items-center justify-center gap-2">
                   <svg
@@ -179,7 +196,13 @@ const Hero = () => {
           {/* Mobile: Rest of Content (order-3) */}
           <div className="lg:hidden order-3 text-center animate-slide-up-slow -mt-10 sm:-mt-12 font-sans">
             {/* Badge */}
-            <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/20 text-gray-200 text-xs sm:text-sm font-medium mb-3 sm:mb-4 backdrop-blur-md font-sans shadow-lg">
+            <div
+              className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/20 text-gray-200 text-xs sm:text-sm font-medium mb-3 sm:mb-4 backdrop-blur-md font-sans shadow-lg"
+              style={{
+                WebkitBackdropFilter: "blur(12px)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
               <span className="relative flex w-2 h-2 mr-2">
                 <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
                 <span className="relative inline-flex w-2 h-2 rounded-full bg-green-500"></span>
@@ -201,12 +224,23 @@ const Hero = () => {
                 aria-label="Start free trial"
                 aria-haspopup="dialog"
                 className="px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 text-base sm:text-lg font-sans"
+                style={{
+                  background: "linear-gradient(to right, #9333ea, #db2777)",
+                  WebkitTransform: "translateZ(0)",
+                  transform: "translateZ(0)",
+                }}
               >
                 Start free trial
               </button>
               <button
                 onClick={handlePlayDemo}
                 className="px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white rounded-xl font-semibold shadow-xl hover:from-gray-700 hover:via-gray-800 hover:to-black hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 text-base sm:text-lg font-sans"
+                style={{
+                  background:
+                    "linear-gradient(to right, #1f2937, #111827, #000000)",
+                  WebkitTransform: "translateZ(0)",
+                  transform: "translateZ(0)",
+                }}
               >
                 <span className="flex items-center justify-center gap-2">
                   <svg
@@ -253,10 +287,13 @@ const Hero = () => {
       </div>
       <style>{`
   @keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; -webkit-transform: translateY(40px); transform: translateY(40px); }
+    to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
   }
-  .animate-slide-up-slow { animation: slideUp 1.5s ease-out forwards; }
+  .animate-slide-up-slow { 
+    -webkit-animation: slideUp 1.5s ease-out forwards;
+    animation: slideUp 1.5s ease-out forwards;
+  }
 
   /* 📱 Mobile (<= 640px) */
   @media (max-width: 640px) {
