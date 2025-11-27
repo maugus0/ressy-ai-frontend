@@ -100,8 +100,11 @@ const Hero = () => {
 
             {/* Heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-5 lg:mb-6 leading-tight sm:leading-tight lg:leading-tight font-sans drop-shadow-lg">
-              Your all-in-one AI receptionist that books, answers, and follows
-              up.
+              Meet Ressy, your{" "}
+              <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">
+                all-in-one AI receptionist
+              </span>{" "}
+              that books, answers, and follows up.
             </h1>
 
             {/* Subtext */}
@@ -181,8 +184,11 @@ const Hero = () => {
           {/* Mobile: Title Only (order-1) */}
           <div className="lg:hidden order-1 text-center animate-slide-up-slow pt-20 sm:pt-24 font-sans">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-0 sm:mb-0 leading-tight font-sans drop-shadow-lg">
-              Your all-in-one AI receptionist that books, answers, and follows
-              up.
+              Meet Ressy, your{" "}
+              <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">
+                all-in-one AI receptionist
+              </span>{" "}
+              that books, answers, and follows up.
             </h1>
           </div>
 

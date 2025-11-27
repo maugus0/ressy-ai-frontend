@@ -3,6 +3,9 @@ import { useState, useRef, useEffect } from "react";
 import ressyRestaurantAudio from "@/assets/audio/ressy_restaurant_audio.mp3";
 import ressySalonAudio from "@/assets/audio/ressy_salon_audio.mp3";
 import ressyDentalAudio from "@/assets/audio/ressy_dental_audio.mp3";
+import restaurantImage from "@/assets/Ressy-Restaurant-Receptionist.png";
+import salonImage from "@/assets/Ressy-Salon-Receptionist.png";
+import dentalImage from "@/assets/Ressy-Dental-Receptionist.png";
 
 const VoiceAgents = () => {
   const [playingId, setPlayingId] = useState<number | null>(null);
@@ -15,21 +18,21 @@ const VoiceAgents = () => {
       id: 1,
       title: "Restaurant Receptionist",
       industry: "Ressy Restaurant",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+      avatar: restaurantImage,
       audio: ressyRestaurantAudio,
     },
     {
       id: 2,
       title: "Salon Receptionist",
       industry: "Ressy Hair Salon",
-      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+      avatar: salonImage,
       audio: ressySalonAudio,
     },
     {
       id: 3,
       title: "Dental Receptionist",
       industry: "Ressy Dental Clinic",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+      avatar: dentalImage,
       audio: ressyDentalAudio,
     },
   ];
