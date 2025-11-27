@@ -1,41 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useEffect } from "react";
+import { useRef } from "react";
+import { useTableOfContentsScroll } from "@/hooks/useTableOfContentsScroll";
 
 const Privacy = () => {
-  // Smooth scroll handler for table of contents links
-  useEffect(() => {
-    const handleTOCClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const link = target.closest("a[href^='#']") as HTMLAnchorElement;
-      if (!link) return;
-
-      const hash = link.getAttribute("href");
-      if (!hash || !hash.startsWith("#")) return;
-
-      e.preventDefault();
-      const targetElement = document.querySelector(hash) as HTMLElement;
-      if (!targetElement) return;
-
-      const prefersReduced =
-        window.matchMedia &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const navOffset = 100;
-      const targetY =
-        targetElement.getBoundingClientRect().top +
-        window.pageYOffset -
-        navOffset;
-
-      if (prefersReduced) {
-        window.scrollTo(0, targetY);
-      } else {
-        window.scrollTo({ top: targetY, behavior: "smooth" });
-      }
-    };
-
-    document.addEventListener("click", handleTOCClick);
-    return () => document.removeEventListener("click", handleTOCClick);
-  }, []);
+  const tocContainerRef = useRef<HTMLDivElement>(null);
+  useTableOfContentsScroll(tocContainerRef);
 
   const sections = [
     { id: "introduction", title: "1. Introduction" },
@@ -84,7 +54,10 @@ const Privacy = () => {
           </div>
 
           {/* Table of Contents */}
-          <div className="mb-10 sm:mb-12 lg:mb-16 bg-gray-50 border border-gray-200 rounded-lg p-4 sm:p-6 lg:p-8">
+          <div
+            ref={tocContainerRef}
+            className="mb-10 sm:mb-12 lg:mb-16 bg-gray-50 border border-gray-200 rounded-lg p-4 sm:p-6 lg:p-8"
+          >
             <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
               Table of Contents
             </h2>
