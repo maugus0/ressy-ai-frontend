@@ -26,7 +26,7 @@ const Cookies = () => {
         <div className="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           {/* Header */}
           <div className="mb-10 sm:mb-12 lg:mb-16 border-b border-gray-200 pb-8 lg:pb-10">
-            <h1 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl lg:whitespace-nowrap font-bold text-gray-900 mb-6 lg:mb-8 leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-4xl xl:text-5xl xl:whitespace-nowrap font-bold text-gray-900 mb-6 lg:mb-8 leading-tight tracking-tight">
               Ressy Technologies Inc. – Cookie Policy
             </h1>
             <div className="text-sm sm:text-base lg:text-lg text-gray-600 space-y-2">
