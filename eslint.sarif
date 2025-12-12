@@ -1,0 +1,564 @@
+{
+  "version": "2.1.0",
+  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.5",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "ESLint",
+          "informationUri": "https://eslint.org",
+          "rules": [
+            {
+              "id": "prefer-const",
+              "helpUri": "https://eslint.org/docs/latest/rules/prefer-const",
+              "properties": {},
+              "shortDescription": {
+                "text": "Require `const` declarations for variables that are never reassigned after declared"
+              }
+            }
+          ],
+          "version": "9.32.0"
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/eslint.config.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/postcss.config.js"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/App.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/__tests__/DemoMockup.test.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/__tests__/MainPage.test.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ComparisonTable.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/DashboardSection.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/DemoMockup.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/FAQ.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Features.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/FinalCTA.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Footer.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Hero.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/HowItWorks.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/IndustrySolutions.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/IntegrationMarquee.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Iridescence.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/LiquidEther.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/LiveDemo.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Navigation.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Preloader.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Pricing.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ROICalculator.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ScheduleDemoModal.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ScrollControls.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ScrollToBottom.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ScrollToTop.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/SocialProof.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Squares.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/VoiceAgents.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/accordion.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/alert-dialog.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/alert.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/aspect-ratio.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/avatar.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/badge.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/breadcrumb.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/button.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/calendar.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/card.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/carousel.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/chart.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/checkbox.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/collapsible.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/command.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/context-menu.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/dialog.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/drawer.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/dropdown-menu.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/form.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/hover-card.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/input-otp.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/input.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/label.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/menubar.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/navigation-menu.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/pagination.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/popover.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/progress.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/radio-group.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/resizable.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/scroll-area.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/select.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/separator.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/sheet.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/sidebar.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/skeleton.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/slider.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/sonner.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/switch.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/table.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/tabs.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/textarea.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/toast.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/toaster.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/toggle-group.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/toggle.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/tooltip.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/ui/use-toast.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/hooks/use-mobile.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/hooks/use-toast.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/hooks/useTableOfContentsScroll.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/lib/utils.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/main.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/ApiReference.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Cookies.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Dental.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Documentation.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/HelpCenter.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Index.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/NotFound.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Privacy.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Restaurant.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Salons.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/ScheduleDemo.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/SystemStatus.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/pages/Terms.tsx"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/setupTests.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/vite-env.d.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/tailwind.config.ts"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/vite.config.ts"
+          }
+        }
+      ],
+      "results": [
+        {
+          "level": "error",
+          "message": {
+            "text": "'program' is never reassigned. Use 'const' instead."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///Users/devanshrastogi/Desktop/ressy-ai-frontend/src/components/Iridescence.tsx",
+                  "index": 16
+                },
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 9,
+                  "endLine": 77,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "ruleId": "prefer-const",
+          "ruleIndex": 0,
+          "suppressions": [
+            {
+              "kind": "inSource",
+              "justification": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
