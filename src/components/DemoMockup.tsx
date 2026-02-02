@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { validateEmail } from "@/lib/validation";
 import mockupImg from "@/assets/mockup.png";
 
 const DemoMockup = () => {
@@ -63,23 +64,6 @@ const DemoMockup = () => {
     return undefined;
   };
 
-  const validateEmail = (emailValue: string): string | undefined => {
-    const trimmed = emailValue.trim();
-    if (!trimmed) {
-      return "Email address is required.";
-    }
-    // More robust email validation
-    const emailRegex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-    if (!emailRegex.test(trimmed)) {
-      return "Please enter a valid email address.";
-    }
-    if (trimmed.length > 254) {
-      return "Email address is too long.";
-    }
-    return undefined;
-  };
-
   // Email notification via Web3Forms (CORS-friendly)
   const sendEmailNotifications = async (fullNumber: string) => {
     const ACCESS_KEY = "5f9a6bfe-1a62-477a-8d68-8b268cb5f597";
@@ -112,10 +96,17 @@ const DemoMockup = () => {
         businessName: businessNameError,
         email: emailError,
       });
+
       if (businessNameError) {
-        toast({ title: businessNameError });
+        toast({
+          title: "Invalid Business Name",
+          description: businessNameError,
+        });
       } else if (emailError) {
-        toast({ title: emailError });
+        toast({
+          title: "Invalid Email Address",
+          description: emailError,
+        });
       }
       return;
     }
@@ -134,7 +125,7 @@ const DemoMockup = () => {
     }
     setSubmitting(true);
     try {
-      const res = await fetch("https://api.ressy.ai/api/make-call", {
+      const res = await fetch("https://api.ressy.ai/api/v1/calls", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -149,6 +140,28 @@ const DemoMockup = () => {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || data?.success === false) {
+        // Check for email validation errors specifically
+        if (res.status === 422 || res.status === 400) {
+          const errorMsg = (data?.error || data?.message || "").toLowerCase();
+
+          // More specific pattern matching to avoid false positives
+          const isEmailError =
+            errorMsg.includes("invalid email") ||
+            errorMsg.includes("email format") ||
+            errorMsg.includes("email address") ||
+            (errorMsg.includes("email") && !errorMsg.includes("phone"));
+
+          if (isEmailError) {
+            toast({
+              title: "Invalid Email Address",
+              description:
+                "Please enter a valid email format like name@company.com",
+            });
+            return;
+          }
+        }
+
+        // Default error (phone or generic error)
         const errText =
           typeof data?.error === "string" ? data.error.toLowerCase() : "";
         const looksInvalidNumber =
