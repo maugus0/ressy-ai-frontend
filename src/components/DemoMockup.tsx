@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { validateEmail } from "@/lib/validation";
 import mockupImg from "@/assets/mockup.png";
 
 const DemoMockup = () => {
@@ -60,80 +61,6 @@ const DemoMockup = () => {
     if (!/[a-zA-Z0-9]/.test(trimmed)) {
       return "Business name must contain at least one letter or number.";
     }
-    return undefined;
-  };
-
-  const validateEmail = (emailValue: string): string | undefined => {
-    const trimmed = emailValue.trim();
-    if (!trimmed) {
-      return "Email address is required."; // Keep this separate
-    }
-
-    // Basic format check
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(trimmed)) {
-      return "Invalid email format (example: name@domain.com).";
-    }
-
-    // Length limits
-    if (trimmed.length > 254) {
-      return "Invalid email format: email address is too long.";
-    }
-
-    const parts = trimmed.split("@");
-    if (parts.length !== 2) {
-      return "Invalid email format (must contain exactly one @ symbol).";
-    }
-
-    const localPart = parts[0];
-    const domain = parts[1];
-
-    // Consecutive dots
-    if (localPart.includes("..") || domain.includes("..")) {
-      return "Invalid email format: consecutive dots not allowed.";
-    }
-
-    // Start/end with dots
-    if (localPart.startsWith(".") || localPart.endsWith(".")) {
-      return "Invalid email format: local part cannot start or end with a dot.";
-    }
-    if (domain.startsWith(".") || domain.endsWith(".")) {
-      return "Invalid email format: domain cannot start or end with a dot.";
-    }
-
-    // Local part length
-    if (localPart.length > 64) {
-      return "Invalid email format: local part is too long.";
-    }
-
-    // Trailing junk after TLD
-    const trailingPattern = /\.([a-zA-Z]{2,})(\d+|[^a-zA-Z.-]+)/;
-    if (trailingPattern.test(domain)) {
-      return "Invalid email format: appears to have extra characters after domain.";
-    }
-
-    // TLD contains only letters
-    const tld = domain.split(".").pop() || "";
-    if (!/^[a-zA-Z]+$/.test(tld)) {
-      return "Invalid email format: top-level domain must contain only letters.";
-    }
-
-    // TLD length
-    if (tld.length < 2) {
-      return "Invalid email format: top-level domain must be at least 2 characters.";
-    }
-
-    // Validate domain label hyphen rules
-    const domainLabels = domain.split(".");
-    for (const label of domainLabels) {
-      if (label.startsWith("-") || label.endsWith("-")) {
-        return "Invalid email format: domain labels cannot start or end with hyphen.";
-      }
-      if (label.includes("--")) {
-        return "Invalid email format: consecutive hyphens not allowed in domain.";
-      }
-    }
-
     return undefined;
   };
 

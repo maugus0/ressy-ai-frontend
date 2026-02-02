@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Calendar, Clock, User, Mail, Phone, Building, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { validateEmail as validateEmailShared } from "@/lib/validation";
 
 type ModalMode = "demo" | "trial" | "waitlist";
 
@@ -63,12 +64,7 @@ const ScheduleDemoModal = ({
   };
 
   const validateEmail = (email: string): string => {
-    if (!email.trim()) return "Email is required";
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim()))
-      return "Please enter a valid email address";
-    if (email.length > 254) return "Email must be less than 254 characters";
-    return "";
+    return validateEmailShared(email) ?? "";
   };
 
   const validatePhone = (phone: string): string => {
