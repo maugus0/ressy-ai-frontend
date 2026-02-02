@@ -63,68 +63,6 @@ const DemoMockup = () => {
     return undefined;
   };
 
-  // const validateEmail = (emailValue: string): string | undefined => {
-  //   const trimmed = emailValue.trim();
-  //   if (!trimmed) {
-  //     return "Email address is required.";
-  //   }
-  //   // More robust email validation
-  //   const emailRegex =
-  //     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-  //   if (!emailRegex.test(trimmed)) {
-  //     return "Please enter a valid email address.";
-  //   }
-  //   if (trimmed.length > 254) {
-  //     return "Email address is too long.";
-  //   }
-  //   return undefined;
-  // };
-
-  // const validateEmail = (emailValue: string): string | undefined => {
-  //   const trimmed = emailValue.trim();
-  //   if (!trimmed) {
-  //     return "Email address is required.";
-  //   }
-
-  //    const domain = trimmed.split('@')[1];
-  //   // JavaScript equivalent of Python's trailing_pattern
-  //   const trailingPattern = /\.([a-zA-Z]{2,})(\d+|[^a-zA-Z.-]+)/;
-  //   if (trailingPattern.test(domain)) {
-  //     return "Invalid email format: appears to have extra characters after domain";
-  //   }
-
-  //   // ADD THIS: Check TLD contains only letters
-  //   const tld = domain.split('.').pop() || '';
-  //   if (!/^[a-zA-Z]+$/.test(tld)) {
-  //     return "Invalid email format: top-level domain must contain only letters";
-  //   }
-
-  //   // ✅ Enhanced validation matching backend
-  //   // Basic format check - backend will do final validation
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   if (!emailRegex.test(trimmed)) {
-  //     return "Please enter a valid email address (example: name@domain.com).";
-  //   }
-
-  //   // Length limits
-  //   if (trimmed.length > 254) {
-  //     return "Email address is too long.";
-  //   }
-
-  //   // Check for common invalid patterns the backend rejects
-  //   if (trimmed.includes("..") || trimmed.startsWith(".") || trimmed.endsWith(".")) {
-  //     return "Email address contains invalid formatting.";
-  //   }
-
-  //   // Local part validation (before @)
-  //   const localPart = trimmed.split('@')[0];
-  //   if (localPart.length > 64) {
-  //     return "Email username is too long.";
-  //   }
-
-  //   return undefined;
-  // };
-
   const validateEmail = (emailValue: string): string | undefined => {
     const trimmed = emailValue.trim();
     if (!trimmed) {
@@ -185,7 +123,7 @@ const DemoMockup = () => {
       return "Invalid email format: top-level domain must be at least 2 characters.";
     }
 
-    // Domain label hyphen rules (ADD THIS SECTION)
+    // Validate domain label hyphen rules
     const domainLabels = domain.split(".");
     for (const label of domainLabels) {
       if (label.startsWith("-") || label.endsWith("-")) {
@@ -226,34 +164,21 @@ const DemoMockup = () => {
     const businessNameError = validateBusinessName(businessName);
     const emailError = validateEmail(email);
 
-    // if (businessNameError || emailError) {
-    //   setErrors({
-    //     businessName: businessNameError,
-    //     email: emailError,
-    //   });
-    //   if (businessNameError) {
-    //     toast({ title: businessNameError });
-    //   } else if (emailError) {
-    //     toast({ title: emailError });
-    //   }
-    //   return;
-    // }
     if (businessNameError || emailError) {
       setErrors({
         businessName: businessNameError,
         email: emailError,
       });
 
-      // Show consistent, user-friendly toast for all validation errors
       if (businessNameError) {
         toast({
-          title: "Please check your information",
-          description: businessNameError, // Shows the detailed error
+          title: "Invalid Business Name",
+          description: businessNameError,
         });
       } else if (emailError) {
         toast({
-          title: "Please check your information",
-          description: emailError, // Shows "Please enter a valid email address..."
+          title: "Invalid Email Address",
+          description: emailError,
         });
       }
       return;
@@ -273,7 +198,7 @@ const DemoMockup = () => {
     }
     setSubmitting(true);
     try {
-      const res = await fetch("https://api.ressy.ai/api/v1/make-call", {
+      const res = await fetch("https://api.ressy.ai/api/v1/calls", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -287,33 +212,21 @@ const DemoMockup = () => {
         }),
       });
       const data = await res.json().catch(() => ({}));
-      // if (!res.ok || data?.success === false) {
-      //   const errText =
-      //     typeof data?.error === "string" ? data.error.toLowerCase() : "";
-      //   const looksInvalidNumber =
-      //     res.status === 400 ||
-      //     errText.includes("not valid") ||
-      //     errText.includes("invalid") ||
-      //     errText.includes("unable to create record");
-      //   toast({
-      //     title: looksInvalidNumber
-      //       ? "Please enter a valid number."
-      //       : "We are unable to call you right now.",
-      //     description: looksInvalidNumber
-      //       ? "Ressy cannot call invalid numbers."
-      //       : "Please try again after some time.",
-      //   });
-      //   return;
-      // }
       if (!res.ok || data?.success === false) {
         // Check for email validation errors specifically
         if (res.status === 422 || res.status === 400) {
-          if (
-            data?.error?.includes("email") ||
-            data?.message?.includes("email")
-          ) {
+          const errorMsg = (data?.error || data?.message || "").toLowerCase();
+
+          // More specific pattern matching to avoid false positives
+          const isEmailError =
+            errorMsg.includes("invalid email") ||
+            errorMsg.includes("email format") ||
+            errorMsg.includes("email address") ||
+            (errorMsg.includes("email") && !errorMsg.includes("phone"));
+
+          if (isEmailError) {
             toast({
-              title: "Invalid email address",
+              title: "Invalid Email Address",
               description:
                 "Please enter a valid email format like name@company.com",
             });
@@ -321,7 +234,7 @@ const DemoMockup = () => {
           }
         }
 
-        // Default error (keeps existing phone error logic)
+        // Default error (phone or generic error)
         const errText =
           typeof data?.error === "string" ? data.error.toLowerCase() : "";
         const looksInvalidNumber =
