@@ -1,11 +1,17 @@
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { blogPosts } from "@/data/blogPosts";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import {
+  getCategoryBadge,
+  ACCENT_COLORS,
+  type BlogCategory,
+} from "@/types/blog";
 import { cn } from "@/lib/utils";
 
-type FilterTab = "all" | "marketing" | "engineering" | "sales";
+type FilterTab = "all" | BlogCategory;
 
 const TABS: { label: string; value: FilterTab }[] = [
   { label: "All", value: "all" },
@@ -14,33 +20,10 @@ const TABS: { label: string; value: FilterTab }[] = [
   { label: "Sales", value: "sales" },
 ];
 
-const CATEGORY_BADGE: Record<
-  string,
-  { label: string; bg: string; text: string }
-> = {
-  marketing: {
-    label: "Product",
-    bg: "bg-blue-50",
-    text: "text-blue-700",
-  },
-  engineering: {
-    label: "Engineering",
-    bg: "bg-emerald-50",
-    text: "text-emerald-700",
-  },
-  sales: {
-    label: "Sales",
-    bg: "bg-orange-50",
-    text: "text-orange-700",
-  },
-};
-
 const Blog = () => {
   const [activeFilter, setActiveFilter] = useState<FilterTab>("all");
 
-  useEffect(() => {
-    document.title = "Blog | RessyAI";
-  }, []);
+  useDocumentTitle("Blog");
 
   const sortedPosts = useMemo(
     () => [...blogPosts].sort((a, b) => b.date.localeCompare(a.date)),
@@ -71,11 +54,16 @@ const Blog = () => {
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-2 justify-center mb-8 sm:mb-10">
+          <div
+            className="flex flex-wrap gap-2 justify-center mb-8 sm:mb-10"
+            role="group"
+            aria-label="Filter blog posts by category"
+          >
             {TABS.map((tab) => (
               <button
                 key={tab.value}
                 onClick={() => setActiveFilter(tab.value)}
+                aria-pressed={activeFilter === tab.value}
                 className={cn(
                   "px-4 py-2 rounded-full text-sm font-medium transition-colors",
                   activeFilter === tab.value
@@ -98,7 +86,9 @@ const Blog = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPosts.map((post) => {
-                const badge = CATEGORY_BADGE[post.category];
+                const badge = getCategoryBadge(post.category);
+                const accent =
+                  ACCENT_COLORS[post.category as BlogCategory] ?? "";
                 return (
                   <Link
                     key={post.id}
@@ -106,14 +96,7 @@ const Blog = () => {
                     className="group rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
                   >
                     {/* Accent strip */}
-                    <div
-                      className={cn(
-                        "h-2",
-                        post.category === "marketing" && "bg-blue-400",
-                        post.category === "engineering" && "bg-emerald-400",
-                        post.category === "sales" && "bg-orange-400",
-                      )}
-                    />
+                    <div className={cn("h-2", accent)} />
                     <div className="p-5 sm:p-6">
                       <span
                         className={cn(

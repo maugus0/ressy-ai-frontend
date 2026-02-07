@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import {
@@ -8,14 +8,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { faqCategories } from "@/data/helpCenterData";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { Search, X } from "lucide-react";
 
 const HelpCenter = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    document.title = "Help Center | RessyAI";
-  }, []);
+  useDocumentTitle("Help Center");
 
   const filteredCategories = useMemo(() => {
     const query = searchQuery.toLowerCase().trim();
@@ -58,10 +57,15 @@ const HelpCenter = () => {
           {/* Search */}
           <div className="mb-8 sm:mb-10">
             <div className="relative max-w-xl mx-auto">
+              <label htmlFor="help-search" className="sr-only">
+                Search questions
+              </label>
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
+                id="help-search"
                 type="text"
                 placeholder="Search questions..."
+                aria-label="Search help center questions"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-12 pl-12 pr-10 py-3 rounded-xl border border-gray-200 bg-white shadow-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"

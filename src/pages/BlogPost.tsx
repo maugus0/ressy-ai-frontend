@@ -4,22 +4,14 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { blogPosts, type BlogContentBlock } from "@/data/blogPosts";
 import { ArrowLeft, Phone } from "lucide-react";
+import { getCategoryBadge } from "@/types/blog";
 import { cn } from "@/lib/utils";
 
-const CATEGORY_BADGE: Record<
-  string,
-  { label: string; bg: string; text: string }
-> = {
-  marketing: { label: "Product", bg: "bg-blue-50", text: "text-blue-700" },
-  engineering: {
-    label: "Engineering",
-    bg: "bg-emerald-50",
-    text: "text-emerald-700",
-  },
-  sales: { label: "Sales", bg: "bg-orange-50", text: "text-orange-700" },
-};
-
-const ContentBlockRenderer = ({ block }: { block: BlogContentBlock }) => {
+export const ContentBlockRenderer = ({
+  block,
+}: {
+  block: BlogContentBlock;
+}) => {
   switch (block.type) {
     case "paragraph":
       return (
@@ -59,7 +51,6 @@ const ContentBlockRenderer = ({ block }: { block: BlogContentBlock }) => {
     case "callout":
       if (block.calloutStyle === "phone") {
         const lines = block.text?.split("\n") ?? [];
-        // Extract phone number from text
         const phoneMatch = block.text?.match(/\+1\s*\(\d{3}\)\s*\d{3}-\d{4}/);
         const phoneNumber = phoneMatch?.[0];
         const phoneHref = phoneNumber
@@ -170,7 +161,7 @@ const BlogPost = () => {
     );
   }
 
-  const badge = CATEGORY_BADGE[post.category];
+  const badge = getCategoryBadge(post.category);
 
   return (
     <div className="min-h-screen bg-white">

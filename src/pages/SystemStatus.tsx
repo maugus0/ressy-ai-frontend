@@ -4,71 +4,34 @@ import Footer from "@/components/Footer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-// --- Types ---
-
-interface DemoAgentHealth {
-  services: {
-    api: string;
-    deepgram: string;
-    twilio: string;
-    websocket: string;
-  };
-  status: string;
-}
-
-interface ProductionHealth {
-  status: string;
-  timestamp: number;
-}
-
-interface ServiceResult<T> {
-  data: T | null;
-  error: boolean;
-  responseTime: number;
-}
-
-type OverallStatus = "operational" | "partial" | "major" | "loading";
-
-// --- Vendor-agnostic label mapping ---
-
-interface SubServiceConfig {
-  label: string;
-  category: "Services" | "Real-time Capabilities";
-}
-
-const SERVICE_LABEL_MAP: Record<
-  keyof DemoAgentHealth["services"],
-  SubServiceConfig
-> = {
-  api: { label: "API Server", category: "Services" },
-  deepgram: {
-    label: "Speech Recognition",
-    category: "Real-time Capabilities",
-  },
-  twilio: {
-    label: "Telephony Service",
-    category: "Real-time Capabilities",
-  },
-  websocket: {
-    label: "Realtime Streaming",
-    category: "Real-time Capabilities",
-  },
-} as const;
-
-const PRODUCTION_EXTRA_SERVICES: SubServiceConfig[] = [
-  { label: "Voice Gateway", category: "Services" },
-];
-
-const DEMO_EXTRA_SERVICES: SubServiceConfig[] = [
-  { label: "Demo Agent Engine", category: "Services" },
-];
+import { API_ENDPOINTS } from "@/config/endpoints";
+import {
+  buildProductionGroups,
+  buildDemoGroups,
+} from "@/lib/systemStatusHelpers";
+import type {
+  DemoAgentHealth,
+  ProductionHealth,
+  ServiceResult,
+  OverallStatus,
+  ServiceDotStatus,
+  GroupedService,
+  CategoryGroup,
+  ServiceStatus,
+} from "@/types/system";
 
 // --- Helpers ---
 
-const isUp = (value: string) => value === "running" || value === "connected";
-
-const statusColor = (up: boolean) => (up ? "text-green-600" : "text-red-600");
+const statusColor = (status: ServiceStatus) => {
+  switch (status) {
+    case "operational":
+      return "text-green-600";
+    case "degraded":
+      return "text-yellow-600";
+    case "down":
+      return "text-red-600";
+  }
+};
 
 const REFRESH_INTERVAL = 60_000;
 
@@ -78,7 +41,7 @@ const StatusDot = ({
   status,
   pulse,
 }: {
-  status: "up" | "down" | "degraded" | "loading";
+  status: ServiceDotStatus;
   pulse?: boolean;
 }) => {
   if (status === "loading") {
@@ -148,19 +111,23 @@ const OverallBanner = ({ status }: { status: OverallStatus }) => {
   );
 };
 
-interface SubServiceRowProps {
-  label: string;
-  up: boolean;
-  displayStatus: string;
-}
-
-const SubServiceRow = ({ label, up, displayStatus }: SubServiceRowProps) => (
+const SubServiceRow = ({ label, status, displayStatus }: GroupedService) => (
   <div className="flex items-center justify-between">
     <span className="flex items-center gap-2">
-      <StatusDot status={up ? "up" : "down"} />
+      <StatusDot
+        status={
+          status === "operational"
+            ? "up"
+            : status === "degraded"
+              ? "degraded"
+              : "down"
+        }
+      />
       <span className="text-gray-700">{label}</span>
     </span>
-    <span className={`font-medium ${statusColor(up)}`}>{displayStatus}</span>
+    <span className={`font-medium ${statusColor(status)}`}>
+      {displayStatus}
+    </span>
   </div>
 );
 
@@ -196,17 +163,6 @@ const ServiceCardSkeleton = ({ title, hostname }: ServiceCardSkeletonProps) => (
 
 // --- Grouped sub-service rendering ---
 
-interface GroupedService {
-  label: string;
-  up: boolean;
-  displayStatus: string;
-}
-
-interface CategoryGroup {
-  category: string;
-  services: GroupedService[];
-}
-
 const renderGroupedServices = (groups: CategoryGroup[]) => (
   <div className="space-y-5">
     {groups.map((group) => (
@@ -219,7 +175,7 @@ const renderGroupedServices = (groups: CategoryGroup[]) => (
             <SubServiceRow
               key={svc.label}
               label={svc.label}
-              up={svc.up}
+              status={svc.status}
               displayStatus={svc.displayStatus}
             />
           ))}
@@ -228,123 +184,6 @@ const renderGroupedServices = (groups: CategoryGroup[]) => (
     ))}
   </div>
 );
-
-// --- Build groups from API responses ---
-
-function buildProductionGroups(
-  result: ServiceResult<ProductionHealth>,
-): CategoryGroup[] {
-  const healthy = !result.error && result.data?.status === "healthy";
-
-  // API-mapped services
-  const mapped: GroupedService[] = Object.entries(SERVICE_LABEL_MAP).map(
-    ([, config]) => ({
-      label: config.label,
-      up: healthy,
-      displayStatus: healthy
-        ? config.category === "Services"
-          ? "Operational"
-          : config.label === "Realtime Streaming"
-            ? "Running"
-            : "Connected"
-        : result.error
-          ? "Unreachable"
-          : "Degraded",
-    }),
-  );
-
-  // Extra production-only services
-  const extras: GroupedService[] = PRODUCTION_EXTRA_SERVICES.map((extra) => ({
-    label: extra.label,
-    up: healthy,
-    displayStatus: healthy
-      ? "Operational"
-      : result.error
-        ? "Unreachable"
-        : "Degraded",
-  }));
-
-  const all = [...mapped, ...extras];
-
-  const services = all.filter(
-    (s) =>
-      [...Object.values(SERVICE_LABEL_MAP), ...PRODUCTION_EXTRA_SERVICES].find(
-        (c) => c.label === s.label,
-      )?.category === "Services",
-  );
-  const realtime = all.filter(
-    (s) =>
-      [...Object.values(SERVICE_LABEL_MAP), ...PRODUCTION_EXTRA_SERVICES].find(
-        (c) => c.label === s.label,
-      )?.category === "Real-time Capabilities",
-  );
-
-  return [
-    { category: "Services", services },
-    { category: "Real-time Capabilities", services: realtime },
-  ];
-}
-
-function buildDemoGroups(
-  result: ServiceResult<DemoAgentHealth>,
-): CategoryGroup[] {
-  const apiServices = result.data?.services;
-
-  // API-mapped services
-  const mapped: GroupedService[] = Object.entries(SERVICE_LABEL_MAP).map(
-    ([key, config]) => {
-      const value = apiServices
-        ? apiServices[key as keyof DemoAgentHealth["services"]]
-        : undefined;
-      const up = value ? isUp(value) : false;
-      return {
-        label: config.label,
-        up,
-        displayStatus: result.error
-          ? "Unreachable"
-          : up
-            ? config.category === "Services"
-              ? "Operational"
-              : value === "running"
-                ? "Running"
-                : "Connected"
-            : "Down",
-      };
-    },
-  );
-
-  // Extra demo-only services (inferred from overall status)
-  const overallHealthy = !result.error && result.data?.status === "healthy";
-  const extras: GroupedService[] = DEMO_EXTRA_SERVICES.map((extra) => ({
-    label: extra.label,
-    up: overallHealthy,
-    displayStatus: result.error
-      ? "Unreachable"
-      : overallHealthy
-        ? "Operational"
-        : "Down",
-  }));
-
-  const all = [...mapped, ...extras];
-
-  const services = all.filter(
-    (s) =>
-      [...Object.values(SERVICE_LABEL_MAP), ...DEMO_EXTRA_SERVICES].find(
-        (c) => c.label === s.label,
-      )?.category === "Services",
-  );
-  const realtime = all.filter(
-    (s) =>
-      [...Object.values(SERVICE_LABEL_MAP), ...DEMO_EXTRA_SERVICES].find(
-        (c) => c.label === s.label,
-      )?.category === "Real-time Capabilities",
-  );
-
-  return [
-    { category: "Services", services },
-    { category: "Real-time Capabilities", services: realtime },
-  ];
-}
 
 // --- Main Component ---
 
@@ -381,8 +220,8 @@ const SystemStatus = () => {
     };
 
     const [prodResult, demoResult] = await Promise.all([
-      fetchService<ProductionHealth>("https://voice.ressy.ai/health"),
-      fetchService<DemoAgentHealth>("https://api.ressy.ai/health"),
+      fetchService<ProductionHealth>(API_ENDPOINTS.production.health),
+      fetchService<DemoAgentHealth>(API_ENDPOINTS.demo.health),
     ]);
 
     if (!controller.signal.aborted) {
@@ -434,7 +273,7 @@ const SystemStatus = () => {
     result: ServiceResult<ProductionHealth | DemoAgentHealth> | null,
   ): {
     label: string;
-    dot: "up" | "down" | "degraded" | "loading";
+    dot: ServiceDotStatus;
     color: string;
   } => {
     if (!result)
