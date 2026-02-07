@@ -184,7 +184,8 @@ describe("SystemStatus page", () => {
     });
 
     it("manual refresh triggers new fetch", async () => {
-      const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+      vi.useRealTimers();
+      const user = userEvent.setup();
       mockFetchBothHealthy();
       renderSystemStatus();
 
