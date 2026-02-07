@@ -243,6 +243,22 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
+                  to="/blog"
+                  className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/onboarding"
+                  className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
+                >
+                  Onboarding
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/help-center"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
@@ -251,23 +267,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/docs"
-                  className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
-                >
-                  Documentation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/api-reference"
-                  className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
-                >
-                  API Reference
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/status"
+                  to="/system-status"
                   className="text-slate-600 hover:text-purple-600 transition-colors duration-300 hover:underline"
                 >
                   System Status

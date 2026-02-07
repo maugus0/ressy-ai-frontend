@@ -11,9 +11,9 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import HelpCenter from "./pages/HelpCenter";
-import Documentation from "./pages/Documentation";
-import ApiReference from "./pages/ApiReference";
 import SystemStatus from "./pages/SystemStatus";
+import Blog from "./pages/Blog";
+import Onboarding from "./pages/Onboarding";
 import Restaurant from "./pages/Restaurant";
 import Salons from "./pages/Salons";
 import Dental from "./pages/Dental";
@@ -50,10 +50,10 @@ const App = () => {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/help-center" element={<HelpCenter />} />
-            <Route path="/docs" element={<Documentation />} />
-            <Route path="/api-reference" element={<ApiReference />} />
-            <Route path="/status" element={<SystemStatus />} />
+            <Route path="/system-status" element={<SystemStatus />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
