@@ -5,6 +5,7 @@ import { Scissors, Bell, Package, Users, Phone } from "lucide-react";
 
 const Salons = () => {
   useEffect(() => {
+    document.title = "Salons | RessyAI";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 

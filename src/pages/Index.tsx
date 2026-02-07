@@ -22,6 +22,10 @@ const Index = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "RessyAI | Magic Receptionist";
+  }, []);
+
+  useEffect(() => {
     const state = location.state as { scrollTo?: string } | undefined;
     if (state?.scrollTo) {
       const hash = state.scrollTo;

@@ -6,6 +6,7 @@ import DemoMockup from "@/components/DemoMockup";
 
 const ScheduleDemo = () => {
   useEffect(() => {
+    document.title = "Schedule Demo | RessyAI";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 

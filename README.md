@@ -1,101 +1,159 @@
-## RessyAI Promotional Website – Local Setup (npm)
+# RessyAI Promotional Website
 
-Promotional website for a cloud-based conversational AI interface for restaurants.
+Promotional website for RessyAI — an AI-powered voice receptionist for restaurants, salons, dental clinics, and service businesses.
 
-Follow these steps to set up and run the RessyAI promotional website locally using npm:
+## Tech Stack
 
-### Prerequisites
+- **React 18** + **TypeScript**
+- **Vite 5** — build tool & dev server
+- **Tailwind CSS** — styling
+- **shadcn/ui** (Radix UI) — components
+- **React Router v6** — routing
+- **Framer Motion** — animations
+- **embla-carousel-react** — carousels
+- **TanStack Query** — data fetching
 
-- [Node.js](https://nodejs.org/) (version 18 or higher recommended)
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 18 or higher)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 
-### Installation
+## Installation
 
-1. Open your terminal and navigate to the project directory:
+1. Clone the repo and navigate to the project:
    ```bash
-   cd /path/to/ressy-ai-frontend
+   cd ressy-ai-frontend
    ```
 2. Install dependencies:
    ```bash
    npm install
    ```
 
-### Running the Development Server
+## Development
 
-Start the local development server:
+Start the dev server:
 
 ```bash
 npm run dev
 ```
 
-The site will be available at [http://localhost:8080](http://localhost:8080) (default Vite port is set to 8080).
+The site runs at [http://localhost:8080](http://localhost:8080).
 
-### Building for Production
+## Build & Preview
 
-To build the site for production:
+Build for production:
 
 ```bash
 npm run build
 ```
 
-### Previewing the Production Build
-
-To preview the production build locally:
+Preview the production build locally:
 
 ```bash
 npm run preview
 ```
 
-### Linting & Formatting
+## Linting & Formatting
 
-Run ESLint with TypeScript/React defaults (warnings treated as errors):
+Run ESLint (warnings treated as errors):
 
 ```bash
 npm run lint
 ```
 
-Generate an ESLint SARIF report for GitHub code scanning:
+Generate ESLint SARIF for GitHub code scanning:
 
 ```bash
 npm run lint:sarif
 ```
 
-Format the codebase (Prettier) or verify formatting without changing files:
+Format with Prettier:
 
 ```bash
-npm run format        # writes changes
-npm run format:check  # read-only check
+npm run format        # write changes
+npm run format:check  # check only (CI)
 ```
 
-### Testing
+## Testing
 
-Execute the Vitest suite interactively:
+Uses **Vitest** and **@testing-library/react** for unit and integration tests.
+
+Run tests in watch mode:
 
 ```bash
 npm run test
 ```
 
-Run the CI-friendly Vitest command with coverage output in `coverage/`:
+Run tests once with coverage (CI):
 
 ```bash
 npm run test:ci
 ```
 
-### Additional npm Scripts
+Tests live in `src/__tests__/` and cover pages, hooks, config, types, and shared logic.
 
-- `npm run build:dev` – create a development-mode build.
-- `npm run format` – format the codebase with Prettier.
-- `npm run format:check` – verify formatting without modifying files (used in CI).
-- `npm run lint` – run ESLint against TypeScript/React sources with warnings treated as errors.
-- `npm run lint:sarif` – generate an ESLint SARIF report at `eslint.sarif`.
-- `npm run test` – execute Vitest in watch mode.
-- `npm run test:ci` – execute Vitest in CI mode with coverage reporting to `coverage/`.
-- `npm run predeploy` – alias for `npm run build` (used by GitHub Pages deployments).
-- `npm run deploy` – publish the latest build directory to the `gh-pages` branch using the `gh-pages` CLI.
+## Deployment
 
----
+The site is deployed to **GitHub Pages**:
 
-For troubleshooting, see console output for errors or check your Node/npm versions.
+```bash
+npm run predeploy   # builds the project
+npm run deploy      # publishes to gh-pages branch
+```
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── components/ui/  # shadcn/ui primitives
+├── config/         # App config (e.g. API endpoints)
+├── data/           # Static content (FAQ, blog, onboarding steps)
+├── hooks/          # Custom React hooks
+├── lib/            # Utilities
+├── pages/          # Route-level page components
+├── types/          # Shared TypeScript types
+├── __tests__/      # Vitest + Testing Library tests
+├── test/           # Test utilities
+└── assets/         # Images, audio, integrations
+```
+
+## Pages & Routes
+
+| Route            | Page                      |
+| ---------------- | ------------------------- |
+| `/`              | Home                      |
+| `/restaurants`   | Restaurants (industry)    |
+| `/salons`        | Salons & Spas (industry)  |
+| `/dental`        | Dental Clinics (industry) |
+| `/schedule-demo` | Schedule Demo             |
+| `/blog`          | Blog listing              |
+| `/blog/:slug`    | Blog post detail          |
+| `/onboarding`    | Getting Started guide     |
+| `/help-center`   | FAQ & support             |
+| `/system-status` | Live service status       |
+| `/privacy`       | Privacy Policy            |
+| `/terms`         | Terms of Service          |
+| `/cookies`       | Cookie Policy             |
+
+**Redirects (backward-compatible):** `/status` → `/system-status`, `/docs` and `/api-reference` → `/help-center`
+
+## Scripts Reference
+
+| Script                 | Description                    |
+| ---------------------- | ------------------------------ |
+| `npm run dev`          | Start dev server               |
+| `npm run build`        | Production build               |
+| `npm run build:dev`    | Development build              |
+| `npm run preview`      | Preview production build       |
+| `npm run lint`         | Run ESLint                     |
+| `npm run lint:sarif`   | Generate ESLint SARIF          |
+| `npm run format`       | Format with Prettier           |
+| `npm run format:check` | Check formatting               |
+| `npm run test`         | Vitest (watch mode)            |
+| `npm run test:ci`      | Vitest (single run + coverage) |
+| `npm run predeploy`    | Alias for `build`              |
+| `npm run deploy`       | Deploy to GitHub Pages         |
 
 ---
 
