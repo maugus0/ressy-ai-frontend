@@ -1,11 +1,15 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTableOfContentsScroll } from "@/hooks/useTableOfContentsScroll";
 
 const Privacy = () => {
   const tocContainerRef = useRef<HTMLDivElement>(null);
   useTableOfContentsScroll(tocContainerRef);
+
+  useEffect(() => {
+    document.title = "Privacy Policy | RessyAI";
+  }, []);
 
   const sections = [
     { id: "introduction", title: "1. Introduction" },

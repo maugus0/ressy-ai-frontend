@@ -5,6 +5,7 @@ import { Calendar, UtensilsCrossed, Clock, Users, Phone } from "lucide-react";
 
 const Restaurant = () => {
   useEffect(() => {
+    document.title = "Restaurants | RessyAI";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 

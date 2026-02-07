@@ -1,76 +1,60 @@
-import { useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { blogPosts } from "@/data/blogPosts";
-import { FileText } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const placeholderCards = [
-  { category: "Marketing", color: "bg-pink-100" },
-  { category: "Sales", color: "bg-purple-100" },
-  { category: "Engineering", color: "bg-indigo-100" },
+type FilterTab = "all" | "marketing" | "engineering" | "sales";
+
+const TABS: { label: string; value: FilterTab }[] = [
+  { label: "All", value: "all" },
+  { label: "Product", value: "marketing" },
+  { label: "Engineering", value: "engineering" },
+  { label: "Sales", value: "sales" },
 ];
 
+const CATEGORY_BADGE: Record<
+  string,
+  { label: string; bg: string; text: string }
+> = {
+  marketing: {
+    label: "Product",
+    bg: "bg-blue-50",
+    text: "text-blue-700",
+  },
+  engineering: {
+    label: "Engineering",
+    bg: "bg-emerald-50",
+    text: "text-emerald-700",
+  },
+  sales: {
+    label: "Sales",
+    bg: "bg-orange-50",
+    text: "text-orange-700",
+  },
+};
+
 const Blog = () => {
+  const [activeFilter, setActiveFilter] = useState<FilterTab>("all");
+
   useEffect(() => {
     document.title = "Blog | RessyAI";
   }, []);
 
-  if (blogPosts.length > 0) {
-    return (
-      <div className="min-h-screen bg-white">
-        <Navigation />
-        <main className="pt-20 sm:pt-24 pb-16">
-          <div className="max-w-4xl lg:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-            {/* Header */}
-            <div className="mb-8 sm:mb-10 text-center">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
-                Blog
-              </h1>
-              <p className="text-gray-600 text-base sm:text-lg max-w-xl mx-auto">
-                Insights, updates, and stories from the RessyAI team.
-              </p>
-            </div>
+  const sortedPosts = useMemo(
+    () => [...blogPosts].sort((a, b) => b.date.localeCompare(a.date)),
+    [],
+  );
 
-            {/* Blog Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogPosts.map((post) => (
-                <article
-                  key={post.id}
-                  className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden hover:shadow-md transition-shadow"
-                >
-                  {post.coverImage && (
-                    <img
-                      src={post.coverImage}
-                      alt={post.title}
-                      className="w-full h-48 object-cover"
-                    />
-                  )}
-                  <div className="p-5">
-                    <span className="inline-block text-xs font-medium text-purple-600 bg-purple-50 rounded-full px-3 py-1 mb-3 capitalize">
-                      {post.category}
-                    </span>
-                    <h2 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-                      {post.title}
-                    </h2>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <span>{post.author}</span>
-                      <span>{post.date}</span>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
+  const filteredPosts = useMemo(
+    () =>
+      activeFilter === "all"
+        ? sortedPosts
+        : sortedPosts.filter((p) => p.category === activeFilter),
+    [activeFilter, sortedPosts],
+  );
 
-  // Coming Soon state
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -86,50 +70,77 @@ const Blog = () => {
             </p>
           </div>
 
-          {/* Coming Soon */}
-          <div className="text-center py-12 sm:py-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 mb-6">
-              <FileText className="h-8 w-8 text-purple-600" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-              Coming Soon
-            </h2>
-            <p className="text-gray-600 max-w-md mx-auto mb-10 text-sm sm:text-base leading-relaxed">
-              We're working on our first posts. Check back soon for updates from
-              our Marketing, Sales, and Engineering teams.
-            </p>
-          </div>
-
-          {/* Teaser Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
-            {placeholderCards.map((card) => (
-              <div
-                key={card.category}
-                className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden"
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap gap-2 justify-center mb-8 sm:mb-10">
+            {TABS.map((tab) => (
+              <button
+                key={tab.value}
+                onClick={() => setActiveFilter(tab.value)}
+                className={cn(
+                  "px-4 py-2 rounded-full text-sm font-medium transition-colors",
+                  activeFilter === tab.value
+                    ? "bg-gray-900 text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200",
+                )}
               >
-                <div className={`h-32 ${card.color}`} />
-                <div className="p-5 space-y-3">
-                  <div className="h-3 w-16 bg-gray-200 rounded-full" />
-                  <div className="h-4 w-3/4 bg-gray-200 rounded-full" />
-                  <div className="h-3 w-full bg-gray-100 rounded-full" />
-                  <div className="h-3 w-2/3 bg-gray-100 rounded-full" />
-                </div>
-              </div>
+                {tab.label}
+              </button>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-6 sm:p-8 text-center">
-            <p className="text-gray-600 text-sm sm:text-base">
-              Want to be notified? Reach out at{" "}
-              <a
-                href="mailto:info@ressy.ai"
-                className="text-purple-600 hover:underline font-medium"
-              >
-                info@ressy.ai
-              </a>
-            </p>
-          </div>
+          {/* Blog Grid */}
+          {filteredPosts.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-gray-500 text-lg">
+                No posts in this category yet.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPosts.map((post) => {
+                const badge = CATEGORY_BADGE[post.category];
+                return (
+                  <Link
+                    key={post.id}
+                    to={`/blog/${post.slug}`}
+                    className="group rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                  >
+                    {/* Accent strip */}
+                    <div
+                      className={cn(
+                        "h-2",
+                        post.category === "marketing" && "bg-blue-400",
+                        post.category === "engineering" && "bg-emerald-400",
+                        post.category === "sales" && "bg-orange-400",
+                      )}
+                    />
+                    <div className="p-5 sm:p-6">
+                      <span
+                        className={cn(
+                          "inline-block text-xs font-semibold rounded-full px-3 py-1 mb-3",
+                          badge.bg,
+                          badge.text,
+                        )}
+                      >
+                        {badge.label}
+                      </span>
+                      <h2 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-purple-700 transition-colors">
+                        {post.title}
+                      </h2>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center text-xs text-gray-500">
+                        <span>{post.displayDate}</span>
+                        <span className="mx-2">·</span>
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
       </main>
       <Footer />

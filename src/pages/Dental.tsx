@@ -5,6 +5,7 @@ import { Heart, Calendar, FileCheck, Bell, Phone } from "lucide-react";
 
 const Dental = () => {
   useEffect(() => {
+    document.title = "Dental | RessyAI";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
   return (

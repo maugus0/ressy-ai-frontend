@@ -1,11 +1,15 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTableOfContentsScroll } from "@/hooks/useTableOfContentsScroll";
 
 const Cookies = () => {
   const tocContainerRef = useRef<HTMLDivElement>(null);
   useTableOfContentsScroll(tocContainerRef);
+
+  useEffect(() => {
+    document.title = "Cookie Policy | RessyAI";
+  }, []);
 
   const sections = [
     { id: "introduction", title: "1. Introduction" },

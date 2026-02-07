@@ -27,7 +27,9 @@ const HelpCenter = () => {
         items: category.items.filter(
           (item) =>
             item.question.toLowerCase().includes(query) ||
-            item.answer.toLowerCase().includes(query),
+            item.answer.toLowerCase().includes(query) ||
+            item.bulletPoints?.some((bp) => bp.toLowerCase().includes(query)) ||
+            item.postText?.toLowerCase().includes(query),
         ),
       }))
       .filter((category) => category.items.length > 0);
@@ -62,7 +64,7 @@ const HelpCenter = () => {
                 placeholder="Search questions..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-10 py-3 rounded-xl border border-gray-200 bg-white shadow-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                className="w-full h-12 pl-12 pr-10 py-3 rounded-xl border border-gray-200 bg-white shadow-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
               />
               {searchQuery && (
                 <button
@@ -125,7 +127,21 @@ const HelpCenter = () => {
                           {item.question}
                         </AccordionTrigger>
                         <AccordionContent className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                          {item.answer}
+                          <p className={item.bulletPoints ? "mb-3" : ""}>
+                            {item.answer}
+                          </p>
+                          {item.bulletPoints && (
+                            <ul className="list-disc pl-5 sm:pl-6 space-y-1.5 text-gray-600">
+                              {item.bulletPoints.map((point, bIdx) => (
+                                <li key={bIdx}>{point}</li>
+                              ))}
+                            </ul>
+                          )}
+                          {item.postText && (
+                            <p className="mt-3 text-gray-600">
+                              {item.postText}
+                            </p>
+                          )}
                         </AccordionContent>
                       </AccordionItem>
                     ))}
@@ -141,7 +157,7 @@ const HelpCenter = () => {
               Still need help?
             </h3>
             <p className="text-gray-600 text-sm sm:text-base">
-              Reach out to us at{" "}
+              Email us at{" "}
               <a
                 href="mailto:info@ressy.ai"
                 className="text-purple-600 hover:underline font-medium"

@@ -13,6 +13,7 @@ import Cookies from "./pages/Cookies";
 import HelpCenter from "./pages/HelpCenter";
 import SystemStatus from "./pages/SystemStatus";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Onboarding from "./pages/Onboarding";
 import Restaurant from "./pages/Restaurant";
 import Salons from "./pages/Salons";
@@ -51,6 +52,7 @@ const App = () => {
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/system-status" element={<SystemStatus />} />
